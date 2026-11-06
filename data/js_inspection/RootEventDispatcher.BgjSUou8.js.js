@@ -1,0 +1,1 @@
+import{t as e}from"./EventDispatcher.BojBtnMW.js";var t=function(e){return e.Notifications=`Notifications`,e}({}),n=new e;export{n,t};
