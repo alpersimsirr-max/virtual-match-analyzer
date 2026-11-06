@@ -16,7 +16,7 @@ for page in PAGES:
   report["pages"].append({"url":page,"status":r.status_code,"assets":len(set(assets))})
   queue.extend(assets)
  except Exception as e:report["pages"].append({"url":page,"error":str(e)[:160]})
-terms=["eu-swarm-newm","betual","results","events","eventdispatcher","sportsbook","apiurl","baseurl","getevents","geteventlist","competition","tournament"]
+terms=["eu-swarm-newm","eu-swarm-ws","swarm","socketurl","longpollingurl","betual","results","result","events","eventdispatcher","sportsbook","apiurl","baseurl","getevents","geteventlist","geteventview","geteventdetails","competition","tournament","subscribe","subscription","sendmessage","request","finished","score","period","statistics","virtual"]
 while queue and len(seen)<260:
  u=queue.pop(0)
  if u in seen:continue
@@ -30,6 +30,10 @@ while queue and len(seen)<260:
    pos=[m.start() for m in re.finditer(re.escape(term),body,re.I)][:8]
    if pos:hits[term]=[body[max(0,i-220):i+500] for i in pos[:4]]
   if hits:report["assets"].append({"url":u,"bytes":len(r.content),"hits":hits})
+  if any(k in u.lower() for k in ["swarm","sportsbookdata","eventviewfilters","eventdispatcher","sportsbook."]):
+   Path("data/js_inspection").mkdir(parents=True,exist_ok=True)
+   safe=re.sub(r"[^a-zA-Z0-9_.-]","_",u.rsplit("/",1)[-1])
+   Path("data/js_inspection/"+safe+".js").write_text(body,encoding="utf-8")
   # Follow relative JS imports and preload chunks recursively.
   for path in re.findall(r'(?:from|import\s*\()\s*["\']([^"\']+\.js)["\']',body):
    queue.append(urljoin(u,path))
