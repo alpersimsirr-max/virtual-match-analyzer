@@ -1,189 +1,84 @@
-
 <!DOCTYPE html>
-<html lang="tr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#101827">
-<title>Virtual Match Analyzer</title>
+<html lang="tr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#101827"><title>Virtual Match Analyzer</title>
 <style>
-*{box-sizing:border-box}
-body{margin:0;background:#101827;color:#f1f5f9;font-family:Arial,sans-serif}
-.container{max-width:600px;margin:auto;padding:18px}
-h1{font-size:25px;margin:8px 0}
-.sub{color:#94a3b8;font-size:13px;margin-bottom:20px}
-.card{background:#1b2638;border:1px solid #344256;border-radius:14px;padding:16px;margin:14px 0}
-h2{font-size:17px;margin:0 0 15px}
-label{display:block;color:#cbd5e1;font-size:13px;margin:12px 0 6px}
-input{width:100%;padding:13px;border:1px solid #475569;border-radius:9px;background:#0f172a;color:white;font-size:16px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-button{width:100%;padding:15px;border:0;border-radius:10px;background:#16a34a;color:white;font-size:16px;font-weight:bold;margin-top:15px}
-.result{display:none}
-.metric{display:flex;justify-content:space-between;gap:10px;padding:13px 0;border-bottom:1px solid #344256}
-.metric:last-child{border:0}
-.metric strong{color:#4ade80;font-size:18px}
-.note{font-size:12px;color:#fbbf24;line-height:1.5}
-.small{font-size:12px;color:#94a3b8;line-height:1.5}
-.error{color:#f87171;font-size:13px}
-</style>
-</head>
-<body>
-<div class="container">
-
-<h1>⚽ Virtual Match Analyzer</h1>
-<div class="sub">Sanal futbol maç analiz ve olasılık sistemi</div>
-
-<div class="card">
-<h2>1. Maç bilgileri</h2>
-
-<label>Ev sahibi takım</label>
-<input id="home" placeholder="Örn: Milan">
-
-<label>Deplasman takımı</label>
-<input id="away" placeholder="Örn: Lazio">
-
-<div class="grid">
-<div>
-<label>Maç dakikası</label>
-<input id="minute" type="number" min="0" max="90" value="20">
+*{box-sizing:border-box}body{margin:0;background:#101827;color:#f1f5f9;font-family:Arial,sans-serif}.container{max-width:600px;margin:auto;padding:18px}h1{font-size:25px;margin:8px 0}.sub,.small{color:#94a3b8;font-size:13px;line-height:1.5}.card{background:#1b2638;border:1px solid #344256;border-radius:14px;padding:16px;margin:14px 0}h2{font-size:17px;margin:0 0 15px}label{display:block;color:#cbd5e1;font-size:13px;margin:12px 0 6px}input{width:100%;padding:14px;border:1px solid #475569;border-radius:9px;background:#0f172a;color:white;font-size:16px}button{width:100%;padding:15px;border:0;border-radius:10px;background:#16a34a;color:white;font-size:16px;font-weight:bold;margin-top:15px}.metric{display:flex;justify-content:space-between;gap:10px;padding:13px 0;border-bottom:1px solid #344256}.metric strong{color:#4ade80;font-size:18px}.error{color:#fca5a5;font-size:13px;line-height:1.5}.note{font-size:12px;color:#fbbf24;line-height:1.5}.result{display:none}
+</style></head><body><div class="container">
+<h1>⚽ Virtual Match Analyzer</h1><div class="sub">Betual geçmiş maç arşivinden otomatik veri denemesi</div>
+<div class="card"><h2>Maç bilgileri</h2><label>Ev sahibi takım</label><input id="home" placeholder="Örn: Samsunspor"><label>Deplasman takımı</label><input id="away" placeholder="Örn: Göztepe SK"><button id="run" onclick="analyze()">GEÇMİŞ VERİYİ ÇEK VE ANALİZ ET</button><div id="status" class="small" style="margin-top:12px">Kaynak: VBET Betual sonuç arşivi</div><div id="error" class="error"></div></div>
+<div class="card result" id="result"><h2>Analiz sonucu</h2><div id="title" class="small"></div><div id="metrics"></div><p class="note">Olasılıklar yalnızca bulunan geçmiş maç örnekleminden hesaplanan tahminlerdir; garanti veya %90 kazanma doğruluğu değildir.</p></div>
+<div class="card"><h2>Veri kaynağı</h2><div class="small">VBET Betual sonuç arşivi: <a style="color:#93c5fd" href="https://www.vbet.com/uk/sports/pre-match/results" target="_blank">Sonuçları aç</a><br>Otomatik erişim, sitenin ve aracı servisin erişim/CORS izinlerine bağlıdır. Yeterli geçmiş maç bulunamazsa tahmin gösterilmez.</div></div>
 </div>
-<div>
-<label>Toplam skor</label>
-<div class="grid">
-<input id="homeScore" type="number" min="0" value="0">
-<input id="awayScore" type="number" min="0" value="0">
-</div>
-</div>
-</div>
-</div>
-
-<div class="card">
-<h2>2. Geçmiş maç verileri</h2>
-<p class="small">Takımların geçmiş sanal maçlarından hesapladığın maç başına gol ortalamalarını gir. Veri yoksa tahmin üretme.</p>
-
-<label>Ev sahibinin maç başına gol ortalaması</label>
-<input id="homeAvg" type="number" min="0" max="10" step="0.1" placeholder="Örn: 1.6">
-
-<label>Deplasmanın maç başına gol ortalaması</label>
-<input id="awayAvg" type="number" min="0" max="10" step="0.1" placeholder="Örn: 1.2">
-
-<button onclick="analyze()">MAÇI ANALİZ ET</button>
-<div id="error" class="error"></div>
-</div>
-
-<div class="card result" id="result">
-<h2>3. Olasılık analizi</h2>
-<div id="matchTitle" class="small"></div>
-<div id="metrics"></div>
-<p class="note">Bu sonuçlar girilen gol ortalamalarına dayalı matematiksel tahminlerdir. Canlı veri veya garanti değildir. Sanal maçların rastgele yapısı nedeniyle gerçek sonuç farklı olabilir.</p>
-</div>
-
-<div class="card">
-<h2>Veri durumu</h2>
-<div class="small" id="dataStatus">Henüz analiz yapılmadı. Canlı veri bağlantısı henüz kurulmadı.</div>
-</div>
-
-</div>
-
 <script>
-function poisson(k, lambda){
-  return Math.exp(-lambda)*Math.pow(lambda,k)/factorial(k);
+const SOURCES=[
+ "https://r.jina.ai/http://www.vbet.com/uk/sports/pre-match/results",
+ "https://r.jina.ai/https://m.vbet.am/en/sports/pre-match/results"
+];
+const norm=s=>s.toLocaleLowerCase("tr").normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9ğüşöçı]+/g," ").trim();
+function poisson(k,l){let p=Math.exp(-l);for(let i=1;i<=k;i++)p*=l/i;return p}
+function dist(l){return Array.from({length:9},(_,i)=>poisson(i,l))}
+function pct(x){return (100*x).toFixed(1)+"%"}
+function metric(n,v){return '<div class="metric"><span>'+n+'</span><strong>'+pct(v)+'</strong></div>'}
+function parseRows(raw,home,away){
+ const text=raw.replace(/\r/g," ").replace(/\n/g," ").replace(/\s+/g," ");
+ const rows=[];const re=/(\d{1,2})\s*:\s*(\d{1,2})\s*\(\s*(\d{1,2})\s*:\s*(\d{1,2})\s*\)/g;
+ let m;
+ while((m=re.exec(text))){
+  const before=text.slice(Math.max(0,m.index-550),m.index);
+  const hn=norm(home),an=norm(away);
+  const hi=before.lastIndexOf(hn),ai=before.lastIndexOf(an);
+  if(hi<0&&ai<0)continue;
+  let team="";let opponent="";
+  if(hi>=0&&ai>=0){team=hi>ai?home:away;opponent=hi>ai?away:home}
+  else team=hi>=0?home:away;
+  rows.push({team,opponent,h:+m[1],a:+m[2],ht:+m[3],at:+m[4]});
+ }
+ return rows;
 }
-function factorial(n){
-  let r=1;
-  for(let i=2;i<=n;i++) r*=i;
-  return r;
+function analyzeRows(rows,home,away){
+ const h=rows.filter(x=>norm(x.team)===norm(home)||norm(x.opponent)===norm(home));
+ const a=rows.filter(x=>norm(x.team)===norm(away)||norm(x.opponent)===norm(away));
+ if(h.length<5||a.length<5)throw new Error("Yeterli veri bulunamadı. Ev sahibi için "+h.length+", deplasman için "+a.length+" maç eşleşti. Her takımda en az 5 kayıt gerekli.");
+ function rates(arr,name){
+  let gf=0,ga=0,ht=0;
+  arr.forEach(x=>{const isHome=norm(x.team)===norm(name);gf+=isHome?x.h:x.a;ga+=isHome?x.a:x.h;ht+=x.ht+x.at});
+  return {gf:gf/arr.length,ga:ga/arr.length,ht:ht/arr.length,n:arr.length};
+ }
+ const H=rates(h,home),A=rates(a,away);
+ const lh=Math.max(.15,(H.gf+A.ga)/2),la=Math.max(.15,(A.gf+H.ga)/2);
+ const dh=dist(lh),da=dist(la);let win=0,draw=0,lose=0,best=[];
+ for(let i=0;i<dh.length;i++)for(let j=0;j<da.length;j++){
+  const p=dh[i]*da[j];if(i>j)win+=p;else if(i===j)draw+=p;else lose+=p;best.push({s:i+":"+j,p});
+ }
+ best.sort((x,y)=>y.p-x.p);
+ const htRate=(H.ht+A.ht)/2;const htOver=1-Math.exp(-htRate);
+ return {H,A,win,draw,lose,htOver,best};
 }
-function distribution(lambda){
-  let arr=[];
-  for(let i=0;i<=12;i++) arr.push(poisson(i,lambda));
-  let sum=arr.reduce((a,b)=>a+b,0);
-  return arr.map(x=>x/sum);
-}
-function percent(x){
-  return (x*100).toFixed(1)+"%";
-}
-function analyze(){
-  const home=document.getElementById("home").value.trim()||"Ev sahibi";
-  const away=document.getElementById("away").value.trim()||"Deplasman";
-  const minute=Number(document.getElementById("minute").value);
-  const hs=Number(document.getElementById("homeScore").value);
-  const as=Number(document.getElementById("awayScore").value);
-  const homeAvgInput=document.getElementById("homeAvg").value.trim();
-  const awayAvgInput=document.getElementById("awayAvg").value.trim();
-  if(homeAvgInput===""||awayAvgInput===""){
-    document.getElementById("error").textContent="Gol ortalamaları boş. Gerçek geçmiş maç verisi bağlanmadan tahmin üretilemez.";
-    document.getElementById("result").style.display="none";
-    return;
+async function analyze(){
+ const home=document.getElementById("home").value.trim(),away=document.getElementById("away").value.trim();
+ const status=document.getElementById("status"),error=document.getElementById("error"),result=document.getElementById("result"),btn=document.getElementById("run");
+ error.textContent="";result.style.display="none";
+ if(!home||!away){error.textContent="İki takımın adını da gir.";return}
+ if(norm(home)===norm(away)){error.textContent="Ev sahibi ve deplasman takımları farklı olmalı.";return}
+ btn.disabled=true;btn.textContent="ARŞİV TARAMASI YAPILIYOR...";
+ let lastError="";
+ try{
+  let raw="";
+  for(const url of SOURCES){
+   try{status.textContent="Betual arşivine bağlanılıyor...";const res=await fetch(url,{cache:"no-store"});if(!res.ok)throw new Error("Kaynak HTTP "+res.status);raw=await res.text();if(raw.length<500)throw new Error("Arşiv yanıtı yetersiz");break}
+   catch(e){lastError=e.message}
   }
-  const ha=Number(homeAvgInput);
-  const aa=Number(awayAvgInput);
-  const error=document.getElementById("error");
-  const result=document.getElementById("result");
-
-  error.textContent="";
-  result.style.display="none";
-
-  if(!Number.isFinite(minute)||minute<0||minute>90||
-     !Number.isFinite(hs)||!Number.isFinite(as)||hs<0||as<0||
-     !Number.isFinite(ha)||!Number.isFinite(aa)||ha<0||aa<0||
-     ha>10||aa>10){
-    error.textContent="Lütfen geçerli maç bilgileri ve gol ortalamaları gir.";
-    return;
-  }
-
-  const remaining=Math.max(0,(90-minute)/90);
-  const homeGoals=ha*remaining;
-  const awayGoals=aa*remaining;
-
-  const hd=distribution(homeGoals);
-  const ad=distribution(awayGoals);
-
-  let h=0,d=0,a=0,over15=0,over25=0;
-  for(let i=0;i<hd.length;i++){
-    for(let j=0;j<ad.length;j++){
-      const p=hd[i]*ad[j];
-      if(hs+i>as+j) h+=p;
-      else if(hs+i===as+j) d+=p;
-      else a+=p;
-      if(hs+as+i+j>=2) over15+=p;
-      if(hs+as+i+j>=3) over25+=p;
-    }
-  }
-
-  const total=hs+as;
-  const under15=1-over15;
-  const under25=1-over25;
-
-  let html="";
-  html+=metric("Maç sonucu: "+home,h);
-  html+=metric("Beraberlik",d);
-  html+=metric("Maç sonucu: "+away,a);
-  html+=metric("2.5 Üst",over25);
-  html+=metric("2.5 Alt",under25);
-  html+=metric("1.5 Üst",over15);
-  html+=metric("1.5 Alt",under15);
-
-  if(minute<45){
-    const htRemaining=Math.max(0,(45-minute)/90);
-    const htLambda=(ha+aa)*htRemaining;
-    const htGoal=1-Math.exp(-htLambda);
-    html+=metric("İlk yarıda en az 1 gol",htGoal);
-  }else{
-    html+='<div class="metric"><span>İlk yarı gol ihtimali</span><span>İlk yarı sona ermiş</span></div>';
-  }
-
-  document.getElementById("matchTitle").textContent=
-    home+" "+hs+" - "+as+" "+away+" | "+minute+". dakika";
-
-  document.getElementById("metrics").innerHTML=html;
-  document.getElementById("dataStatus").textContent=
-    "Manuel girilen gol ortalamaları kullanıldı. Canlı kaynak bağlantısı yok.";
+  if(!raw)throw new Error("Arşive otomatik erişilemedi (CORS/ağ engeli olabilir). "+lastError);
+  status.textContent="Arşiv tarandı. Takım kayıtları eşleştiriliyor...";
+  const rows=parseRows(raw,home,away);
+  const x=analyzeRows(rows,home,away);
+  document.getElementById("title").textContent=home+" - "+away+" | Kullanılan kayıt: "+x.H.n+" / "+x.A.n;
+  document.getElementById("metrics").innerHTML=
+   metric("İlk yarı 0.5 Üst",x.htOver)+metric(home+" kazanır (1)",x.win)+metric("Beraberlik (X)",x.draw)+metric(away+" kazanır (2)",x.lose)+
+   '<div class="metric"><span>En olası skor</span><strong>'+x.best[0].s+'</strong></div>'+
+   '<div class="metric"><span>Alternatif skor</span><strong>'+x.best[1].s+'</strong></div>';
+  status.textContent="Veri bağlantısı başarılı. Eşleşen kayıtlar üzerinden hesaplandı.";
   result.style.display="block";
+ }catch(e){status.textContent="Otomatik veri bağlantısı başarısız.";error.textContent=e.message+"\nVeri olmadan tahmin üretilmedi."}
+ finally{btn.disabled=false;btn.textContent="GEÇMİŞ VERİYİ ÇEK VE ANALİZ ET"}
 }
-function metric(name,value){
-  return '<div class="metric"><span>'+name+'</span><strong>'+percent(value)+'</strong></div>';
-}
-</script>
-</body>
-</html>
+</script></body></html>
