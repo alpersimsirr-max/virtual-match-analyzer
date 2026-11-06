@@ -109,8 +109,15 @@ function analyze(){
   const minute=Number(document.getElementById("minute").value);
   const hs=Number(document.getElementById("homeScore").value);
   const as=Number(document.getElementById("awayScore").value);
-  const ha=Number(document.getElementById("homeAvg").value);
-  const aa=Number(document.getElementById("awayAvg").value);
+  const homeAvgInput=document.getElementById("homeAvg").value.trim();
+  const awayAvgInput=document.getElementById("awayAvg").value.trim();
+  if(homeAvgInput===""||awayAvgInput===""){
+    document.getElementById("error").textContent="Gol ortalamaları boş. Gerçek geçmiş maç verisi bağlanmadan tahmin üretilemez.";
+    document.getElementById("result").style.display="none";
+    return;
+  }
+  const ha=Number(homeAvgInput);
+  const aa=Number(awayAvgInput);
   const error=document.getElementById("error");
   const result=document.getElementById("result");
 
