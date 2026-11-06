@@ -1,84 +1,72 @@
 <!DOCTYPE html>
 <html lang="tr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#101827"><title>Virtual Match Analyzer</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#101827;color:#f1f5f9;font-family:Arial,sans-serif}.container{max-width:600px;margin:auto;padding:18px}h1{font-size:25px;margin:8px 0}.sub,.small{color:#94a3b8;font-size:13px;line-height:1.5}.card{background:#1b2638;border:1px solid #344256;border-radius:14px;padding:16px;margin:14px 0}h2{font-size:17px;margin:0 0 15px}label{display:block;color:#cbd5e1;font-size:13px;margin:12px 0 6px}input{width:100%;padding:14px;border:1px solid #475569;border-radius:9px;background:#0f172a;color:white;font-size:16px}button{width:100%;padding:15px;border:0;border-radius:10px;background:#16a34a;color:white;font-size:16px;font-weight:bold;margin-top:15px}.metric{display:flex;justify-content:space-between;gap:10px;padding:13px 0;border-bottom:1px solid #344256}.metric strong{color:#4ade80;font-size:18px}.error{color:#fca5a5;font-size:13px;line-height:1.5}.note{font-size:12px;color:#fbbf24;line-height:1.5}.result{display:none}
+*{box-sizing:border-box}body{margin:0;background:#101827;color:#f1f5f9;font-family:Arial,sans-serif}.container{max-width:650px;margin:auto;padding:18px}h1{font-size:25px;margin:8px 0}.sub,.small{color:#94a3b8;font-size:13px;line-height:1.5}.card{background:#1b2638;border:1px solid #344256;border-radius:14px;padding:16px;margin:14px 0}h2{font-size:17px;margin:0 0 15px}label{display:block;color:#cbd5e1;font-size:13px;margin:12px 0 6px}input{width:100%;padding:14px;border:1px solid #475569;border-radius:9px;background:#0f172a;color:white;font-size:16px}button{width:100%;padding:15px;border:0;border-radius:10px;background:#16a34a;color:white;font-size:16px;font-weight:bold;margin-top:15px}.metric{display:flex;justify-content:space-between;gap:10px;padding:12px 0;border-bottom:1px solid #344256}.metric strong{color:#4ade80;font-size:17px;text-align:right}.result{display:none}.note{font-size:12px;color:#fbbf24;line-height:1.5}.error{color:#fca5a5;font-size:13px;line-height:1.5}.tag{display:inline-block;padding:5px 8px;border-radius:6px;background:#334155;color:#cbd5e1;font-size:11px;margin:4px 0}.good{color:#4ade80}.warn{color:#fbbf24}
 </style></head><body><div class="container">
-<h1>⚽ Virtual Match Analyzer</h1><div class="sub">Betual geçmiş maç arşivinden otomatik veri denemesi</div>
-<div class="card"><h2>Maç bilgileri</h2><label>Ev sahibi takım</label><input id="home" placeholder="Örn: Samsunspor"><label>Deplasman takımı</label><input id="away" placeholder="Örn: Göztepe SK"><button id="run" onclick="analyze()">GEÇMİŞ VERİYİ ÇEK VE ANALİZ ET</button><div id="status" class="small" style="margin-top:12px">Kaynak: VBET Betual sonuç arşivi</div><div id="error" class="error"></div></div>
-<div class="card result" id="result"><h2>Analiz sonucu</h2><div id="title" class="small"></div><div id="metrics"></div><p class="note">Olasılıklar yalnızca bulunan geçmiş maç örnekleminden hesaplanan tahminlerdir; garanti veya %90 kazanma doğruluğu değildir.</p></div>
-<div class="card"><h2>Veri kaynağı</h2><div class="small">VBET Betual sonuç arşivi: <a style="color:#93c5fd" href="https://www.vbet.com/uk/sports/pre-match/results" target="_blank">Sonuçları aç</a><br>Otomatik erişim, sitenin ve aracı servisin erişim/CORS izinlerine bağlıdır. Yeterli geçmiş maç bulunamazsa tahmin gösterilmez.</div></div>
+<h1>⚽ Virtual Match Analyzer</h1><div class="sub">Takım isimlerinden olasılık modeli • Poisson skor simülasyonu</div>
+<div class="card"><h2>Maç bilgileri</h2><label>Ev sahibi takım</label><input id="home" placeholder="Örn: Team A"><label>Deplasman takımı</label><input id="away" placeholder="Örn: Team B"><button id="run" onclick="analyze()">MAÇI ANALİZ ET</button><div id="status" class="small" style="margin-top:12px">Model hazır. Önce yerel geçmiş veri dosyasını kontrol eder.</div><div id="error" class="error"></div></div>
+<div class="card result" id="result"><h2>Analiz sonucu</h2><div id="title" class="small"></div><div id="metrics"></div><p id="confidence" class="note"></p><p class="small">Bu sonuçlar matematiksel olasılık tahminidir; kesin skor veya bahis garantisi değildir. Sanal maç motorunun gizli algoritmasına erişimimiz olmadığı için gerçek sonuç garantisi verilemez.</p></div>
+<div class="card"><h2>Model nasıl çalışıyor?</h2><div class="small">Önce <b>data/matches.json</b> içindeki tamamlanmış maçları takım isimleriyle eşleştirir. Yeterli veri varsa hücum/savunma ortalamalarını kullanır. Veri yoksa yalnızca genel başlangıç varsayımıyla düşük güvenli olasılık üretir; bunu takım istatistiği gibi göstermez.</div><div class="tag">İY + MS skor olasılığı</div><div class="tag">1X2</div><div class="tag">2.5 / 3.5 / 4.5 Alt-Üst</div><div class="tag">Poisson dağılımı</div></div>
 </div>
 <script>
-const SOURCES=[
- "https://r.jina.ai/http://www.vbet.com/uk/sports/pre-match/results",
- "https://r.jina.ai/https://m.vbet.am/en/sports/pre-match/results"
-];
-const norm=s=>s.toLocaleLowerCase("tr").normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9ğüşöçı]+/g," ").trim();
-function poisson(k,l){let p=Math.exp(-l);for(let i=1;i<=k;i++)p*=l/i;return p}
-function dist(l){return Array.from({length:9},(_,i)=>poisson(i,l))}
-function pct(x){return (100*x).toFixed(1)+"%"}
-function metric(n,v){return '<div class="metric"><span>'+n+'</span><strong>'+pct(v)+'</strong></div>'}
-function parseRows(raw,home,away){
- const text=raw.replace(/\r/g," ").replace(/\n/g," ").replace(/\s+/g," ");
- const rows=[];const re=/(\d{1,2})\s*:\s*(\d{1,2})\s*\(\s*(\d{1,2})\s*:\s*(\d{1,2})\s*\)/g;
- let m;
- while((m=re.exec(text))){
-  const before=text.slice(Math.max(0,m.index-550),m.index);
-  const hn=norm(home),an=norm(away);
-  const hi=before.lastIndexOf(hn),ai=before.lastIndexOf(an);
-  if(hi<0&&ai<0)continue;
-  let team="";let opponent="";
-  if(hi>=0&&ai>=0){team=hi>ai?home:away;opponent=hi>ai?away:home}
-  else team=hi>=0?home:away;
-  rows.push({team,opponent,h:+m[1],a:+m[2],ht:+m[3],at:+m[4]});
- }
- return rows;
+const norm=s=>String(s||"").toLocaleLowerCase("tr").normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9ğüşöçı]+/g," ").trim();
+const poisson=(k,l)=>{let p=Math.exp(-l);for(let i=1;i<=k;i++)p*=l/i;return p};
+const dist=l=>Array.from({length:10},(_,i)=>poisson(i,l));
+const pct=x=>(100*x).toFixed(1)+"%";
+function metric(n,v){return '<div class="metric"><span>'+n+'</span><strong>'+v+'</strong></div>'}
+function readMatches(data){if(Array.isArray(data))return data;if(data&&Array.isArray(data.matches))return data.matches;return []}
+function val(m,...keys){for(const k of keys)if(m[k]!==undefined&&m[k]!==null&&m[k]!=="")return m[k];return null}
+function normalizeMatch(m){
+ const home=val(m,"home_team","homeTeam","home","team1"),away=val(m,"away_team","awayTeam","away","team2");
+ const fh=val(m,"ft_home","home_score","homeScore","score_home"),fa=val(m,"ft_away","away_score","awayScore","score_away");
+ const hh=val(m,"ht_home","half_home","htHome"),ha=val(m,"ht_away","half_away","htAway");
+ if(home==null||away==null||fh==null||fa==null||!Number.isFinite(Number(fh))||!Number.isFinite(Number(fa)))return null;
+ return {home:String(home),away:String(away),fh:+fh,fa:+fa,hh:hh==null?null:+hh,ha:ha==null?null:+ha};
 }
-function analyzeRows(rows,home,away){
- const h=rows.filter(x=>norm(x.team)===norm(home)||norm(x.opponent)===norm(home));
- const a=rows.filter(x=>norm(x.team)===norm(away)||norm(x.opponent)===norm(away));
- if(h.length<5||a.length<5)throw new Error("Yeterli veri bulunamadı. Ev sahibi için "+h.length+", deplasman için "+a.length+" maç eşleşti. Her takımda en az 5 kayıt gerekli.");
- function rates(arr,name){
-  let gf=0,ga=0,ht=0;
-  arr.forEach(x=>{const isHome=norm(x.team)===norm(name);gf+=isHome?x.h:x.a;ga+=isHome?x.a:x.h;ht+=x.ht+x.at});
-  return {gf:gf/arr.length,ga:ga/arr.length,ht:ht/arr.length,n:arr.length};
- }
- const H=rates(h,home),A=rates(a,away);
- const lh=Math.max(.15,(H.gf+A.ga)/2),la=Math.max(.15,(A.gf+H.ga)/2);
- const dh=dist(lh),da=dist(la);let win=0,draw=0,lose=0,best=[];
- for(let i=0;i<dh.length;i++)for(let j=0;j<da.length;j++){
-  const p=dh[i]*da[j];if(i>j)win+=p;else if(i===j)draw+=p;else lose+=p;best.push({s:i+":"+j,p});
- }
- best.sort((x,y)=>y.p-x.p);
- const htRate=(H.ht+A.ht)/2;const htOver=1-Math.exp(-htRate);
- return {H,A,win,draw,lose,htOver,best};
+function stats(matches,team){
+ let gf=0,ga=0,n=0,htgf=0,htga=0,htn=0;
+ matches.forEach(m=>{if(norm(m.home)===norm(team)){gf+=m.fh;ga+=m.fa;n++;if(m.hh!==null&&m.ha!==null){htgf+=m.hh;htga+=m.ha;htn++}}else if(norm(m.away)===norm(team)){gf+=m.fa;ga+=m.fh;n++;if(m.hh!==null&&m.ha!==null){htgf+=m.ha;htga+=m.hh;htn++}}});
+ return n?{gf:gf/n,ga:ga/n,n,htgf:htn?htgf/htn:null,htga:htn?htga/htn:null,htn}:null;
+}
+function calc(home,away,all){
+ const hs=stats(all,home),as=stats(all,away),hasData=!!(hs&&as&&hs.n>=3&&as.n>=3);
+ // These are neutral demonstration priors, not measured Betual averages.
+ const lh=hasData?Math.max(.15,(hs.gf+as.ga)/2):1.35;
+ const la=hasData?Math.max(.15,(as.gf+hs.ga)/2):1.15;
+ let hth=hasData&&hs.htgf!==null&&as.htga!==null?Math.max(.05,(hs.htgf+as.htga)/2):.65;
+ let hta=hasData&&as.htgf!==null&&hs.htga!==null?Math.max(.05,(as.htgf+hs.htga)/2):.55;
+ const dH=dist(lh),dA=dist(la),dHH=dist(hth),dHA=dist(hta);
+ let one=0,draw=0,two=0,tot={2.5:0,3.5:0,4.5:0},scores=[];
+ for(let i=0;i<10;i++)for(let j=0;j<10;j++){const p=dH[i]*dA[j];if(i>j)one+=p;else if(i===j)draw+=p;else two+=p;if(i+j>2.5)tot[2.5]+=p;if(i+j>3.5)tot[3.5]+=p;if(i+j>4.5)tot[4.5]+=p;scores.push({s:i+"-"+j,p})}
+ let ht1=0,htx=0,ht2=0,htScores=[];
+ for(let i=0;i<10;i++)for(let j=0;j<10;j++){const p=dHH[i]*dHA[j];if(i>j)ht1+=p;else if(i===j)htx+=p;else ht2+=p;htScores.push({s:i+"-"+j,p})}
+ scores.sort((a,b)=>b.p-a.p);htScores.sort((a,b)=>b.p-a.p);
+ return {hs,as,hasData,lh,la,hth,hta,one,draw,two,tot,ht1,htx,ht2,htScores,scores};
 }
 async function analyze(){
- const home=document.getElementById("home").value.trim(),away=document.getElementById("away").value.trim();
- const status=document.getElementById("status"),error=document.getElementById("error"),result=document.getElementById("result"),btn=document.getElementById("run");
+ const home=document.getElementById("home").value.trim(),away=document.getElementById("away").value.trim(),status=document.getElementById("status"),error=document.getElementById("error"),result=document.getElementById("result"),btn=document.getElementById("run");
  error.textContent="";result.style.display="none";
  if(!home||!away){error.textContent="İki takımın adını da gir.";return}
- if(norm(home)===norm(away)){error.textContent="Ev sahibi ve deplasman takımları farklı olmalı.";return}
- btn.disabled=true;btn.textContent="ARŞİV TARAMASI YAPILIYOR...";
- let lastError="";
+ if(norm(home)===norm(away)){error.textContent="Takımlar farklı olmalı.";return}
+ btn.disabled=true;btn.textContent="MODEL HESAPLIYOR...";
  try{
-  let raw="";
-  for(const url of SOURCES){
-   try{status.textContent="Betual arşivine bağlanılıyor...";const res=await fetch(url,{cache:"no-store"});if(!res.ok)throw new Error("Kaynak HTTP "+res.status);raw=await res.text();if(raw.length<500)throw new Error("Arşiv yanıtı yetersiz");break}
-   catch(e){lastError=e.message}
-  }
-  if(!raw)throw new Error("Arşive otomatik erişilemedi (CORS/ağ engeli olabilir). "+lastError);
-  status.textContent="Arşiv tarandı. Takım kayıtları eşleştiriliyor...";
-  const rows=parseRows(raw,home,away);
-  const x=analyzeRows(rows,home,away);
-  document.getElementById("title").textContent=home+" - "+away+" | Kullanılan kayıt: "+x.H.n+" / "+x.A.n;
+  let matches=[],sourceError="";
+  try{const response=await fetch("./data/matches.json?cache="+Date.now());if(response.ok)matches=readMatches(await response.json()).map(normalizeMatch).filter(Boolean);else sourceError="Geçmiş veri dosyası bulunamadı."}catch(e){sourceError="Geçmiş veri dosyasına erişilemedi."}
+  const x=calc(home,away,matches);
+  document.getElementById("title").textContent=home+" - "+away+" | Kullanılabilir tamamlanmış maç: "+matches.length;
+  const htot=x.ht1+x.htx+x.ht2;
   document.getElementById("metrics").innerHTML=
-   metric("İlk yarı 0.5 Üst",x.htOver)+metric(home+" kazanır (1)",x.win)+metric("Beraberlik (X)",x.draw)+metric(away+" kazanır (2)",x.lose)+
-   '<div class="metric"><span>En olası skor</span><strong>'+x.best[0].s+'</strong></div>'+
-   '<div class="metric"><span>Alternatif skor</span><strong>'+x.best[1].s+'</strong></div>';
-  status.textContent="Veri bağlantısı başarılı. Eşleşen kayıtlar üzerinden hesaplandı.";
+   '<div class="tag">İLK YARI</div>'+
+   metric("İY 1 (ev sahibi)",pct(x.ht1))+metric("İY X",pct(x.htx))+metric("İY 2 (deplasman)",pct(x.ht2))+metric("İY en olası skor",x.htScores[0].s)+metric("İY 0.5 Üst",pct(1-Math.exp(-(x.hth+x.hta))))+
+   '<div class="tag">MAÇ SONU</div>'+
+   metric("MS 1",pct(x.one))+metric("MS X",pct(x.draw))+metric("MS 2",pct(x.two))+metric("En olası MS skoru",x.scores[0].s)+metric("Alternatif skor",x.scores[1].s)+
+   '<div class="tag">TOPLAM GOL</div>'+
+   metric("2.5 Üst / Alt",pct(x.tot[2.5])+" / "+pct(1-x.tot[2.5]))+metric("3.5 Üst / Alt",pct(x.tot[3.5])+" / "+pct(1-x.tot[3.5]))+metric("4.5 Üst / Alt",pct(x.tot[4.5])+" / "+pct(1-x.tot[4.5]));
+  const confidence=document.getElementById("confidence");
+  if(x.hasData){confidence.innerHTML='<span class="good">VERİ DESTEKLİ TAHMİN</span> — '+home+': '+x.hs.n+' maç, '+away+': '+x.as.n+' maç. Gol ortalamaları geçmiş sonuçlardan hesaplandı.';status.textContent="Geçmiş maç verileri bulundu; model takım istatistikleriyle hesaplandı."}
+  else{confidence.innerHTML='<span class="warn">DÜŞÜK GÜVEN / GENEL BAŞLANGIÇ MODELİ</span> — Takımlara ait yeterli geçmiş veri yok. Yüzdeler takım performansını değil, tarafsız başlangıç varsayımlarını gösterir. '+(sourceError||"") ;status.textContent="Tahmin üretildi; takım geçmişi bağlı olmadığı için genel model kullanıldı."}
   result.style.display="block";
- }catch(e){status.textContent="Otomatik veri bağlantısı başarısız.";error.textContent=e.message+"\nVeri olmadan tahmin üretilmedi."}
- finally{btn.disabled=false;btn.textContent="GEÇMİŞ VERİYİ ÇEK VE ANALİZ ET"}
+ }catch(e){error.textContent="Analiz sırasında hata: "+e.message;status.textContent="Model çalıştırılamadı."}
+ finally{btn.disabled=false;btn.textContent="MAÇI ANALİZ ET"}
 }
 </script></body></html>
