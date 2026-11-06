@@ -30,7 +30,7 @@ while queue and len(seen)<260:
    pos=[m.start() for m in re.finditer(re.escape(term),body,re.I)][:8]
    if pos:hits[term]=[body[max(0,i-220):i+500] for i in pos[:4]]
   if hits:report["assets"].append({"url":u,"bytes":len(r.content),"hits":hits})
-  if any(k in u.lower() for k in ["swarm","sportsbookdata","eventviewfilters","eventdispatcher","sportsbook."]):
+  if any(k in u.lower() for k in ["swarm","sportsbookdata","eventviewfilters","eventdispatcher","sportsbook."]) or any(k in hits for k in ["betual","results","finished","score","virtual","getevents","geteventlist","geteventview","competition","tournament"]):
    Path("data/js_inspection").mkdir(parents=True,exist_ok=True)
    safe=re.sub(r"[^a-zA-Z0-9_.-]","_",u.rsplit("/",1)[-1])
    Path("data/js_inspection/"+safe+".js").write_text(body,encoding="utf-8")
