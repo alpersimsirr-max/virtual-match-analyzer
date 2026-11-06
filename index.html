@@ -3,10 +3,10 @@
 <style>
 *{box-sizing:border-box}body{margin:0;background:#101827;color:#f1f5f9;font-family:Arial,sans-serif}.container{max-width:650px;margin:auto;padding:18px}h1{font-size:25px;margin:8px 0}.sub,.small{color:#94a3b8;font-size:13px;line-height:1.5}.card{background:#1b2638;border:1px solid #344256;border-radius:14px;padding:16px;margin:14px 0}h2{font-size:17px;margin:0 0 15px}label{display:block;color:#cbd5e1;font-size:13px;margin:12px 0 6px}input{width:100%;padding:14px;border:1px solid #475569;border-radius:9px;background:#0f172a;color:white;font-size:16px}button{width:100%;padding:15px;border:0;border-radius:10px;background:#16a34a;color:white;font-size:16px;font-weight:bold;margin-top:15px}.metric{display:flex;justify-content:space-between;gap:10px;padding:12px 0;border-bottom:1px solid #344256}.metric strong{color:#4ade80;font-size:17px;text-align:right}.result{display:none}.note{font-size:12px;color:#fbbf24;line-height:1.5}.error{color:#fca5a5;font-size:13px;line-height:1.5}.tag{display:inline-block;padding:5px 8px;border-radius:6px;background:#334155;color:#cbd5e1;font-size:11px;margin:4px 0}.good{color:#4ade80}.warn{color:#fbbf24}
 </style></head><body><div class="container">
-<h1>⚽ Virtual Match Analyzer</h1><div class="sub">Takım isimlerinden olasılık modeli • Poisson skor simülasyonu</div>
+<h1>⚽ Virtual Match Analyzer</h1><div class="sub">Gerçek tamamlanmış maç verisi olmadan tahmin üretmez</div>
 <div class="card"><h2>Maç bilgileri</h2><label>Ev sahibi takım</label><input id="home" placeholder="Örn: Team A"><label>Deplasman takımı</label><input id="away" placeholder="Örn: Team B"><button id="run" onclick="analyze()">MAÇI ANALİZ ET</button><div id="status" class="small" style="margin-top:12px">Model hazır. Önce yerel geçmiş veri dosyasını kontrol eder.</div><div id="error" class="error"></div></div>
 <div class="card result" id="result"><h2>Analiz sonucu</h2><div id="title" class="small"></div><div id="metrics"></div><p id="confidence" class="note"></p><p class="small">Bu sonuçlar matematiksel olasılık tahminidir; kesin skor veya bahis garantisi değildir. Sanal maç motorunun gizli algoritmasına erişimimiz olmadığı için gerçek sonuç garantisi verilemez.</p></div>
-<div class="card"><h2>Model nasıl çalışıyor?</h2><div class="small">Önce <b>data/matches.json</b> içindeki tamamlanmış maçları takım isimleriyle eşleştirir. Yeterli veri varsa hücum/savunma ortalamalarını kullanır. Veri yoksa yalnızca genel başlangıç varsayımıyla düşük güvenli olasılık üretir; bunu takım istatistiği gibi göstermez.</div><div class="tag">İY + MS skor olasılığı</div><div class="tag">1X2</div><div class="tag">2.5 / 3.5 / 4.5 Alt-Üst</div><div class="tag">Poisson dağılımı</div></div>
+<div class="card"><h2>Model nasıl çalışıyor?</h2><div class="small">Önce <b>data/matches.json</b> içindeki tamamlanmış maçları takım isimleriyle eşleştirir. Her iki takım için de en az 3 geçmiş maç bulunmadan yüzde veya skor tahmini göstermez.</div><div class="tag">İY + MS skor olasılığı</div><div class="tag">1X2</div><div class="tag">2.5 / 3.5 / 4.5 Alt-Üst</div><div class="tag">Poisson dağılımı</div></div>
 </div>
 <script>
 const norm=s=>String(s||"").toLocaleLowerCase("tr").normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9ğüşöçı]+/g," ").trim();
@@ -29,19 +29,20 @@ function stats(matches,team){
  return n?{gf:gf/n,ga:ga/n,n,htgf:htn?htgf/htn:null,htga:htn?htga/htn:null,htn}:null;
 }
 function calc(home,away,all){
- const hs=stats(all,home),as=stats(all,away),hasData=!!(hs&&as&&hs.n>=3&&as.n>=3);
- // These are neutral demonstration priors, not measured Betual averages.
- const lh=hasData?Math.max(.15,(hs.gf+as.ga)/2):1.35;
- const la=hasData?Math.max(.15,(as.gf+hs.ga)/2):1.15;
- let hth=hasData&&hs.htgf!==null&&as.htga!==null?Math.max(.05,(hs.htgf+as.htga)/2):.65;
- let hta=hasData&&as.htgf!==null&&hs.htga!==null?Math.max(.05,(as.htgf+hs.htga)/2):.55;
+ const hs=stats(all,home),as=stats(all,away);
+ if(!hs||!as||hs.n<3||as.n<3){
+  throw new Error("Güvenilir tahmin için her iki takımın da en az 3 tamamlanmış maçına ihtiyacımız var. Bulunan kayıt: "+home+" "+(hs?hs.n:0)+" maç, "+away+" "+(as?as.n:0)+" maç. Şu an tahmin üretmiyorum; genel varsayımla yüzde vermek yanıltıcı olur.");
+ }
+ if(hs.htgf===null||as.htgf===null) throw new Error("İlk yarı skor geçmişi eksik. İY tahmini için devre skorları da gerekli.");
+ const lh=Math.max(.15,(hs.gf+as.ga)/2),la=Math.max(.15,(as.gf+hs.ga)/2);
+ const hth=Math.max(.05,(hs.htgf+as.htga)/2),hta=Math.max(.05,(as.htgf+hs.htga)/2);
  const dH=dist(lh),dA=dist(la),dHH=dist(hth),dHA=dist(hta);
  let one=0,draw=0,two=0,tot={2.5:0,3.5:0,4.5:0},scores=[];
  for(let i=0;i<10;i++)for(let j=0;j<10;j++){const p=dH[i]*dA[j];if(i>j)one+=p;else if(i===j)draw+=p;else two+=p;if(i+j>2.5)tot[2.5]+=p;if(i+j>3.5)tot[3.5]+=p;if(i+j>4.5)tot[4.5]+=p;scores.push({s:i+"-"+j,p})}
  let ht1=0,htx=0,ht2=0,htScores=[];
  for(let i=0;i<10;i++)for(let j=0;j<10;j++){const p=dHH[i]*dHA[j];if(i>j)ht1+=p;else if(i===j)htx+=p;else ht2+=p;htScores.push({s:i+"-"+j,p})}
  scores.sort((a,b)=>b.p-a.p);htScores.sort((a,b)=>b.p-a.p);
- return {hs,as,hasData,lh,la,hth,hta,one,draw,two,tot,ht1,htx,ht2,htScores,scores};
+ return {hs,as,one,draw,two,tot,ht1,htx,ht2,htScores,scores};
 }
 async function analyze(){
  const home=document.getElementById("home").value.trim(),away=document.getElementById("away").value.trim(),status=document.getElementById("status"),error=document.getElementById("error"),result=document.getElementById("result"),btn=document.getElementById("run");
@@ -63,10 +64,10 @@ async function analyze(){
    '<div class="tag">TOPLAM GOL</div>'+
    metric("2.5 Üst / Alt",pct(x.tot[2.5])+" / "+pct(1-x.tot[2.5]))+metric("3.5 Üst / Alt",pct(x.tot[3.5])+" / "+pct(1-x.tot[3.5]))+metric("4.5 Üst / Alt",pct(x.tot[4.5])+" / "+pct(1-x.tot[4.5]));
   const confidence=document.getElementById("confidence");
-  if(x.hasData){confidence.innerHTML='<span class="good">VERİ DESTEKLİ TAHMİN</span> — '+home+': '+x.hs.n+' maç, '+away+': '+x.as.n+' maç. Gol ortalamaları geçmiş sonuçlardan hesaplandı.';status.textContent="Geçmiş maç verileri bulundu; model takım istatistikleriyle hesaplandı."}
-  else{confidence.innerHTML='<span class="warn">DÜŞÜK GÜVEN / GENEL BAŞLANGIÇ MODELİ</span> — Takımlara ait yeterli geçmiş veri yok. Yüzdeler takım performansını değil, tarafsız başlangıç varsayımlarını gösterir. '+(sourceError||"") ;status.textContent="Tahmin üretildi; takım geçmişi bağlı olmadığı için genel model kullanıldı."}
+  confidence.textContent="Tahminler yalnızca eşleşen gerçek geçmiş maçlardan hesaplandı. Kullanılan maç: "+home+" "+x.hs.n+" / "+away+" "+x.as.n+".";
+  status.textContent="Geçmiş maç verileri bulundu; model takım istatistikleriyle hesaplandı.";
   result.style.display="block";
- }catch(e){error.textContent="Analiz sırasında hata: "+e.message;status.textContent="Model çalıştırılamadı."}
+ }catch(e){error.textContent=e.message;status.textContent="Yeterli gerçek veri bulunamadı; tahmin üretilmedi.";result.style.display="none";}
  finally{btn.disabled=false;btn.textContent="MAÇI ANALİZ ET"}
 }
 </script></body></html>
