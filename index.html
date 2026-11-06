@@ -1,1 +1,149 @@
 
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101827">
+<title>Virtual Match Analyzer</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#101827;color:#f1f5f9;font-family:Arial,sans-serif;padding:18px}
+.container{max-width:600px;margin:auto}
+h1{font-size:25px;margin:8px 0}
+.sub{color:#94a3b8;font-size:13px;margin-bottom:22px}
+.card{background:#1b2638;border:1px solid #334155;border-radius:15px;padding:17px;margin-bottom:15px}
+h2{font-size:17px;margin:0 0 15px}
+label{display:block;color:#cbd5e1;font-size:13px;margin:12px 0 6px}
+input{width:100%;padding:13px;border:1px solid #475569;border-radius:9px;background:#0f172a;color:white;font-size:16px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+button{width:100%;padding:15px;border:0;border-radius:10px;background:#16a36a;color:white;font-weight:bold;font-size:16px;margin-top:16px}
+.result{display:none}
+.metric{display:flex;justify-content:space-between;gap:10px;padding:12px 0;border-bottom:1px solid #334155}
+.metric:last-child{border:0}
+.metric strong{color:#4ade80}
+.note{font-size:12px;color:#fbbf24;line-height:1.5}
+.small{font-size:12px;color:#94a3b8}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>⚽ Virtual Match Analyzer</h1>
+<div class="sub">Sanal futbol maç analiz ve olasılık paneli</div>
+
+<div class="card">
+<h2>Maç bilgileri</h2>
+<label>Ev sahibi takım</label>
+<input id="home" value="Ev Sahibi">
+<label>Deplasman takımı</label>
+<input id="away" value="Deplasman">
+<div class="grid">
+<div>
+<label>Maç dakikası</label>
+<input id="minute" type="number" min="0" max="90" value="20">
+</div>
+<div>
+<label>Devam eden skor</label>
+<div class="grid">
+<input id="hs" type="number" min="0" value="0" aria-label="Ev sahibi gol">
+<input id="as" type="number" min="0" value="0" aria-label="Deplasman gol">
+</div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<h2>Gol beklentisi (90 dakika)</h2>
+<p class="small">Takımların maç sonuna kadar beklenen toplam gol değerlerini gir.</p>
+<div class="grid">
+<div>
+<label>Ev sahibi gol beklentisi</label>
+<input id="xh" type="number" min="0" max="6" step="0.1" value="1.2">
+</div>
+<div>
+<label>Deplasman gol beklentisi</label>
+<input id="xa" type="number" min="0" max="6" step="0.1" value="1.0">
+</div>
+</div>
+<button onclick="analyze()">MAÇI ANALİZ ET</button>
+</div>
+
+<div class="card result" id="results">
+<h2>Analiz sonuçları</h2>
+<div class="small" id="matchTitle"></div>
+<div id="metrics"></div>
+<p class="note" id="warning"></p>
+</div>
+
+<div class="card">
+<h2>Veri durumu</h2>
+<p class="small">Bu sürümde canlı maç bağlantısı ve geçmiş maç verisi henüz bulunmuyor. Hesaplamalar girdiğin gol beklentilerine dayalı matematiksel tahminlerdir. Gerçek maç istatistiği değildir.</p>
+</div>
+</div>
+
+<script>
+function poisson(k,lambda){
+ if(lambda<=0)return k===0?1:0;
+ let p=Math.exp(-lambda);
+ for(let i=1;i<=k;i++)p*=lambda/i;
+ return p;
+}
+function distribution(lambda,max=12){
+ let a=[];
+ for(let i=0;i<=max;i++)a.push(poisson(i,lambda));
+ let sum=a.reduce((x,y)=>x+y,0);
+ return a.map(x=>x/sum);
+}
+function pct(x){return (x*100).toFixed(1)+"%"}
+function analyze(){
+ const minute=Number(document.getElementById("minute").value);
+ const hs=Number(document.getElementById("hs").value);
+ const as=Number(document.getElementById("as").value);
+ const xh=Number(document.getElementById("xh").value);
+ const xa=Number(document.getElementById("xa").value);
+ if(minute<0||minute>90||hs<0||as<0||xh<0||xa<0||xh>6||xa>6){
+  alert("Lütfen geçerli değerler gir.");
+  return;
+ }
+ const remaining=Math.max(0,(90-minute)/90);
+ const dh=distribution(xh*remaining);
+ const da=distribution(xa*remaining);
+ let home=0,draw=0,away=0,over15=0,over25=0;
+ for(let i=0;i<dh.length;i++){
+  for(let j=0;j<da.length;j++){
+   let p=dh[i]*da[j];
+   let total=hs+as+i+j;
+   if(hs+i>as+j)home+=p;
+   else if(hs+i===as+j)draw+=p;
+   else away+=p;
+   if(total>=2)over15+=p;
+   if(total>=3)over25+=p;
+  }
+ }
+ const under15=1-over15;
+ const under25=1-over25;
+ const homeName=document.getElementById("home").value||"Ev Sahibi";
+ const awayName=document.getElementById("away").value||"Deplasman";
+ document.getElementById("matchTitle").textContent=
+ homeName+" "+hs+" - "+as+" "+awayName+" | "+minute+". dakika";
+ const rows=[
+ ["Ev sahibi kazanır",pct(home)],
+ ["Beraberlik",pct(draw)],
+ ["Deplasman kazanır",pct(away)],
+ ["2.5 üst",pct(over25)],
+ ["2.5 alt",pct(under25)],
+ ["1.5 üst",pct(over15)],
+ ["1.5 alt",pct(under15)]
+ ];
+ document.getElementById("metrics").innerHTML=rows.map(r=>
+ '<div class="metric"><span>'+r[0]+'</span><strong>'+r[1]+'</strong></div>'
+ ).join("");
+ document.getElementById("warning").textContent=
+ "Önemli: Bu yüzdeler yalnızca girdiğin gol beklentileriyle hesaplanmıştır. Canlı veri veya doğrulanmış geçmiş sanal maç istatistiği değildir. Bahis sonucu garantisi vermez.";
+ document.getElementById("results").style.display="block";
+ document.getElementById("results").scrollIntoView({behavior:"smooth"});
+}
+</script>
+</body>
+</html>
