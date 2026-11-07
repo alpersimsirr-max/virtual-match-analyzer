@@ -583,13 +583,13 @@ def collect_betual_live_virtual_games():
             def as_int(value):
                 try:
                     text=str(value).strip()
-                    return int(text) if re.fullmatch(r"-?\\d+",text) else None
+                    return int(text) if re.fullmatch(r"-?\d+",text) else None
                 except Exception:
                     return None
             score_home=as_int(info.get("score1",g.get("score1")))
             score_away=as_int(info.get("score2",g.get("score2")))
             clock=str(info.get("current_game_time") or g.get("game_time") or g.get("timer") or "")
-            clock_match=re.search(r"(\\d{1,2}):(\\d{2})",clock)
+            clock_match=re.search(r"(\d{1,2}):(\d{2})",clock)
             state=str(info.get("current_game_state") or g.get("status") or "").lower()
             period=("first_half" if any(x in state for x in ("first","1st","half1","period1")) else
                     "second_half" if any(x in state for x in ("second","2nd","half2","period2")) else None)
