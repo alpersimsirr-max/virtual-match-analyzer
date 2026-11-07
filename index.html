@@ -92,13 +92,13 @@ async function loadLiveBoard(){
   if(!items.length){board.innerHTML='<p class="small warn">Canlı skor ve dakika doğrulanan maç bekleniyor.</p>';return}
   board.innerHTML=items.map((x,i)=>{
    const q=x.prediction||{},v=q.probabilities||{},ls=x.live_state||{},id="live-detail-"+i;
-   const goal=prob(x);
+   const goal=prob(x),hist=q.historical_team_stats||{},hh=hist.home||{},ah=hist.away||{};
    return '<div class="card" style="margin:10px 0;background:#111d2e"><div style="display:flex;justify-content:space-between;gap:8px"><b>'+(i+1)+'. '+x.home_team+' - '+x.away_team+'</b><span class="tag">'+pct(goal)+' gol ihtimali</span></div><div class="tag">CANLI '+(x.display_clock||ls.minute+"'")+' · '+(x.period||"")+' · '+(ls.score||"")+'</div>'+
     metric("Maçta en az 1 gol daha",pct(v.any_more_goal??goal))+
-    metric("Ev sahibi sonraki gol",pct(v.home_to_score_again??0))+metric("Deplasman sonraki gol",pct(v.away_to_score_again??0))+
+    metric("Ev sahibi sonraki gol",v.home_to_score_again==null?"Veri yok":pct(v.home_to_score_again))+metric("Deplasman sonraki gol",v.away_to_score_again==null?"Veri yok":pct(v.away_to_score_again))+
     metric("İY en olası skor",q.half_time_prediction||"Devre tamamlandı")+metric("MS en olası skor",q.full_time_prediction||"—")+
     '<button style="margin-top:10px" onclick="document.getElementById(\''+id+'\').style.display=document.getElementById(\''+id+'\').style.display===\'none\'?\'block\':\'none\'">TÜM OLASILIKLARI GÖSTER</button>'+
-    '<div id="'+id+'" style="display:none">'+metric("MS 1 / X / 2",pct(v.home_win??0)+" / "+pct(v.draw??0)+" / "+pct(v.away_win??0))+metric("2.5 Üst / Alt",pct(v.over_2_5??0)+" / "+pct(1-(v.over_2_5??0)))+metric("3.5 Üst / Alt",pct(v.over_3_5??0)+" / "+pct(1-(v.over_3_5??0)))+metric("4.5 Üst / Alt",pct(v.over_4_5??0)+" / "+pct(1-(v.over_4_5??0)))+'<div class="small">Arşiv: '+q.data_matches+' maç · Takım örnekleri: '+q.home_team_matches+' / '+q.away_team_matches+'. '+(q.warning||"")+'</div>'+historical(q.historical_team_stats)+'</div></div>';
+    '<div id="'+id+'" style="display:none">'+metric("MS 1 / X / 2",v.home_win==null?"Veri yok":pct(v.home_win)+" / "+pct(v.draw)+" / "+pct(v.away_win))+metric("2.5 Üst / Alt",pct(v.over_2_5??0)+" / "+pct(1-(v.over_2_5??0)))+metric("3.5 Üst / Alt",pct(v.over_3_5??0)+" / "+pct(1-(v.over_3_5??0)))+metric("4.5 Üst / Alt",pct(v.over_4_5??0)+" / "+pct(1-(v.over_4_5??0)))+'<div class="tag">GEÇMİŞ PERFORMANS</div>'+metric(x.home_team+": attığı / yediği gol",(hh.goals_for??"—")+" / "+(hh.goals_against??"—"))+metric(x.away_team+": attığı / yediği gol",(ah.goals_for??"—")+" / "+(ah.goals_against??"—"))+metric("Ev sahibi maç başı gol / yedi",(hh.avg_scored??"—")+" / "+(hh.avg_conceded??"—"))+metric("Deplasman maç başı gol / yedi",(ah.avg_scored??"—")+" / "+(ah.avg_conceded??"—"))+'<div class="small">Arşiv: '+q.data_matches+' maç · Takım örnekleri: '+q.home_team_matches+' / '+q.away_team_matches+'. '+(q.warning||"")+'</div>'+historical(q.historical_team_stats)+'</div></div>';
   }).join("");
  }catch(e){status.textContent=e.message;board.innerHTML='<p class="small warn">Canlı veri şu anda okunamadı.</p>'}
 }
