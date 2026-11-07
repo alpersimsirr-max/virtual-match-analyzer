@@ -137,8 +137,33 @@ def predict(args):
     ht_total = sum(p for _, _, p in ht_scores) if ht_scores else 0
     ht_over05 = (sum(p for h, a, p in ht_scores if h + a >= 1) / ht_total) if ht_total else None
 
+    def profile(team_name):
+        key = norm(team_name)
+        rows = []
+        for m in matches:
+            if norm(m["home_team"]) == key:
+                rows.append((m["ft_home"], m["ft_away"], m["ht_home"], m["ht_away"]))
+            elif norm(m["away_team"]) == key:
+                rows.append((m["ft_away"], m["ft_home"], m["ht_away"], m["ht_home"]))
+        n = len(rows)
+        if not n:
+            return {"played": 0, "goals_for": 0, "goals_against": 0,
+                    "avg_scored": None, "avg_conceded": None,
+                    "ht_goals_for": 0, "ht_goals_against": 0}
+        return {
+            "played": n,
+            "goals_for": sum(x[0] for x in rows),
+            "goals_against": sum(x[1] for x in rows),
+            "avg_scored": round(sum(x[0] for x in rows) / n, 2),
+            "avg_conceded": round(sum(x[1] for x in rows) / n, 2),
+            "ht_goals_for": sum(x[2] for x in rows),
+            "ht_goals_against": sum(x[3] for x in rows),
+        }
+
+    home_profile, away_profile = profile(args.home), profile(args.away)
     return {
         "match": f"{args.home} - {args.away}",
+        "historical_team_stats": {"home": home_profile, "away": away_profile},
         "data_matches": len(matches),
         "home_team_matches": home_hist["played"] if home_hist else 0,
         "away_team_matches": away_hist["played"] if away_hist else 0,
