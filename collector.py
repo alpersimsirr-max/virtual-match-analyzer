@@ -575,9 +575,14 @@ def collect_betual_live_virtual_games():
         for g in rows:
             if not isinstance(g,dict): continue
             home=str(g.get("team1_name") or ""); away=str(g.get("team2_name") or "")
-            if "virtual" not in (home+" "+away).lower(): continue
-            # Only virtual football team rows; skip virtual basketball etc.
-            if not any(x in (home+" "+away).lower() for x in ["virtual"]): continue
+            joined=(home+" "+away).lower()
+            if "virtual" not in joined: continue
+            # Keep virtual football only; the live catalogue also contains
+            # virtual basketball, volleyball, tennis and other sports.
+            nonfootball=("basket","nba","tennis","volley","hockey","rugby","cricket",
+                         "baseball","handball","table tennis","darts","boxing","mma",
+                         "cycling","racing")
+            if any(token in joined for token in nonfootball): continue
             info=g.get("info") if isinstance(g.get("info"),dict) else {}
             stats=g.get("stats") if isinstance(g.get("stats"),dict) else {}
             def as_int(value):
