@@ -22,6 +22,8 @@ jobs:
         run: python collector.py
       - name: Collect rendered Betual virtual results
         run: python collect_browser_results.py
+      - name: Generate automatic virtual football forecasts
+        run: python predict_live.py
       - name: Publish API research and diagnostics
         run: |
           git config user.name "github-actions[bot]"
