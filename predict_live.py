@@ -1,106 +1,94 @@
 #!/usr/bin/env python3
-"""Generate automatic forecasts for live BetConstruct virtual football fixtures.
+"""Create predictions only when a verified in-play score and clock are available.
 
-The current live catalogue exposes fixture IDs/team names but not reliable
-in-play score/minute fields. Therefore these are fixture forecasts, not
-in-play score predictions. Non-football virtual sports are excluded.
+The current BetConstruct live catalogue contains fixture IDs and team names but
+no verified live score/clock. Never label a pre-match estimate as a live forecast.
 """
 import json
 from datetime import datetime, timezone
 from pathlib import Path
-from types import SimpleNamespace
 
 from predictor import predict
-
-NON_FOOTBALL = (
-    "basket", "nba", "wnba", "tennis", "volley", "hockey", "rugby",
-    "cricket", "baseball", "handball", "table tennis", "darts", "boxing",
-    "mma", "cycling", "golf", "badminton", "esports",
-    "thunder", "nuggets", "sonicboom", "trail blazers", "pelicans", "timberwolves",
-    "hawks", "celtics", "knicks", "pacers", "hornets", "spurs", "rockets",
-    "warriors", "lakers", "clippers", "bulls", "nets", "heat", "magic",
-    "perth", "basket",
-    "call of duty", "dota", "counter-strike", "league of legends",
-    "perugia", "trentino", "bublik", "ruud", "collignon", "vacherot",
-)
-FOOTBALL_HINTS = (
-    "fc ", " cf", " united", " city", " real ", " atletico", " athletic",
-    "barcelona", "madrid", "valencia", "chelsea", "arsenal", "liverpool",
-    "bayern", "dortmund", "juventus", "milan", "inter ", "sevilla",
-    "leverkusen", "schalke", "mainz", "monaco", "psg", "marseille",
-    "tottenham", "everton", "fulham", "brighton", "brentford", "wolves",
-    "leeds", "sunderland", "coventry", "ipswich", "racing santander",
-    "deportivo", "osasuna", "getafe", "girona", "celtic", "rangers",
-    "poland", "slovenia", "brazil", "germany", "france", "spain",
-    "england", "netherlands", "argentina", "portugal", "italy",
-)
-
-
-def is_football_fixture(match):
-    home = str(match.get("home_team") or "")
-    away = str(match.get("away_team") or "")
-    joined = (home + " " + away).casefold()
-    if "virtual" not in joined:
-        return False
-    if any(token in joined for token in NON_FOOTBALL):
-        return False
-    # Known football-club/country naming patterns reduce accidental inclusion
-    # of virtual basketball and other sports with generic team names.
-    return any(token in joined for token in FOOTBALL_HINTS)
 
 
 def main():
     live_path = Path("data/betual_live_games.json")
     archive_path = Path("data/matches.json")
-    if not live_path.exists():
-        raise SystemExit("data/betual_live_games.json bulunamadı; önce collector.py çalıştırın.")
-    live = json.loads(live_path.read_text(encoding="utf-8"))
-    archive = json.loads(archive_path.read_text(encoding="utf-8")) if archive_path.exists() else {"matches":[]}
-    candidates = [m for m in live.get("matches", []) if is_football_fixture(m)]
+    live = json.loads(live_path.read_text(encoding="utf-8")) if live_path.exists() else {"matches": []}
+    archive = json.loads(archive_path.read_text(encoding="utf-8")) if archive_path.exists() else {"matches": []}
+
+    candidates = []
+    waiting = []
+    for m in live.get("matches", []):
+        joined = (str(m.get("home_team") or "") + " " + str(m.get("away_team") or "")).casefold()
+        if "virtual" not in joined or not any(x in joined for x in (
+            "osasuna", "real ", "barcelona", "valencia", "sevilla", "arsenal",
+            "chelsea", "liverpool", "bayern", "juventus", "milan", "inter ",
+            "racing", "deportivo", "atletico", "athletic", "getafe", "girona",
+            "tottenham", "everton", "fulham", "brighton", "brentford", "wolves",
+            "leeds", "sunderland", "coventry", "ipswich", "celtic", "rangers",
+            "poland", "slovenia", "brazil", "germany", "france", "spain",
+            "england", "netherlands", "argentina", "portugal", "italy",
+        )):
+            continue
+        minute = m.get("minute")
+        hs, aws = m.get("home_score"), m.get("away_score")
+        if not isinstance(minute, (int, float)) or not isinstance(hs, int) or not isinstance(aws, int):
+            waiting.append({
+                "game_id": m.get("game_id"),
+                "home_team": m.get("home_team"),
+                "away_team": m.get("away_team"),
+                "status": "waiting_for_verified_live_score_and_minute",
+            })
+            continue
+        candidates.append((m, minute, hs, aws))
+
     forecasts = []
-    for m in candidates:
-        args = SimpleNamespace(
-            home=m["home_team"], away=m["away_team"], data=str(archive_path),
-            minute=0, home_score=0, away_score=0, home_shots=None, away_shots=None
-        )
+    for m, minute, hs, aws in candidates:
         try:
-            forecast = predict(args)
+            from types import SimpleNamespace
+            args = SimpleNamespace(
+                home=m["home_team"], away=m["away_team"], data=str(archive_path),
+                minute=int(minute), home_score=hs, away_score=aws,
+                home_shots=m.get("home_shots"), away_shots=m.get("away_shots")
+            )
             forecasts.append({
                 "game_id": m.get("game_id"),
                 "home_team": m["home_team"],
                 "away_team": m["away_team"],
-                "start_ts": m.get("start_ts"),
-                "is_live": m.get("is_live"),
-                "forecast_type": "fixture_baseline_not_live_score",
-                "prediction": forecast,
-                "source": m.get("source"),
+                "live_state": {"minute": int(minute), "score": f"{hs}-{aws}"},
+                "status": "live_prediction",
+                "prediction": predict(args),
             })
         except Exception as exc:
             forecasts.append({
                 "game_id": m.get("game_id"),
                 "home_team": m.get("home_team"),
                 "away_team": m.get("away_team"),
+                "status": "prediction_error",
                 "error": str(exc)[:300],
             })
+
+    status = "success" if forecasts else "waiting_for_live_data"
     output = {
         "updated_at": datetime.now(timezone.utc).isoformat(),
-        "status": "success",
+        "status": status,
+        "archive_match_count": len(archive.get("matches", [])),
         "live_catalogue_count": len(live.get("matches", [])),
-        "football_fixture_count": len(candidates),
-        "forecast_count": len(forecasts),
-        "note": "Live feed currently provides fixture names/IDs but no verified in-play score or clock. These are pre-match-style fixture estimates, not live-state forecasts.",
+        "live_forecast_count": len(forecasts),
+        "waiting_count": len(waiting),
+        "note": "Only verified live score and minute can trigger a live prediction. No pre-match estimate is presented as a live prediction.",
         "forecasts": forecasts,
+        "waiting_for_live_data": waiting,
     }
     Path("data").mkdir(exist_ok=True)
     Path("data/live_predictions.json").write_text(
         json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8"
     )
-    print(json.dumps({
-        "status": output["status"],
-        "live_catalogue_count": output["live_catalogue_count"],
-        "football_fixture_count": output["football_fixture_count"],
-        "forecast_count": output["forecast_count"],
-    }, ensure_ascii=False))
+    print(json.dumps({k: output[k] for k in (
+        "status", "archive_match_count", "live_catalogue_count",
+        "live_forecast_count", "waiting_count"
+    )}, ensure_ascii=False))
 
 
 if __name__ == "__main__":
