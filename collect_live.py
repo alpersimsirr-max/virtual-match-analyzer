@@ -17,7 +17,7 @@ def call(payload, sid=None):
 def as_int(v):
     try:
         s = str(v).strip()
-        return int(s) if re.fullmatch(r"-?\\d+", s) else None
+        return int(s) if re.fullmatch(r"-?\d+", s) else None
     except Exception:
         return None
 
@@ -49,7 +49,7 @@ def main():
         state = str(info.get("current_game_state") or g.get("status") or "").strip().lower()
         period = ("first_half" if state in ("set1","set_1","period1","period_1") or any(x in state for x in ("first","1st","half1","period1")) else
                   "second_half" if state in ("set2","set_2","period2","period_2") or any(x in state for x in ("second","2nd","half2","period2")) else None)
-        m = re.fullmatch(r"(\\d{1,2})(?::(\\d{2}))?", clock)
+        m = re.fullmatch(r"(\d{1,2})(?::(\d{2}))?", clock)
         elapsed = int(m.group(1)) + int(m.group(2) or 0)/60 if m else None
         minute = None
         if elapsed is not None and period == "first_half":
