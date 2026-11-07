@@ -102,28 +102,4 @@ async function analyze(){
  finally{btn.disabled=false;btn.textContent="MAÇI ANALİZ ET"}
 }
 
-async function loadLiveBoard(){
- const status=document.getElementById("liveStatus"),board=document.getElementById("liveBoard");
- try{
-  const r=await fetch("./data/live_predictions.json?ts="+Date.now(),{cache:"no-store",headers:{"Cache-Control":"no-cache"}});
-  if(!r.ok)throw new Error("Canlı tahmin dosyası henüz yayınlanmadı.");
-  const d=await r.json(),q=norm(document.getElementById("liveSearch")?.value||""),sourceTime=d.source_fetched_at?new Date(d.source_fetched_at).getTime():NaN,sourceAge=Number.isFinite(sourceTime)?Math.max(0,(Date.now()-sourceTime)/1000):Infinity,sourceFresh=d.source_fresh===true&&sourceAge<=120,items=sourceFresh?(d.forecasts||[]).filter(x=>x.status==="live_prediction"&&norm(x.home_team+" "+x.away_team).includes(q)):[];
-  const prob=x=>{const p=x.prediction?.probabilities||{};return Number(p.any_more_goal??p.over_2_5??0)};
-  items.sort((a,b)=>prob(b)-prob(a));
-  const sourceClock=Number.isFinite(sourceTime)?new Date(sourceTime).toLocaleTimeString("tr-TR",{hour12:false}):"yok";const panelClock=new Date().toLocaleTimeString("tr-TR",{hour12:false});const age=Math.max(0,Math.floor((Date.now()-new Date(d.updated_at).getTime())/60000));status.textContent="Kaynak güncelleme saati: "+sourceClock+" · Panel kontrol saati: "+panelClock+" · Kaynak yaşı: "+(Number.isFinite(sourceAge)?Math.floor(sourceAge)+" sn":"bilinmiyor")+" · "+(sourceFresh?items.length+" doğrulanmış maç":"⛔ BAHİS ALMA — VERİ ESKİ / ZAMAN DAMGASI YOK");status.className=sourceFresh?"small":"small warn";
-  if(!items.length){board.innerHTML='<p class="small warn">Canlı skor ve dakika doğrulanan maç bekleniyor.</p>';return}
-  board.innerHTML=items.map((x,i)=>{
-   const q=x.prediction||{},v=q.probabilities||{},ls=x.live_state||{},id="live-detail-"+i;
-   const goal=prob(x),hist=q.historical_team_stats||{},hh=hist.home||{},ah=hist.away||{};
-   return '<div class="card" style="margin:10px 0;background:#111d2e"><div style="display:flex;justify-content:space-between;gap:8px"><b>'+(i+1)+'. '+x.home_team+' - '+x.away_team+'</b><span class="tag">'+pct(goal)+' gol ihtimali</span></div><div class="tag">CANLI '+(ls.minute!=null?ls.minute+"'":(x.display_clock||"Dakika yok"))+' · '+(x.period||"")+' · '+(ls.score||"")+'</div>'+
-    metric("Maçta en az 1 gol daha",pct(v.any_more_goal??goal))+
-    metric("Ev sahibi sonraki gol",v.home_to_score_again==null?"Veri yok":pct(v.home_to_score_again))+metric("Deplasman sonraki gol",v.away_to_score_again==null?"Veri yok":pct(v.away_to_score_again))+
-    metric("İY en olası skor",q.half_time_prediction||"Devre tamamlandı")+(v.half_time_over_0_5==null?"":metric("İY 0.5 Üst gol ihtimali",pct(v.half_time_over_0_5)))+metric("MS en olası skor",q.full_time_prediction||"—")+
-    '<button style="margin-top:10px" onclick="document.getElementById(\''+id+'\').style.display=document.getElementById(\''+id+'\').style.display===\'none\'?\'block\':\'none\'">TÜM OLASILIKLARI GÖSTER</button>'+
-    '<div id="'+id+'" style="display:none">'+metric("MS 1 / X / 2",v.home_win==null?"Veri yok":pct(v.home_win)+" / "+pct(v.draw)+" / "+pct(v.away_win))+metric("2.5 Üst / Alt",pct(v.over_2_5??0)+" / "+pct(1-(v.over_2_5??0)))+metric("3.5 Üst / Alt",pct(v.over_3_5??0)+" / "+pct(1-(v.over_3_5??0)))+metric("4.5 Üst / Alt",pct(v.over_4_5??0)+" / "+pct(1-(v.over_4_5??0)))+'<div class="tag">GEÇMİŞ PERFORMANS</div>'+metric(x.home_team+": attığı / yediği gol",(hh.goals_for??"—")+" / "+(hh.goals_against??"—"))+metric(x.away_team+": attığı / yediği gol",(ah.goals_for??"—")+" / "+(ah.goals_against??"—"))+metric("Ev sahibi maç başı gol / yedi",(hh.avg_scored??"—")+" / "+(hh.avg_conceded??"—"))+metric("Deplasman maç başı gol / yedi",(ah.avg_scored??"—")+" / "+(ah.avg_conceded??"—"))+'<div class="small">Arşiv: '+q.data_matches+' maç · Takım örnekleri: '+q.home_team_matches+' / '+q.away_team_matches+'. '+(q.warning||"")+'</div>'+historical(q.historical_team_stats)+'</div></div>';
-  }).join("");
- }catch(e){status.textContent=e.message;board.innerHTML='<p class="small warn">Canlı veri şu anda okunamadı.</p>'}
-}
-function showTab(which){document.getElementById("livePanel").style.display=which==="live"?"block":"none";document.getElementById("prePanel").style.display=which==="pre"?"block":"none";document.getElementById("tabLive").classList.toggle("active",which==="live");document.getElementById("tabPre").classList.toggle("active",which==="pre");}
-
 loadFixtures();setInterval(loadFixtures,60000);\n</script></body></html>
