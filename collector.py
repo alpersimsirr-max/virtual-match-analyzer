@@ -433,3 +433,59 @@ def collect_betual_competition_results():
     return diag
 
 collect_betual_competition_results()
+
+
+# Targeted result lookup for IDs embedded in the user's Betual live-event URLs.
+# This is diagnostic only: these IDs are not assumed to be finished match IDs.
+def probe_betual_event_ids():
+    from datetime import datetime, timedelta, timezone
+    diag={"status":"not_started","tested_ids":[18296834,31485451,18296755,31485775],
+          "get_results":[],"get_result_games":[],"errors":[]}
+    try:
+        session=swarm_call({"command":"request_session","params":{"site_id":SWARM_SITE_ID,"language":"eng"}})
+        sid=(session.get("data") or {}).get("sid")
+        if not sid: raise RuntimeError("Swarm SID unavailable")
+        for gid in diag["tested_ids"]:
+            try:
+                r=swarm_call({"command":"get_results","params":{"game_id":gid}},sid)
+                data=r.get("data") or {}
+                diag["get_results"].append({"game_id":gid,"code":r.get("code"),
+                  "keys":list(data.keys()) if isinstance(data,dict) else [],
+                  "sample":str(data)[:1800]})
+            except Exception as e: diag["errors"].append("get_results "+str(gid)+": "+str(e)[:300])
+            try:
+                r=swarm_call({"command":"get_result_games","params":{"game_id":gid}},sid)
+                data=r.get("data") or {}
+                games=((data.get("games") or {}).get("game") or []) if isinstance(data,dict) else []
+                if isinstance(games,dict): games=list(games.values())
+                diag["get_result_games"].append({"game_id":gid,"code":r.get("code"),
+                  "count":len(games),"sample":games[:2]})
+            except Exception as e: diag["errors"].append("get_result_games "+str(gid)+": "+str(e)[:300])
+        # Check whether the historical endpoint responds when no filters are supplied,
+        # and with each documented sport_type value.
+        now=datetime.now(timezone.utc)
+        variants=[
+          ("empty",{}),
+          ("sport_type_0",{"sport_type":0}),
+          ("sport_type_1",{"sport_type":1}),
+          ("sport_type_2",{"sport_type":2}),
+          ("date_only",{"from_date":int((now-timedelta(days=60)).timestamp()),
+                        "to_date":int(now.timestamp())})
+        ]
+        for label,params in variants:
+            try:
+                r=swarm_call({"command":"get_result_games","params":params},sid)
+                data=r.get("data") or {}
+                games=((data.get("games") or {}).get("game") or []) if isinstance(data,dict) else []
+                if isinstance(games,dict): games=list(games.values())
+                diag.setdefault("broad_queries",[]).append({"variant":label,"code":r.get("code"),
+                  "count":len(games),"sample":games[:3],"data_keys":list(data.keys()) if isinstance(data,dict) else []})
+            except Exception as e: diag["errors"].append(label+": "+str(e)[:300])
+        diag["status"]="completed"
+    except Exception as e:
+        diag["status"]="failed";diag["errors"].append(str(e)[:800])
+    Path("data/betual_event_id_probe.json").write_text(json.dumps(diag,ensure_ascii=False,indent=2),encoding="utf-8")
+    print("BETUAL_EVENT_ID_PROBE="+json.dumps({k:v for k,v in diag.items() if k not in ("get_results","get_result_games")},ensure_ascii=False))
+    return diag
+
+probe_betual_event_ids()
