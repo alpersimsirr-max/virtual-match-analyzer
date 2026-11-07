@@ -6,8 +6,8 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: collect-live-feed
-  cancel-in-progress: true
+  group: collect-betual-results
+  cancel-in-progress: false
 jobs:
   collect:
     runs-on: ubuntu-latest
