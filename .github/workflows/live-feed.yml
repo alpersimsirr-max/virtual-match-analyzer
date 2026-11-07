@@ -1,12 +1,21 @@
-name: Collect pre-match virtual fixtures
+name: Collect live virtual matches and predictions
 on:
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: "* * * * *"
+  push:
+    branches: [main]
+    paths:
+      - "collect_live.py"
+      - "predict_live.py"
+      - "predictor.py"
+      - ".github/workflows/live-feed.yml"
+    paths-ignore:
+      - "data/**"
   workflow_dispatch:
 permissions:
   contents: write
 concurrency:
-  group: pre-match-fixtures
+  group: collect-betual-results
   cancel-in-progress: false
 jobs:
   collect:
@@ -17,11 +26,20 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install requests
-      - run: python collect_pre_match.py
-      - name: Publish fixture data
+      - name: Collect verified live virtual match states
+        run: python collect_live.py
+      - name: Calculate live probability predictions
+        run: python predict_live.py
+      - name: Publish live data and predictions
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/pre_match_fixtures.json
-          git diff --cached --quiet || git commit -m "Update pre-match virtual fixtures"
-          git push
+          git add data/betual_live_games.json data/live_predictions.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Update live virtual match probabilities"
+            git fetch origin main
+            git rebase -X theirs origin/main
+            git push
+          else
+            echo "No live data changes; nothing to publish."
+          fi
