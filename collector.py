@@ -550,3 +550,51 @@ def probe_betual_competition_games():
     return diag
 
 probe_betual_competition_games()
+
+
+# Betual live virtual football feed. The public betting catalogue returns
+# current game IDs and virtual team names even when get_result_games is empty.
+# Probe score/status fields and preserve only clearly virtual football rows.
+def collect_betual_live_virtual_games():
+    diag={"status":"not_started","live_virtual_count":0,"queries":[],"errors":[],"matches":[]}
+    try:
+        sess=swarm_call({"command":"request_session","params":{"site_id":SWARM_SITE_ID,"language":"eng"}})
+        sid=(sess.get("data") or {}).get("sid")
+        if not sid: raise RuntimeError("Swarm SID unavailable")
+        fields=["id","team1_name","team2_name","start_ts","is_live","sport_id",
+                "competition_id","competition_name","score","scores","scores1",
+                "score1","score2","result","status","timer","game_time","current_score"]
+        rr=swarm_call({"command":"get","params":{"source":"betting","what":{"game":fields},
+                         "where":{"game":{"is_live":1}}}},sid)
+        if rr.get("code")!=0: raise RuntimeError("Live catalogue returned "+str(rr.get("code")))
+        data=rr.get("data") or {}; nested=data.get("data") or data
+        raw=nested.get("game",{}) if isinstance(nested,dict) else {}
+        rows=list(raw.values()) if isinstance(raw,dict) else (raw if isinstance(raw,list) else [])
+        for g in rows:
+            if not isinstance(g,dict): continue
+            home=str(g.get("team1_name") or ""); away=str(g.get("team2_name") or "")
+            if "virtual" not in (home+" "+away).lower(): continue
+            # Only virtual football team rows; skip virtual basketball etc.
+            if not any(x in (home+" "+away).lower() for x in ["virtual"]): continue
+            item={"game_id":str(g.get("id") or ""),"home_team":home,"away_team":away,
+                  "start_ts":g.get("start_ts"),"is_live":g.get("is_live"),
+                  "competition_id":g.get("competition_id"),"competition":g.get("competition_name"),
+                  "raw_score_fields":{k:g.get(k) for k in ["score","scores","scores1","score1","score2","result","status","timer","game_time","current_score"] if g.get(k) is not None},
+                  "source":"BetConstruct Swarm live betting catalogue"}
+            diag["matches"].append(item)
+        diag["live_virtual_count"]=len(diag["matches"])
+        diag["queries"].append({"label":"live_game_catalogue","code":rr.get("code"),
+            "total_rows":len(rows),"virtual_rows":len(diag["matches"]),
+            "sample":diag["matches"][:8]})
+        diag["status"]="success" if diag["matches"] else "no_virtual_live_games"
+        Path("data/betual_live_games.json").write_text(json.dumps({
+            "updated_at":datetime.now(timezone.utc).isoformat(),
+            "count":len(diag["matches"]),"matches":diag["matches"]},
+            ensure_ascii=False,indent=2),encoding="utf-8")
+    except Exception as exc:
+        diag["status"]="failed";diag["errors"].append(str(exc)[:700])
+    Path("data/betual_live_catalogue_probe.json").write_text(json.dumps(diag,ensure_ascii=False,indent=2),encoding="utf-8")
+    print("BETUAL_LIVE_VIRTUAL="+json.dumps({"status":diag["status"],"live_virtual_count":diag["live_virtual_count"],"queries":diag["queries"],"errors":diag["errors"]},ensure_ascii=False))
+    return diag
+
+collect_betual_live_virtual_games()
