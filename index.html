@@ -83,7 +83,7 @@ async function analyze(){
 async function loadLiveBoard(){
  const status=document.getElementById("liveStatus"),board=document.getElementById("liveBoard");
  try{
-  const r=await fetch("./data/live_predictions.json?ts="+Date.now(),{cache:"no-store"});
+  const r=await fetch("./data/live_predictions.json?ts="+Date.now(),{cache:"no-store",headers:{"Cache-Control":"no-cache"}});
   if(!r.ok)throw new Error("Canlı tahmin dosyası henüz yayınlanmadı.");
   const d=await r.json(),q=norm(document.getElementById("liveSearch")?.value||""),sourceTime=d.source_fetched_at?new Date(d.source_fetched_at).getTime():NaN,sourceAge=Number.isFinite(sourceTime)?Math.max(0,(Date.now()-sourceTime)/1000):Infinity,sourceFresh=d.source_fresh===true&&sourceAge<=120,items=sourceFresh?(d.forecasts||[]).filter(x=>x.status==="live_prediction"&&norm(x.home_team+" "+x.away_team).includes(q)):[];
   const prob=x=>{const p=x.prediction?.probabilities||{};return Number(p.any_more_goal??p.over_2_5??0)};
