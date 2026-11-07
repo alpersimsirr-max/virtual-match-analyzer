@@ -588,24 +588,31 @@ def collect_betual_live_virtual_games():
                     return None
             score_home=as_int(info.get("score1",g.get("score1")))
             score_away=as_int(info.get("score2",g.get("score2")))
-            clock=str(info.get("current_game_time") or g.get("game_time") or g.get("timer") or "")
-            clock_match=re.search(r"(\d{1,2}):(\d{2})",clock)
-            state=str(info.get("current_game_state") or g.get("status") or "").lower()
-            period=("first_half" if any(x in state for x in ("first","1st","half1","period1")) else
-                    "second_half" if any(x in state for x in ("second","2nd","half2","period2")) else None)
-            minute=None
+            clock=str(info.get("current_game_time") or g.get("game_time") or g.get("timer") or "").strip()
+            state=str(info.get("current_game_state") or g.get("status") or "").strip().lower()
+            # BetConstruct virtual football sends set1/set2 and often a plain minute string.
+            period=("first_half" if state in ("set1","set_1","period1","period_1") or any(x in state for x in ("first","1st","half1","period1")) else
+                    "second_half" if state in ("set2","set_2","period2","period_2") or any(x in state for x in ("second","2nd","half2","period2")) else None)
+            elapsed=None
+            clock_match=re.fullmatch(r"(\d{1,2})(?::(\d{2}))?",clock)
             if clock_match:
-                elapsed=int(clock_match.group(1))+int(clock_match.group(2))/60
-                if period=="second_half":
-                    minute=round((15+elapsed)*3)
-                elif period=="first_half":
-                    minute=round(elapsed*3)
-            verified=score_home is not None and score_away is not None and minute is not None
+                elapsed=int(clock_match.group(1)) + int(clock_match.group(2) or 0)/60
+            minute=None
+            if elapsed is not None and period=="first_half" and 0 <= elapsed <= 17:
+                minute=round(elapsed*3)
+            elif elapsed is not None and period=="second_half" and 0 <= elapsed <= 17:
+                minute=round((15+elapsed)*3)
+            goals=stats.get("goal") if isinstance(stats.get("goal"),dict) else {}
+            stat_home=as_int(goals.get("team1_value")); stat_away=as_int(goals.get("team2_value"))
+            stats_agree=(stat_home is None or stat_home==score_home) and (stat_away is None or stat_away==score_away)
+            verified=(score_home is not None and score_away is not None and minute is not None
+                      and period is not None and stats_agree and str(g.get("is_live"))=="1"
+                      and "virtual" in (home+" "+away).lower())
             item={"game_id":str(g.get("id") or ""),"home_team":home,"away_team":away,
                   "start_ts":g.get("start_ts"),"is_live":g.get("is_live"),
                   "competition_id":g.get("competition_id"),"competition":g.get("competition_name"),
                   "home_score":score_home,"away_score":score_away,"minute":minute,
-                  "period":period,"live_state_verified":verified,"display_clock":clock,
+                  "period":period,"live_state_verified":verified,"score_stats_agree":stats_agree,"display_clock":clock,
                   "current_game_state":state,
                   "raw_score_fields":{"info":info,"stats":stats,
                     **{k:g.get(k) for k in ["score","scores","scores1","score1","score2","result","status","timer","game_time","current_score"] if g.get(k) is not None}},
