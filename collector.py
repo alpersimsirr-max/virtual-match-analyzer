@@ -598,3 +598,57 @@ def collect_betual_live_virtual_games():
     return diag
 
 collect_betual_live_virtual_games()
+
+
+# Probe event-detail and result payloads for live virtual football fixtures.
+def probe_live_virtual_score_details():
+    diag={"status":"not_started","tested":[],"errors":[]}
+    try:
+        session=swarm_call({"command":"request_session","params":{"site_id":SWARM_SITE_ID,"language":"eng"}})
+        sid=(session.get("data") or {}).get("sid")
+        if not sid: raise RuntimeError("Swarm SID unavailable")
+        # Refresh the catalogue and retain the sport/competition identifiers.
+        fields=["id","team1_name","team2_name","start_ts","is_live","sport_id","competition_id","competition_name"]
+        rr=swarm_call({"command":"get","params":{"source":"betting","what":{"game":fields},
+                         "where":{"game":{"is_live":1}}}},sid)
+        if rr.get("code")!=0: raise RuntimeError("Catalogue code "+str(rr.get("code")))
+        data=rr.get("data") or {}; nested=data.get("data") or data
+        raw=nested.get("game",{}) if isinstance(nested,dict) else {}
+        rows=list(raw.values()) if isinstance(raw,dict) else (raw if isinstance(raw,list) else [])
+        nonfootball=["basket","nba","tennis","volley","hockey","rugby","cricket","baseball","handball","table tennis","darts","boxing","mma","cycling","racing"]
+        candidates=[]
+        for g in rows:
+            if not isinstance(g,dict): continue
+            h=str(g.get("team1_name") or ""); a=str(g.get("team2_name") or "")
+            joined=(h+" "+a).lower()
+            if "virtual" not in joined or any(x in joined for x in nonfootball): continue
+            candidates.append(g)
+        # Query event detail endpoints for a small, diverse set of actual football fixtures.
+        for g in candidates[:12]:
+            gid=str(g.get("id") or "")
+            item={"game_id":gid,"home_team":g.get("team1_name"),"away_team":g.get("team2_name"),
+                  "sport_id":g.get("sport_id"),"competition_id":g.get("competition_id"),
+                  "competition_name":g.get("competition_name"),"probes":[]}
+            for command,params in [
+                ("get_results",{"game_id":gid}),
+                ("get_result_games",{"game_id":gid}),
+                ("get_game_info",{"game_id":gid}),
+            ]:
+                try:
+                    out=swarm_call({"command":command,"params":params},sid)
+                    d=out.get("data") or {}
+                    item["probes"].append({"command":command,"code":out.get("code"),
+                        "data_keys":list(d.keys()) if isinstance(d,dict) else [],
+                        "data_sample":str(d)[:2200]})
+                except Exception as e:
+                    item["probes"].append({"command":command,"error":str(e)[:350]})
+            diag["tested"].append(item)
+        diag["status"]="complete"
+    except Exception as e:
+        diag["status"]="failed"; diag["errors"].append(str(e)[:700])
+    Path("data/betual_live_score_detail_probe.json").write_text(json.dumps({
+        "updated_at":datetime.now(timezone.utc).isoformat(),**diag},ensure_ascii=False,indent=2),encoding="utf-8")
+    print("BETUAL_LIVE_SCORE_DETAIL_PROBE="+json.dumps({"status":diag["status"],"tested":len(diag["tested"]),"errors":diag["errors"]},ensure_ascii=False))
+    return diag
+
+probe_live_virtual_score_details()
