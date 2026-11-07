@@ -19,10 +19,12 @@ jobs:
       - run: pip install requests
       - name: Fetch current virtual live games
         run: python collect_live.py
+      - name: Generate fresh live predictions
+        run: python predict_live.py
       - name: Publish live feed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/betual_live_games.json
+          git add data/betual_live_games.json data/live_predictions.json
           git commit -m "Refresh fast virtual live feed" || exit 0
           git push
