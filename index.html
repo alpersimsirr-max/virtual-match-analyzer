@@ -4,7 +4,7 @@
 *{box-sizing:border-box}body{margin:0;background:#101827;color:#f1f5f9;font-family:Arial,sans-serif}.container{max-width:650px;margin:auto;padding:18px}h1{font-size:25px;margin:8px 0}.sub,.small{color:#94a3b8;font-size:13px;line-height:1.5}.card{background:#1b2638;border:1px solid #344256;border-radius:14px;padding:16px;margin:14px 0}h2{font-size:17px;margin:0 0 15px}label{display:block;color:#cbd5e1;font-size:13px;margin:12px 0 6px}input{width:100%;padding:14px;border:1px solid #475569;border-radius:9px;background:#0f172a;color:white;font-size:16px}button{width:100%;padding:15px;border:0;border-radius:10px;background:#16a34a;color:white;font-size:16px;font-weight:bold;margin-top:15px}.metric{display:flex;justify-content:space-between;gap:10px;padding:12px 0;border-bottom:1px solid #344256}.metric strong{color:#4ade80;font-size:17px;text-align:right}.result{display:none}.note{font-size:12px;color:#fbbf24;line-height:1.5}.error{color:#fca5a5;font-size:13px;line-height:1.5}.tag{display:inline-block;padding:5px 8px;border-radius:6px;background:#334155;color:#cbd5e1;font-size:11px;margin:4px 0}.good{color:#4ade80}.warn{color:#fbbf24}
 .tabs{display:flex;gap:8px;margin-bottom:14px}.tab{flex:1;margin:0;padding:12px 8px;background:#263449;color:#cbd5e1;font-size:14px}.tab.active{background:#16a34a;color:white}section h2{margin:4px 0 12px}</style></head><body><div class="container">
 <h1>⚽ Sanal Maç Analizi</h1><div class="sub">Takımları yaz, geçmiş maç verilerine göre İY / MS analizini al</div>
-<div class="card"><section id="manualPanel"><h2>Maçı elle gir</h2><label>Ev sahibi takım</label><input id="home" placeholder="Örn: Villarreal Virtual"><label>Deplasman takımı</label><input id="away" placeholder="Örn: Deportivo Virtual"><button id="run" onclick="analyze()">⚽ MAÇI ANALİZ ET</button><div id="status" class="small" style="margin-top:12px">Takım adlarını yazıp analiz et. Model tamamlanmış maç arşivini kontrol edecek.</div><div id="error" class="error"></div></section></div>
+<div class="card"><section><h2>Başlamamış maçlar</h2><div class="small" id="fixtureStatus">Doğrulanmış fikstür yükleniyor...</div><input id="fixtureSearch" placeholder="Maç ara: takım adı" oninput="renderFixtures()" style="margin:12px 0"><div id="fixtureList"></div></section></div><div class="card"><section id="manualPanel"><h2>İstersen maçı elle ara / analiz et</h2><label>Ev sahibi takım</label><input id="home" placeholder="Ev sahibi takım"><label>Deplasman takımı</label><input id="away" placeholder="Deplasman takımı"><button id="run" onclick="analyze()">⚽ MAÇI ANALİZ ET</button><div id="status" class="small" style="margin-top:12px">Listeden maça dokunabilir veya takımları elle girebilirsin.</div><div id="error" class="error"></div></section></div>
 <div class="card result" id="result"><h2>Analiz sonucu</h2><div id="title" class="small"></div><div id="metrics"></div><p id="confidence" class="note"></p><p class="small">Bu sonuçlar matematiksel olasılık tahminidir; kesin skor veya bahis garantisi değildir. Sanal maç motorunun gizli algoritmasına erişimimiz olmadığı için gerçek sonuç garantisi verilemez.</p></div>
 <details class="card"><summary style="font-weight:bold;cursor:pointer">Model ve veri bilgisi</summary><div style="padding-top:12px"><div class="small">Önce <b>data/matches.json</b> içindeki tamamlanmış maçları takım isimleriyle eşleştirir. Her iki takım için de en az 2 tamamlanmış geçmiş maç gerekir; küçük örneklem uyarısı sonuçta gösterilir.</div><div class="tag">İY + MS skor olasılığı</div><div class="tag">1X2</div><div class="tag">2.5 / 3.5 / 4.5 Alt-Üst</div><div class="tag">Poisson dağılımı</div></div></details>
 </div>
@@ -52,6 +52,28 @@ function calc(home,away,all){
  for(let i=0;i<10;i++)for(let j=0;j<10;j++){const p=dHH[i]*dHA[j];if(i>j)ht1+=p;else if(i===j)htx+=p;else ht2+=p;htScores.push({s:i+"-"+j,p})}
  scores.sort((a,b)=>b.p-a.p);htScores.sort((a,b)=>b.p-a.p);
  return {hs,as,one,draw,two,tot,ht1,htx,ht2,htScores,scores};
+}
+let upcomingFixtures=[];
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function renderFixtures(){
+ const q=norm(document.getElementById("fixtureSearch")?.value||"");
+ const list=upcomingFixtures.filter(x=>norm(x.home_team+" "+x.away_team).includes(q));
+ const box=document.getElementById("fixtureList");
+ if(!box)return;
+ if(!list.length){box.innerHTML='<p class="small warn">'+(upcomingFixtures.length?'Aramana uygun başlamamış maç yok.':'Şu anda kaynakta doğrulanmış başlamamış sanal futbol maçı bulunamadı.')+'</p>';return}
+ box.innerHTML=list.slice(0,100).map(x=>'<button class="fixture" style="text-align:left;background:#263449;margin:7px 0;padding:12px" onclick="chooseFixture(\''+esc(x.home_team).replace(/\\/g,'\\\\').replace(/'/g,"\\'")+'\',\''+esc(x.away_team).replace(/\\/g,'\\\\').replace(/'/g,"\\'")+'\')"><b>'+esc(x.home_team)+' - '+esc(x.away_team)+'</b><div class="small">'+esc(x.competition||'Sanal futbol')+' · '+new Date(x.start_ts*1000).toLocaleTimeString("tr-TR",{hour:"2-digit",minute:"2-digit"})+'</div></button>').join("");
+}
+function chooseFixture(h,a){document.getElementById("home").value=h;document.getElementById("away").value=a;document.getElementById("manualPanel").scrollIntoView({behavior:"smooth"});}
+async function loadFixtures(){
+ const s=document.getElementById("fixtureStatus");
+ try{
+  const r=await fetch("./data/pre_match_fixtures.json?t="+Date.now(),{cache:"no-store"});
+  if(!r.ok)throw new Error("Fikstür dosyası henüz yayınlanmadı.");
+  const d=await r.json();
+  upcomingFixtures=(d.status==="success"?(d.fixtures||[]):[]).filter(x=>x.status==="not_started"&&Number(x.start_ts)*1000>Date.now());
+  s.textContent=d.status==="success"?"Kaynak kontrol: "+new Date(d.updated_at).toLocaleTimeString("tr-TR")+" · "+upcomingFixtures.length+" başlamamış maç":"Fikstür kaynağı yanıt vermedi; liste güvenli şekilde boş bırakıldı.";
+  renderFixtures();
+ }catch(e){s.textContent=e.message;upcomingFixtures=[];renderFixtures();}
 }
 async function analyze(){
  const home=document.getElementById("home").value.trim(),away=document.getElementById("away").value.trim(),status=document.getElementById("status"),error=document.getElementById("error"),result=document.getElementById("result"),btn=document.getElementById("run");
@@ -104,4 +126,4 @@ async function loadLiveBoard(){
 }
 function showTab(which){document.getElementById("livePanel").style.display=which==="live"?"block":"none";document.getElementById("prePanel").style.display=which==="pre"?"block":"none";document.getElementById("tabLive").classList.toggle("active",which==="live");document.getElementById("tabPre").classList.toggle("active",which==="pre");}
 
-</script></body></html>
+loadFixtures();setInterval(loadFixtures,60000);\n</script></body></html>
