@@ -1,39 +1,10 @@
 name: Fast live virtual feed
 on:
-  schedule:
-    - cron: "*/5 * * * *"
   workflow_dispatch:
 permissions:
   contents: write
-concurrency:
-  group: fast-live-feed
-  cancel-in-progress: true
 jobs:
   collect-live:
     runs-on: ubuntu-latest
-    timeout-minutes: 6
     steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: main
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-      - run: pip install requests
-      - name: Poll and publish live feed continuously during runner window
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          for i in {1..8}; do
-            echo "Live refresh cycle $i at $(date -u +%FT%TZ)"
-            python collect_live.py
-            python predict_live.py
-            git add data/betual_live_games.json data/live_predictions.json
-            if ! git diff --cached --quiet; then
-              git commit -m "Refresh fast virtual live feed"
-              git push origin HEAD:main
-            fi
-            if [ "$i" -lt 8 ]; then sleep 30; fi
-          done
+      - run: echo "Automatic live feed paused; project is switching to verified pre-match fixtures."
