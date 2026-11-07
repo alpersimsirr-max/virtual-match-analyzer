@@ -142,6 +142,75 @@ def collect_swarm_results():
 
 collect_swarm_results()
 
+# Correct Swarm catalogue discovery: sport.type=1 means Virtual. The old
+# get_result_games(sport_type=1) call alone was not a reliable virtual filter.
+def collect_virtual_swarm_results():
+    from datetime import datetime, timedelta, timezone
+    diag={"status":"not_started","sports":[],"queries":[],"errors":[]}
+    try:
+        sess=swarm_call({"command":"request_session","params":{"site_id":SWARM_SITE_ID,"language":"eng"}})
+        sid=(sess.get("data") or {}).get("sid")
+        if not sid: raise RuntimeError("Swarm SID alınamadı")
+        def get(params):
+            return swarm_call({"command":"get","params":params},sid)
+        sport_resp=get({"source":"betting","what":{"sport":["id","name","alias","type"]},"where":{"sport":{"type":1}}})
+        sport_data=(sport_resp.get("data") or {}).get("data") or sport_resp.get("data") or {}
+        sports=sport_data.get("sport") or {}
+        if isinstance(sports,list): sports={str(x.get("id")):x for x in sports}
+        for k,v in sports.items():
+            if isinstance(v,dict):
+                v.setdefault("id",k)
+                if str(v.get("type"))=="1": diag["sports"].append(v)
+        now=datetime.now(timezone.utc)
+        params={"from_date":int((now-timedelta(days=45)).timestamp()),
+                "to_date":int((now+timedelta(hours=1)).timestamp())}
+        collected=[]
+        for sp in diag["sports"]:
+            sport_id=int(sp.get("id"))
+            for label,extra in [("sport_id",{"sport_id":sport_id}),("sport_id_type",{"sport_id":sport_id,"sport_type":1})]:
+                try:
+                    res=swarm_call({"command":"get_result_games","params":dict(params,**extra)},sid)
+                    data=res.get("data") or {}
+                    games=((data.get("games") or {}).get("game") or [])
+                    if isinstance(games,dict): games=list(games.values())
+                    diag["queries"].append({"sport_id":sport_id,"variant":label,"code":res.get("code"),"count":len(games)})
+                    for g in games:
+                        comp=str(g.get("competition_name") or "")
+                        name=str(g.get("game_name") or "")
+                        if "virtual" not in (comp+" "+name+" "+str(sp.get("name",""))).lower(): continue
+                        ft=score_pair(g.get("scores")); ht=score_pair(g.get("scores1"))
+                        if not ft or not ht: continue
+                        if " - " not in name: continue
+                        home,away=name.split(" - ",1)
+                        collected.append({"home_team":home.strip(),"away_team":away.strip(),
+                          "ft_home":ft[0],"ft_away":ft[1],"ht_home":ht[0],"ht_away":ht[1],
+                          "date":g.get("date"),"game_id":str(g.get("game_id") or ""),
+                          "sport_id":str(sport_id),"competition":comp,
+                          "source":"BetConstruct Swarm get_result_games filtered by sport.type=1"})
+                    if games: break
+                except Exception as e: diag["errors"].append("sport "+str(sport_id)+" "+label+": "+str(e)[:250])
+        path=Path("data/matches.json")
+        previous=json.loads(path.read_text(encoding="utf-8")) if path.exists() and path.stat().st_size else {}
+        old=previous.get("matches",[])
+        merged={}
+        for x in old+collected:
+            key=str(x.get("game_id") or (x.get("competition"),x.get("date"),x.get("home_team"),x.get("away_team")))
+            merged[key]=x
+        all_matches=sorted(merged.values(),key=lambda x:str(x.get("date") or ""))
+        Path("data").mkdir(exist_ok=True)
+        Path("data/matches.json").write_text(json.dumps({"updated_at":datetime.now(timezone.utc).isoformat(),
+          "match_count":len(all_matches),"sources":[{"url":SWARM_LP,"method":"get_result_games","filter":"sport.type=1"}],
+          "matches":all_matches},ensure_ascii=False,indent=2),encoding="utf-8")
+        diag["parsed_count"]=len(collected); diag["sample"]=collected[:5]
+        diag["status"]="success" if collected else "no_verified_matches"
+    except Exception as e:
+        diag["status"]="failed";diag["errors"].append(str(e)[:700])
+    Path("data/virtual_swarm_probe.json").write_text(json.dumps(diag,ensure_ascii=False,indent=2),encoding="utf-8")
+    print("VIRTUAL_SWARM="+json.dumps({k:v for k,v in diag.items() if k!="sample"},ensure_ascii=False))
+    return diag
+
+collect_virtual_swarm_results()
+
 # Discover Virtual Sports separately from country/league competitions.
 # Diagnostic only: unverified events are never merged into matches.json.
 def discover_virtual_catalog():
