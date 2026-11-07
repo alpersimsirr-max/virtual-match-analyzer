@@ -561,9 +561,11 @@ def collect_betual_live_virtual_games():
         sess=swarm_call({"command":"request_session","params":{"site_id":SWARM_SITE_ID,"language":"eng"}})
         sid=(sess.get("data") or {}).get("sid")
         if not sid: raise RuntimeError("Swarm SID unavailable")
+        # Swarm's live score and clock are nested under game.info, not
+        # top-level score/timer fields. Request the nested objects explicitly.
         fields=["id","team1_name","team2_name","start_ts","is_live","sport_id",
-                "competition_id","competition_name","score","scores","scores1",
-                "score1","score2","result","status","timer","game_time","current_score"]
+                "competition_id","competition_name","info","stats","score","scores",
+                "scores1","score1","score2","result","status","timer","game_time","current_score"]
         rr=swarm_call({"command":"get","params":{"source":"betting","what":{"game":fields},
                          "where":{"game":{"is_live":1}}}},sid)
         if rr.get("code")!=0: raise RuntimeError("Live catalogue returned "+str(rr.get("code")))
@@ -576,11 +578,38 @@ def collect_betual_live_virtual_games():
             if "virtual" not in (home+" "+away).lower(): continue
             # Only virtual football team rows; skip virtual basketball etc.
             if not any(x in (home+" "+away).lower() for x in ["virtual"]): continue
+            info=g.get("info") if isinstance(g.get("info"),dict) else {}
+            stats=g.get("stats") if isinstance(g.get("stats"),dict) else {}
+            def as_int(value):
+                try:
+                    text=str(value).strip()
+                    return int(text) if re.fullmatch(r"-?\\d+",text) else None
+                except Exception:
+                    return None
+            score_home=as_int(info.get("score1",g.get("score1")))
+            score_away=as_int(info.get("score2",g.get("score2")))
+            clock=str(info.get("current_game_time") or g.get("game_time") or g.get("timer") or "")
+            clock_match=re.search(r"(\\d{1,2}):(\\d{2})",clock)
+            state=str(info.get("current_game_state") or g.get("status") or "").lower()
+            period=("first_half" if any(x in state for x in ("first","1st","half1","period1")) else
+                    "second_half" if any(x in state for x in ("second","2nd","half2","period2")) else None)
+            minute=None
+            if clock_match:
+                elapsed=int(clock_match.group(1))+int(clock_match.group(2))/60
+                if period=="second_half":
+                    minute=round((15+elapsed)*3)
+                elif period=="first_half":
+                    minute=round(elapsed*3)
+            verified=score_home is not None and score_away is not None and minute is not None
             item={"game_id":str(g.get("id") or ""),"home_team":home,"away_team":away,
                   "start_ts":g.get("start_ts"),"is_live":g.get("is_live"),
                   "competition_id":g.get("competition_id"),"competition":g.get("competition_name"),
-                  "raw_score_fields":{k:g.get(k) for k in ["score","scores","scores1","score1","score2","result","status","timer","game_time","current_score"] if g.get(k) is not None},
-                  "source":"BetConstruct Swarm live betting catalogue"}
+                  "home_score":score_home,"away_score":score_away,"minute":minute,
+                  "period":period,"live_state_verified":verified,"display_clock":clock,
+                  "current_game_state":state,
+                  "raw_score_fields":{"info":info,"stats":stats,
+                    **{k:g.get(k) for k in ["score","scores","scores1","score1","score2","result","status","timer","game_time","current_score"] if g.get(k) is not None}},
+                  "source":"BetConstruct Swarm live betting catalogue game.info"}
             diag["matches"].append(item)
         diag["live_virtual_count"]=len(diag["matches"])
         diag["queries"].append({"label":"live_game_catalogue","code":rr.get("code"),
