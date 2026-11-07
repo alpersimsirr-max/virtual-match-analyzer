@@ -3,7 +3,7 @@ from pathlib import Path
 from urllib.parse import urljoin
 import requests
 from bs4 import BeautifulSoup
-PAGES=["https://www.vbet.com/uk/sports/pre-match/results","https://m.vbet.am/en/sports/pre-match/results","https://pagebuilderm.vbet.am/en/sports/pre-match/results"]
+PAGES=["https://www.vbet.com/uk/sports/pre-match/results","https://m.vbet.am/en/sports/pre-match/results","https://pagebuilderm.vbet.am/en/sports/pre-match/results","https://www.vbet.com/en/sports/pre-match/results"]
 H={"User-Agent":"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/130.0.0.0 Safari/537.36"}
 s=requests.Session();s.headers.update(H)
 report={"pages":[],"assets":[],"swarm_hosts":[],"api_candidates":[]}
@@ -171,3 +171,100 @@ def discover_virtual_catalog():
     return probe
 
 discover_virtual_catalog()
+
+
+# Public Betual virtual results page. Unlike the previous Swarm probe, this
+# reads the same public results listing that visibly labels competitions
+# "(Virtual Matches)" and includes FT plus HT scorelines.
+def collect_public_virtual_results():
+    from datetime import datetime, timezone
+    urls = [
+        "https://www.vbet.com/uk/sports/pre-match/results",
+        "https://m.vbet.am/en/sports/pre-match/results",
+    ]
+    diag = {"status":"not_started","pages":[],"parsed_count":0,"errors":[]}
+    found = []
+    team_re = re.compile(r"([A-ZÀ-ž0-9][A-Za-zÀ-ž0-9.'’()& -]{1,65}? Virtual)")
+    score_re = re.compile(r"(?<![0-9])(\d{1,2})\s*:\s*(\d{1,2})\s*\(\s*(\d{1,2})\s*:\s*(\d{1,2})\s*\)")
+    for url in urls:
+        try:
+            resp = s.get(url, timeout=35)
+            resp.raise_for_status()
+            soup = BeautifulSoup(resp.text, "html.parser")
+            page_text = soup.get_text("\\n", strip=True)
+            # Find scoreline nodes and inspect their nearest card containers.
+            for node in soup.find_all(string=score_re):
+                score = score_re.search(str(node))
+                if not score:
+                    continue
+                ancestor = node.parent
+                best = None
+                for _ in range(7):
+                    if ancestor is None:
+                        break
+                    txt = ancestor.get_text(" ", strip=True)
+                    teams = team_re.findall(txt)
+                    uniq = []
+                    for t in teams:
+                        t = re.sub(r"\\s+", " ", t).strip()
+                        if t not in uniq:
+                            uniq.append(t)
+                    if len(uniq) >= 2:
+                        best = (txt, uniq[-2], uniq[-1])
+                        break
+                    ancestor = ancestor.parent
+                if not best:
+                    continue
+                txt, home, away = best
+                # Require virtual-team labels and an explicit virtual competition
+                # on the same page; exclude ordinary football.
+                before = page_text[:page_text.find(txt[:min(40,len(txt))])] if txt else page_text
+                comp_hits = re.findall(r"(Betual[^\\n]{0,90}Virtual Matches)", before, re.I)
+                competition = comp_hits[-1] if comp_hits else ""
+                if not competition:
+                    # Fallback: competition text in card/parent context.
+                    cm = re.search(r"(Betual[^.]{0,90}?Virtual Matches)", txt, re.I)
+                    competition = cm.group(1) if cm else ""
+                if "Virtual Matches" not in competition:
+                    continue
+                ft_h, ft_a, ht_h, ht_a = map(int, score.groups())
+                item = {
+                    "home_team":home,"away_team":away,
+                    "ft_home":ft_h,"ft_away":ft_a,
+                    "ht_home":ht_h,"ht_away":ht_a,
+                    "date":None,"game_id":"",
+                    "competition":competition,
+                    "source":"VBET public results page (Betual Virtual Matches)",
+                    "source_url":url
+                }
+                key=(competition,home,away,ft_h,ft_a,ht_h,ht_a)
+                if not any((x["competition"],x["home_team"],x["away_team"],x["ft_home"],x["ft_away"],x["ht_home"],x["ht_away"])==key for x in found):
+                    found.append(item)
+            diag["pages"].append({"url":url,"status":resp.status_code,"html_bytes":len(resp.content),"virtual_markers":page_text.count("Virtual Matches")})
+        except Exception as exc:
+            diag["errors"].append(url+": "+str(exc)[:400])
+    # Merge only verified Betual virtual matches; never erase an existing archive.
+    path=Path("data/matches.json")
+    previous=json.loads(path.read_text(encoding="utf-8")) if path.exists() and path.stat().st_size else {}
+    old=previous.get("matches",[])
+    merged={}
+    for x in old+found:
+        key=str(x.get("game_id") or (x.get("competition"),x.get("date"),x.get("home_team"),x.get("away_team"),x.get("ft_home"),x.get("ft_away"),x.get("ht_home"),x.get("ht_away")))
+        merged[key]=x
+    all_matches=list(merged.values())
+    all_matches.sort(key=lambda x:str(x.get("date") or ""))
+    Path("data").mkdir(exist_ok=True)
+    Path("data/matches.json").write_text(json.dumps({
+        "updated_at":datetime.now(timezone.utc).isoformat(),
+        "match_count":len(all_matches),
+        "sources":[{"url":u,"method":"public_results_html","filter":"competition contains Virtual Matches"} for u in urls],
+        "matches":all_matches
+    },ensure_ascii=False,indent=2),encoding="utf-8")
+    diag["status"]="success" if found else "no_verified_matches"
+    diag["parsed_count"]=len(found)
+    diag["sample"]=found[:5]
+    Path("data/public_results_probe.json").write_text(json.dumps(diag,ensure_ascii=False,indent=2),encoding="utf-8")
+    print("PUBLIC_VIRTUAL_RESULTS="+json.dumps({"status":diag["status"],"parsed_count":len(found),"pages":diag["pages"],"errors":diag["errors"]},ensure_ascii=False))
+    return diag
+
+collect_public_virtual_results()
