@@ -34,8 +34,6 @@ jobs:
         env:
           MATCH_URL: ${{ inputs.match_url }}
         run: python live_link_probe.py
-      - name: Generate automatic virtual football forecasts
-        run: python predict_live.py
       - name: Publish API research and diagnostics
         run: |
           git config user.name "github-actions[bot]"
