@@ -15,7 +15,11 @@ from predictor import predict
 NON_FOOTBALL = (
     "basket", "nba", "wnba", "tennis", "volley", "hockey", "rugby",
     "cricket", "baseball", "handball", "table tennis", "darts", "boxing",
-    "mma", "cycling", "racing", "golf", "badminton", "esports",
+    "mma", "cycling", "golf", "badminton", "esports",
+    "thunder", "nuggets", "sonicboom", "trail blazers", "pelicans", "timberwolves",
+    "hawks", "celtics", "knicks", "pacers", "hornets", "spurs", "rockets",
+    "warriors", "lakers", "clippers", "bulls", "nets", "heat", "magic",
+    "perth", "basket",
     "call of duty", "dota", "counter-strike", "league of legends",
     "perugia", "trentino", "bublik", "ruud", "collignon", "vacherot",
 )
