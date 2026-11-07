@@ -38,7 +38,11 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add collect_browser_results.py predictor.py predict_live.py PREDICTOR.md data/live_predictions.json data/browser_results_probe.json data/matches.json data/source_probe.json data/virtual_discovery.json data/public_results_probe.json data/virtual_swarm_probe.json data/betual_competition_probe.json data/betual_event_id_probe.json data/betual_live_catalogue_probe.json data/betual_live_games.json data/betual_live_score_detail_probe.json data/manual_live_match.json data/live_link_probe.json data/api_research.json data/js_inspection/
+          for path in collect_browser_results.py predictor.py predict_live.py PREDICTOR.md data/live_predictions.json data/browser_results_probe.json data/matches.json data/source_probe.json data/virtual_discovery.json data/public_results_probe.json data/virtual_swarm_probe.json data/betual_competition_probe.json data/betual_event_id_probe.json data/betual_live_catalogue_probe.json data/betual_live_games.json data/betual_live_score_detail_probe.json data/manual_live_match.json data/live_link_probe.json data/api_research.json data/js_inspection/; do
+            if [ -e "$path" ]; then
+              git add -- "$path"
+            fi
+          done
           if ! git diff --cached --quiet; then
             git commit -m "Probe Betual sources and update archive"
             git push
