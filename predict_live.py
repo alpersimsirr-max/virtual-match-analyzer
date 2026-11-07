@@ -33,11 +33,18 @@ def main():
             continue
         minute = m.get("minute")
         hs, aws = m.get("home_score"), m.get("away_score")
-        if not isinstance(minute, (int, float)) or not isinstance(hs, int) or not isinstance(aws, int):
+        # Never infer a live score from a fixture or kickoff timestamp.
+        # The collector marks a state verified only when Swarm returned both
+        # nested info.score1/score2 and a parseable in-play clock.
+        verified = m.get("live_state_verified") is True
+        if (not verified or not isinstance(minute, (int, float))
+                or not isinstance(hs, int) or not isinstance(aws, int)):
             waiting.append({
                 "game_id": m.get("game_id"),
                 "home_team": m.get("home_team"),
                 "away_team": m.get("away_team"),
+                "display_clock": m.get("display_clock"),
+                "period": m.get("period"),
                 "status": "waiting_for_verified_live_score_and_minute",
             })
             continue
