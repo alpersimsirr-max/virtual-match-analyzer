@@ -577,12 +577,9 @@ def collect_betual_live_virtual_games():
             home=str(g.get("team1_name") or ""); away=str(g.get("team2_name") or "")
             joined=(home+" "+away).lower()
             if "virtual" not in joined: continue
-            # Keep virtual football only; the live catalogue also contains
-            # virtual basketball, volleyball, tennis and other sports.
-            nonfootball=("basket","nba","tennis","volley","hockey","rugby","cricket",
-                         "baseball","handball","table tennis","darts","boxing","mma",
-                         "cycling","racing")
-            if any(token in joined for token in nonfootball): continue
+            # Keep the full virtual-sports catalogue. The prediction stage
+            # classifies football vs basketball from the live stats payload;
+            # other virtual sports are ignored there, not mistaken for football.
             info=g.get("info") if isinstance(g.get("info"),dict) else {}
             stats=g.get("stats") if isinstance(g.get("stats"),dict) else {}
             def as_int(value):
