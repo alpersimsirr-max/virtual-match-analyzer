@@ -1,5 +1,7 @@
 name: Collect Betual results
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
     inputs:
       match_url:
