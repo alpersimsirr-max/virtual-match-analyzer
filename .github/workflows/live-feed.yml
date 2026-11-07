@@ -2,15 +2,6 @@ name: Collect live virtual matches and predictions
 on:
   schedule:
     - cron: "* * * * *"
-  push:
-    branches: [main]
-    paths:
-      - "collect_live.py"
-      - "predict_live.py"
-      - "predictor.py"
-      - ".github/workflows/live-feed.yml"
-    paths-ignore:
-      - "data/**"
   workflow_dispatch:
 permissions:
   contents: write
