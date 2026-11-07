@@ -8,7 +8,7 @@ SCORE=re.compile(r"^(\d{1,2})\s*:\s*(\d{1,2})\s*\(\s*(\d{1,2})\s*:\s*(\d{1,2})\s
 DATE=re.compile(r"^\d{2}\.\d{2}\.\d{4}")
 def clean(s): return re.sub(r"\s+"," ",s).strip()
 def main():
-    diag={"status":"started","url":URL,"pages":0,"parsed_count":0,"errors":[]}
+    diag={"status":"started","url":URL,"pages":0,"parsed_count":0,"more_clicks":0,"score_lines":0,"errors":[]}
     records={}
     with sync_playwright() as p:
         browser=p.chromium.launch(headless=True)
@@ -17,17 +17,28 @@ def main():
             page.goto(URL,wait_until="domcontentloaded",timeout=90000)
             page.wait_for_timeout(12000)
             # The results page exposes a More control for older fixtures.
-            for _ in range(12):
+            # Load as many historical result batches as the public page exposes.
+            # Stop when the control disappears or a click no longer adds score rows.
+            previous_scores=0
+            for _ in range(40):
                 try:
                     more=page.get_by_text("More",exact=True).last
                     if not more.is_visible(): break
-                    more.click(timeout=2500)
-                    page.wait_for_timeout(1800)
-                except Exception: break
+                    more.click(timeout=4000)
+                    page.wait_for_timeout(1200)
+                    current_text=page.locator("body").inner_text(timeout=30000)
+                    current_scores=len(SCORE.findall(current_text))
+                    diag["more_clicks"]+=1
+                    if current_scores<=previous_scores:
+                        break
+                    previous_scores=current_scores
+                except Exception:
+                    break
             lines=[clean(x) for x in page.locator("body").inner_text(timeout=30000).splitlines()]
             diag["pages"]=1
             diag["body_chars"]=sum(map(len,lines))
             diag["virtual_markers"]=sum("Virtual Matches" in x for x in lines)
+            diag["score_lines"]=sum(bool(SCORE.match(x)) for x in lines)
             diag["sample_lines"]=lines[:35]
             # Scores are rendered as FT (HT); associate with the two closest preceding virtual teams.
             recent=[]
