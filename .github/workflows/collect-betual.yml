@@ -2,6 +2,8 @@ name: Collect Betual results
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - "data/**"
   workflow_dispatch:
     inputs:
       match_url:
@@ -51,7 +53,7 @@ jobs:
           if ! git diff --cached --quiet; then
             git commit -m "Probe Betual sources and update archive"
             git fetch origin main
-            git rebase origin/main
+            git rebase -X theirs origin/main
             git push
           else
             echo "No generated files changed; nothing to publish."
