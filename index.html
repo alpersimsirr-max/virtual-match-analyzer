@@ -76,20 +76,20 @@ async function loadLiveBoard(){
  try{
   const r=await fetch("./data/live_predictions.json?ts="+Date.now(),{cache:"no-store"});
   if(!r.ok)throw new Error("Canlı tahmin dosyası henüz yayınlanmadı.");
-  const d=await r.json(),items=d.forecasts||[];
-  status.textContent="Son güncelleme: "+new Date(d.updated_at).toLocaleTimeString("tr-TR")+" · Arşiv: "+d.archive_match_count+" maç · Canlı futbol: "+(d.football_live_count??d.live_catalogue_count)+" · Tahmin: "+items.length;
-  if(!items.length){board.innerHTML='<p class="small warn">Canlı skor/dakika doğrulanabilen maç bekleniyor. Veri doğrulanmadan tahmin gösterilmiyor.</p>';return}
-  board.innerHTML=items.map(x=>{
-   const q=x.prediction||{},v=q.probabilities||{},ls=x.live_state||{};
-   return '<div class="card" style="margin:10px 0;background:#111d2e"><div><b>'+x.home_team+' - '+x.away_team+'</b></div><div class="tag">CANLI '+(x.display_clock||ls.minute+"'")+' · '+(x.period||"")+' · '+(ls.score||"")+'</div>'+
-    metric("İY en olası skor",q.half_time_prediction||"—")+
-    metric("İY 0.5 Üst",v.half_time_over_0_5==null?"—":pct(v.half_time_over_0_5))+
-    metric("MS en olası skor",q.full_time_prediction||"—")+
-    metric("MS 1 / X / 2",pct(v.home_win||0)+" / "+pct(v.draw||0)+" / "+pct(v.away_win||0))+
-    metric("2.5 Üst / Alt",pct(v.over_2_5||0)+" / "+pct(1-(v.over_2_5||0)))+
-    metric("A gol atar / B gol atar",pct(v.home_to_score_again||0)+" / "+pct(v.away_to_score_again||0))+
-    metric("Maçta gol olur",pct(v.any_more_goal||0))+
-    '<div class="small">Takım geçmişi: '+q.home_team_matches+' / '+q.away_team_matches+' maç · Tahmin deneysel olasılıktır.</div></div>';
+  const d=await r.json(),items=(d.forecasts||[]).filter(x=>x.status==="live_prediction");
+  const prob=x=>{const p=x.prediction?.probabilities||{};return Number(p.any_more_goal??p.over_2_5??0)};
+  items.sort((a,b)=>prob(b)-prob(a));
+  status.textContent="Son güncelleme: "+new Date(d.updated_at).toLocaleTimeString("tr-TR")+" · Arşiv: "+d.archive_match_count+" maç · Canlı tahmin: "+items.length+" · En yüksek gol ihtimali üstte";
+  if(!items.length){board.innerHTML='<p class="small warn">Canlı skor ve dakika doğrulanan maç bekleniyor.</p>';return}
+  board.innerHTML=items.map((x,i)=>{
+   const q=x.prediction||{},v=q.probabilities||{},ls=x.live_state||{},id="live-detail-"+i;
+   const goal=prob(x);
+   return '<div class="card" style="margin:10px 0;background:#111d2e"><div style="display:flex;justify-content:space-between;gap:8px"><b>'+(i+1)+'. '+x.home_team+' - '+x.away_team+'</b><span class="tag">'+pct(goal)+' gol ihtimali</span></div><div class="tag">CANLI '+(x.display_clock||ls.minute+"'")+' · '+(x.period||"")+' · '+(ls.score||"")+'</div>'+
+    metric("Maçta en az 1 gol daha",pct(v.any_more_goal??goal))+
+    metric("Ev sahibi sonraki gol",pct(v.home_to_score_again??0))+metric("Deplasman sonraki gol",pct(v.away_to_score_again??0))+
+    metric("İY en olası skor",q.half_time_prediction||"Devre tamamlandı")+metric("MS en olası skor",q.full_time_prediction||"—")+
+    '<button style="margin-top:10px" onclick="document.getElementById(\''+id+'\').style.display=document.getElementById(\''+id+'\').style.display===\'none\'?\'block\':\'none\'">TÜM OLASILIKLARI GÖSTER</button>'+
+    '<div id="'+id+'" style="display:none">'+metric("MS 1 / X / 2",pct(v.home_win??0)+" / "+pct(v.draw??0)+" / "+pct(v.away_win??0))+metric("2.5 Üst / Alt",pct(v.over_2_5??0)+" / "+pct(1-(v.over_2_5??0)))+metric("3.5 Üst / Alt",pct(v.over_3_5??0)+" / "+pct(1-(v.over_3_5??0)))+metric("4.5 Üst / Alt",pct(v.over_4_5??0)+" / "+pct(1-(v.over_4_5??0)))+'<div class="small">Arşiv: '+q.data_matches+' maç · Takım örnekleri: '+q.home_team_matches+' / '+q.away_team_matches+'. '+(q.warning||"")+'</div></div></div>';
   }).join("");
  }catch(e){status.textContent=e.message;board.innerHTML='<p class="small warn">Canlı veri şu anda okunamadı.</p>'}
 }
