@@ -1,12 +1,16 @@
 {
-  "updated_at": "2026-11-07T00:06:04.588582+00:00",
+  "updated_at": "2026-11-07T00:14:50.703688+00:00",
   "match_count": 0,
   "sources": [
     {
-      "url": "https://eu-swarm-lp.betconstruct.com/",
-      "method": "get_result_games",
-      "sport_type": 1,
-      "window_days": 30
+      "url": "https://www.vbet.com/uk/sports/pre-match/results",
+      "method": "public_results_html",
+      "filter": "competition contains Virtual Matches"
+    },
+    {
+      "url": "https://m.vbet.am/en/sports/pre-match/results",
+      "method": "public_results_html",
+      "filter": "competition contains Virtual Matches"
     }
   ],
   "matches": []
