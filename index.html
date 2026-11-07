@@ -14,6 +14,15 @@ const poisson=(k,l)=>{let p=Math.exp(-l);for(let i=1;i<=k;i++)p*=l/i;return p};
 const dist=l=>Array.from({length:10},(_,i)=>poisson(i,l));
 const pct=x=>(100*x).toFixed(1)+"%";
 function metric(n,v){return '<div class="metric"><span>'+n+'</span><strong>'+v+'</strong></div>'}
+function historical(h){
+ if(!h)return '<div class="small warn">Geçmiş gol istatistiği henüz yok.</div>';
+ const a=h.home||{},b=h.away||{};
+ return '<div class="tag">GEÇMİŞ GOL İSTATİSTİKLERİ</div>'+
+ metric('Ev sahibi attı / yedi',a.goals_for+' / '+a.goals_against+' ('+a.played+' maç)')+
+ metric('Ev sahibi maç başı',(a.avg_scored??'—')+' attı · '+(a.avg_conceded??'—')+' yedi')+
+ metric('Deplasman attı / yedi',b.goals_for+' / '+b.goals_against+' ('+b.played+' maç)')+
+ metric('Deplasman maç başı',(b.avg_scored??'—')+' attı · '+(b.avg_conceded??'—')+' yedi');
+}
 function readMatches(data){if(Array.isArray(data))return data;if(data&&Array.isArray(data.matches))return data.matches;return []}
 function val(m,...keys){for(const k of keys)if(m[k]!==undefined&&m[k]!==null&&m[k]!=="")return m[k];return null}
 function normalizeMatch(m){
@@ -89,7 +98,7 @@ async function loadLiveBoard(){
     metric("Ev sahibi sonraki gol",pct(v.home_to_score_again??0))+metric("Deplasman sonraki gol",pct(v.away_to_score_again??0))+
     metric("İY en olası skor",q.half_time_prediction||"Devre tamamlandı")+metric("MS en olası skor",q.full_time_prediction||"—")+
     '<button style="margin-top:10px" onclick="document.getElementById(\''+id+'\').style.display=document.getElementById(\''+id+'\').style.display===\'none\'?\'block\':\'none\'">TÜM OLASILIKLARI GÖSTER</button>'+
-    '<div id="'+id+'" style="display:none">'+metric("MS 1 / X / 2",pct(v.home_win??0)+" / "+pct(v.draw??0)+" / "+pct(v.away_win??0))+metric("2.5 Üst / Alt",pct(v.over_2_5??0)+" / "+pct(1-(v.over_2_5??0)))+metric("3.5 Üst / Alt",pct(v.over_3_5??0)+" / "+pct(1-(v.over_3_5??0)))+metric("4.5 Üst / Alt",pct(v.over_4_5??0)+" / "+pct(1-(v.over_4_5??0)))+'<div class="small">Arşiv: '+q.data_matches+' maç · Takım örnekleri: '+q.home_team_matches+' / '+q.away_team_matches+'. '+(q.warning||"")+'</div></div></div>';
+    '<div id="'+id+'" style="display:none">'+metric("MS 1 / X / 2",pct(v.home_win??0)+" / "+pct(v.draw??0)+" / "+pct(v.away_win??0))+metric("2.5 Üst / Alt",pct(v.over_2_5??0)+" / "+pct(1-(v.over_2_5??0)))+metric("3.5 Üst / Alt",pct(v.over_3_5??0)+" / "+pct(1-(v.over_3_5??0)))+metric("4.5 Üst / Alt",pct(v.over_4_5??0)+" / "+pct(1-(v.over_4_5??0)))+'<div class="small">Arşiv: '+q.data_matches+' maç · Takım örnekleri: '+q.home_team_matches+' / '+q.away_team_matches+'. '+(q.warning||"")+'</div>'+historical(q.historical_team_stats)+'</div></div>';
   }).join("");
  }catch(e){status.textContent=e.message;board.innerHTML='<p class="small warn">Canlı veri şu anda okunamadı.</p>'}
 }
