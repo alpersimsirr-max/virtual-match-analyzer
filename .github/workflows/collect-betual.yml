@@ -1,5 +1,7 @@
 name: Collect Betual results
 on:
+  schedule:
+    - cron: "*/15 * * * *"
   push:
     branches: [main]
     paths-ignore:
