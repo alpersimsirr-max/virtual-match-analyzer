@@ -106,23 +106,23 @@ def predict(args):
     future_h, future_a = lam_h * remaining, lam_a * remaining
     ft_lam_h, ft_lam_a = current_h + future_h, current_a + future_a
 
-    # For a live first-half match, estimate remaining first-half goals separately.
+    # First-half score is only forecast while the first half is in progress.
+    # In the second half it is already settled and must not be re-predicted.
+    ht_scores = []
     if minute < 45:
         ht_remaining = (45 - minute) / 45
-        ht_lam_h = current_h + ht_h * ht_remaining
-        ht_lam_a = current_a + ht_a * ht_remaining
-    else:
-        ht_lam_h, ht_lam_a = current_h, current_a
+        future_ht_h, future_ht_a = ht_h * ht_remaining, ht_a * ht_remaining
 
     max_goals = 8
     ft_scores = [(current_h + i, current_a + j,
                   poisson(i, future_h) * poisson(j, future_a))
                  for i in range(max_goals + 1) for j in range(max_goals + 1)]
-    ht_scores = [(i, j, poisson(i, max(0.01, ht_lam_h)) *
-                  poisson(j, max(0.01, ht_lam_a)))
-                 for i in range(max_goals + 1) for j in range(max_goals + 1)]
+    if minute < 45:
+        ht_scores = [(current_h + i, current_a + j,
+                      poisson(i, future_ht_h) * poisson(j, future_ht_a))
+                     for i in range(max_goals + 1) for j in range(max_goals + 1)]
     best_ft = sorted(ft_scores, key=lambda x: x[2], reverse=True)[:3]
-    best_ht = max(ht_scores, key=lambda x: x[2])
+    best_ht = max(ht_scores, key=lambda x: x[2]) if ht_scores else None
 
     total = sum(p for _, _, p in ft_scores) or 1
     over25 = sum(p for h, a, p in ft_scores if h + a >= 3) / total
@@ -135,7 +135,8 @@ def predict(args):
         "home_team_matches": home_hist["played"] if home_hist else 0,
         "away_team_matches": away_hist["played"] if away_hist else 0,
         "live_state": {"minute": minute, "score": f"{current_h}-{current_a}"},
-        "half_time_prediction": f"{best_ht[0]}-{best_ht[1]}",
+        "half_time_prediction": (f"{best_ht[0]}-{best_ht[1]}" if best_ht else None),
+        "half_time_status": ("forecast" if best_ht else "completed_not_reconstructed"),
         "full_time_prediction": f"{best_ft[0][0]}-{best_ft[0][1]}",
         "alternative_scores": [f"{h}-{a}" for h, a, _ in best_ft[1:]],
         "probabilities": {
