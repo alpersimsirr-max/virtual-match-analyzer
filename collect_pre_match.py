@@ -5,7 +5,7 @@ import requests
 
 URL="https://eu-swarm-lp.betconstruct.com/"
 HEADERS={"User-Agent":"Mozilla/5.0","Content-Type":"application/json"}
-out={"updated_at":datetime.now(timezone.utc).isoformat(),"source":"BetConstruct Swarm betting catalogue","status":"not_tested","fixtures":[],"errors":[]}
+out={"updated_at":datetime.now(timezone.utc).isoformat(),"source":"BetConstruct Swarm betting catalogue","status":"not_tested","fixtures":[],"errors":[],"diagnostics":{}}
 try:
     s=requests.Session()
     s.headers.update(HEADERS)
@@ -26,24 +26,35 @@ try:
     raw=data.get("game",{}) if isinstance(data,dict) else {}
     rows=list(raw.values()) if isinstance(raw,dict) else (raw if isinstance(raw,list) else [])
     now=int(datetime.now(timezone.utc).timestamp())
-    seen=set()
+    seen=set(); counts={"rows":len(rows),"has_names":0,"virtual_name_or_competition":0,"future":0,"not_live":0,"accepted":0}; samples=[]
     for g in rows:
         if not isinstance(g,dict): continue
         home=str(g.get("team1_name") or "").strip()
         away=str(g.get("team2_name") or "").strip()
-        joined=(home+" "+away).casefold()
-        try: start=int(g.get("start_ts"))
-        except (TypeError,ValueError): continue
+        competition=str(g.get("competition_name") or "").strip()
+        joined=(home+" "+away+" "+competition).casefold()
+        if home and away: counts["has_names"]+=1
+        if "virtual" in joined or "betual" in joined: counts["virtual_name_or_competition"]+=1
+        try: start=int(float(g.get("start_ts") or 0))
+        except (TypeError,ValueError): start=0
+        if start>10**12: start//=1000
         gid=str(g.get("id") or "")
-        if not home or not away or "virtual" not in joined or not gid or start<=now: continue
-        if str(g.get("is_live"))!="0": continue
+        live=g.get("is_live")
+        not_live=(live is False or live==0 or str(live).strip().lower() in ("0","false","no",""))
+        if not home or not away or not gid: continue
+        if start>now: counts["future"]+=1
+        if not_live: counts["not_live"]+=1
+        if len(samples)<12: samples.append({"home":home,"away":away,"competition":competition,"start_ts":start,"is_live":live,"sport_id":g.get("sport_id")})
+        if "virtual" not in joined and "betual" not in joined: continue
+        if start<=now or not not_live: continue
         if gid in seen: continue
         seen.add(gid)
         out["fixtures"].append({"game_id":gid,"home_team":home,"away_team":away,"start_ts":start,
-          "competition":g.get("competition_name") or "Sanal futbol","sport_id":g.get("sport_id"),
+          "competition":competition or "Sanal futbol","sport_id":g.get("sport_id"),
           "competition_id":g.get("competition_id"),"status":"not_started"})
     out["fixtures"].sort(key=lambda x:x["start_ts"])
     out["status"]="success"
+    counts["accepted"]=len(out["fixtures"]); out["diagnostics"]={"counts":counts,"sample_rows":samples}
     out["catalogue_rows"]=len(rows)
     out["fixture_count"]=len(out["fixtures"])
 except Exception as e:
