@@ -128,6 +128,14 @@ def predict(args):
     over25 = sum(p for h, a, p in ft_scores if h + a >= 3) / total
     over35 = sum(p for h, a, p in ft_scores if h + a >= 4) / total
     over45 = sum(p for h, a, p in ft_scores if h + a >= 5) / total
+    home_win = sum(p for h, a, p in ft_scores if h > a) / total
+    draw_prob = sum(p for h, a, p in ft_scores if h == a) / total
+    away_win = sum(p for h, a, p in ft_scores if h < a) / total
+    home_scores = sum(p for h, a, p in ft_scores if h > current_h) / total
+    away_scores = sum(p for h, a, p in ft_scores if a > current_a) / total
+    any_goal = sum(p for h, a, p in ft_scores if h + a > current_h + current_a) / total
+    ht_total = sum(p for _, _, p in ht_scores) if ht_scores else 0
+    ht_over05 = (sum(p for h, a, p in ht_scores if h + a >= 1) / ht_total) if ht_total else None
 
     return {
         "match": f"{args.home} - {args.away}",
@@ -142,7 +150,14 @@ def predict(args):
         "probabilities": {
             "over_2_5": round(over25, 3),
             "over_3_5": round(over35, 3),
-            "over_4_5": round(over45, 3)
+            "over_4_5": round(over45, 3),
+            "home_win": round(home_win, 3),
+            "draw": round(draw_prob, 3),
+            "away_win": round(away_win, 3),
+            "home_to_score_again": round(home_scores, 3),
+            "away_to_score_again": round(away_scores, 3),
+            "any_more_goal": round(any_goal, 3),
+            "half_time_over_0_5": round(ht_over05, 3) if ht_over05 is not None else None
         },
         "warning": "Deneysel tahmin: veri kümesi küçük ve takım başına maç sayısı sınırlı."
     }
