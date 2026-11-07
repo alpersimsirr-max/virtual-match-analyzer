@@ -33,6 +33,8 @@ jobs:
         run: python collect_pre_match.py
       - name: Collect rendered Betual virtual results
         run: python collect_browser_results.py
+      - name: Rebuild live probability dashboard data
+        run: python predict_live.py
       - name: Inspect supplied live match URL
         if: ${{ inputs.match_url != '' }}
         env:
