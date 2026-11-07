@@ -633,7 +633,7 @@ def collect_betual_live_virtual_games():
             "total_rows":len(rows),"virtual_rows":len(diag["matches"]),
             "sample":diag["matches"][:8]})
         diag["status"]="success" if diag["matches"] else "no_virtual_live_games"
-        Path("data/betual_live_games.json").write_text(json.dumps({
+        Path("data/betual_live_catalogue_legacy_probe.json").write_text(json.dumps({
             "updated_at":datetime.now(timezone.utc).isoformat(),
             "count":len(diag["matches"]),"matches":diag["matches"]},
             ensure_ascii=False,indent=2),encoding="utf-8")
