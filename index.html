@@ -93,7 +93,7 @@ async function loadLiveBoard(){
   board.innerHTML=items.map((x,i)=>{
    const q=x.prediction||{},v=q.probabilities||{},ls=x.live_state||{},id="live-detail-"+i;
    const goal=prob(x),hist=q.historical_team_stats||{},hh=hist.home||{},ah=hist.away||{};
-   return '<div class="card" style="margin:10px 0;background:#111d2e"><div style="display:flex;justify-content:space-between;gap:8px"><b>'+(i+1)+'. '+x.home_team+' - '+x.away_team+'</b><span class="tag">'+pct(goal)+' gol ihtimali</span></div><div class="tag">CANLI '+(x.display_clock||ls.minute+"'")+' · '+(x.period||"")+' · '+(ls.score||"")+'</div>'+
+   return '<div class="card" style="margin:10px 0;background:#111d2e"><div style="display:flex;justify-content:space-between;gap:8px"><b>'+(i+1)+'. '+x.home_team+' - '+x.away_team+'</b><span class="tag">'+pct(goal)+' gol ihtimali</span></div><div class="tag">CANLI '+(ls.minute!=null?ls.minute+"'":(x.display_clock||"Dakika yok"))+' · '+(x.period||"")+' · '+(ls.score||"")+'</div>'+
     metric("Maçta en az 1 gol daha",pct(v.any_more_goal??goal))+
     metric("Ev sahibi sonraki gol",v.home_to_score_again==null?"Veri yok":pct(v.home_to_score_again))+metric("Deplasman sonraki gol",v.away_to_score_again==null?"Veri yok":pct(v.away_to_score_again))+
     metric("İY en olası skor",q.half_time_prediction||"Devre tamamlandı")+(v.half_time_over_0_5==null?"":metric("İY 0.5 Üst gol ihtimali",pct(v.half_time_over_0_5)))+metric("MS en olası skor",q.full_time_prediction||"—")+
