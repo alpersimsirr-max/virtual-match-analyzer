@@ -507,3 +507,46 @@ def probe_betual_event_ids():
     return diag
 
 probe_betual_event_ids()
+
+
+# Probe Betual competition event catalogue directly. The visible mobile URL IDs
+# identify competition records; ask the betting catalogue for their game rows.
+def probe_betual_competition_games():
+    diag={"status":"not_started","competitions":[18296834,18296755],
+          "queries":[],"errors":[]}
+    try:
+        sess=swarm_call({"command":"request_session","params":{"site_id":SWARM_SITE_ID,"language":"eng"}})
+        sid=(sess.get("data") or {}).get("sid")
+        if not sid: raise RuntimeError("Swarm SID unavailable")
+        fields=["id","team1_name","team2_name","start_ts","is_live","sport_id","competition_id"]
+        variants=[]
+        for cid in diag["competitions"]:
+            variants.append((str(cid)+"_competition_id",{"source":"betting","what":{"game":fields},
+                 "where":{"game":{"competition_id":cid}}}))
+        variants.append(("all_live_games",{"source":"betting","what":{"game":fields},
+                          "where":{"game":{"is_live":1}}}))
+        for label,params in variants:
+            try:
+                rr=swarm_call({"command":"get","params":params},sid)
+                dd=rr.get("data") or {}
+                nested=dd.get("data") or dd
+                games=nested.get("game",{}) if isinstance(nested,dict) else {}
+                if isinstance(games,dict): rows=list(games.values())
+                elif isinstance(games,list): rows=games
+                else: rows=[]
+                diag["queries"].append({"label":label,"code":rr.get("code"),
+                    "count":len(rows),"sample":rows[:8],
+                    "data_keys":list(nested.keys()) if isinstance(nested,dict) else []})
+            except Exception as exc:
+                diag["errors"].append(label+": "+str(exc)[:400])
+        diag["status"]="completed"
+    except Exception as exc:
+        diag["status"]="failed";diag["errors"].append(str(exc)[:800])
+    Path("data/betual_live_catalogue_probe.json").write_text(
+        json.dumps(diag,ensure_ascii=False,indent=2),encoding="utf-8")
+    print("BETUAL_LIVE_CATALOGUE="+json.dumps(
+        {"status":diag["status"],"queries":[{"label":q["label"],"code":q.get("code"),"count":q.get("count")} for q in diag["queries"]],"errors":diag["errors"]},
+        ensure_ascii=False))
+    return diag
+
+probe_betual_competition_games()
