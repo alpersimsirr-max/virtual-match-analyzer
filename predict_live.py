@@ -21,16 +21,22 @@ def main():
     waiting = []
     for m in live.get("matches", []):
         joined = (str(m.get("home_team") or "") + " " + str(m.get("away_team") or "")).casefold()
-        if "virtual" not in joined or not any(x in joined for x in (
-            "osasuna", "real ", "barcelona", "valencia", "sevilla", "arsenal",
-            "chelsea", "liverpool", "bayern", "juventus", "milan", "inter ",
-            "racing", "deportivo", "atletico", "athletic", "getafe", "girona",
-            "tottenham", "everton", "fulham", "brighton", "brentford", "wolves",
-            "leeds", "sunderland", "coventry", "ipswich", "celtic", "rangers",
-            "poland", "slovenia", "brazil", "germany", "france", "spain",
-            "england", "netherlands", "argentina", "portugal", "italy",
-        )):
+        if "virtual" not in joined:
             continue
+        raw = m.get("raw_score_fields") or {}
+        info = raw.get("info") or {}
+        stats = raw.get("stats") or {}
+        additional = info.get("additional_data") or {}
+        # Keep only the two requested virtual sports. Football feeds expose
+        # goal statistics; basketball exposes quarterScores/quarter metadata.
+        if isinstance(stats.get("goal"), dict):
+            sport = "football"
+        elif additional.get("quarterScores") or additional.get("quarter") is not None:
+            sport = "basketball"
+        else:
+            continue
+        if sport == "basketball":
+            continue  # separate basketball forecast model is added below
         minute = m.get("minute")
         hs, aws = m.get("home_score"), m.get("away_score")
         # Never infer a live score from a fixture or kickoff timestamp.
@@ -45,6 +51,7 @@ def main():
                 "away_team": m.get("away_team"),
                 "display_clock": m.get("display_clock"),
                 "period": m.get("period"),
+                "sport": sport,
                 "status": "waiting_for_verified_live_score_and_minute",
             })
             continue
@@ -64,6 +71,9 @@ def main():
                 "home_team": m["home_team"],
                 "away_team": m["away_team"],
                 "live_state": {"minute": int(minute), "score": f"{hs}-{aws}"},
+                "sport": sport,
+                "display_clock": m.get("display_clock"),
+                "period": m.get("period"),
                 "status": "live_prediction",
                 "prediction": predict(args),
             })
@@ -82,6 +92,7 @@ def main():
         "status": status,
         "archive_match_count": len(archive.get("matches", [])),
         "live_catalogue_count": len(live.get("matches", [])),
+        "football_live_count": sum(1 for m in live.get("matches", []) if "virtual" in (str(m.get("home_team",""))+" "+str(m.get("away_team","")).lower()) and isinstance((m.get("raw_score_fields") or {}).get("stats",{}).get("goal"),dict)),
         "live_forecast_count": len(forecasts),
         "waiting_count": len(waiting),
         "note": "Only verified live score and minute can trigger a live prediction. No pre-match estimate is presented as a live prediction.",
