@@ -192,9 +192,15 @@ def collect_public_virtual_results():
             resp.raise_for_status()
             soup = BeautifulSoup(resp.text, "html.parser")
             page_text = soup.get_text("\\n", strip=True)
-            # Find scoreline nodes and inspect their nearest card containers.
-            for node in soup.find_all(string=score_re):
-                score = score_re.search(str(node))
+            # Walk text in document order so each score inherits the latest Betual virtual-league heading.
+            current_comp = ""
+            all_strings = soup.find_all(string=True)
+            for node in all_strings:
+                raw_text = str(node).strip()
+                heading = re.search(r"(Betual[^\\n]{0,90}?Virtual Matches)", raw_text, re.I)
+                if heading:
+                    current_comp = heading.group(1).strip()
+                score = score_re.search(raw_text)
                 if not score:
                     continue
                 ancestor = node.parent
@@ -218,13 +224,7 @@ def collect_public_virtual_results():
                 txt, home, away = best
                 # Require virtual-team labels and an explicit virtual competition
                 # on the same page; exclude ordinary football.
-                before = page_text[:page_text.find(txt[:min(40,len(txt))])] if txt else page_text
-                comp_hits = re.findall(r"(Betual[^\\n]{0,90}Virtual Matches)", before, re.I)
-                competition = comp_hits[-1] if comp_hits else ""
-                if not competition:
-                    # Fallback: competition text in card/parent context.
-                    cm = re.search(r"(Betual[^.]{0,90}?Virtual Matches)", txt, re.I)
-                    competition = cm.group(1) if cm else ""
+                competition = current_comp
                 if "Virtual Matches" not in competition:
                     continue
                 ft_h, ft_a, ht_h, ht_a = map(int, score.groups())
