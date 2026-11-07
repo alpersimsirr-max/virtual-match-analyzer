@@ -337,3 +337,99 @@ def collect_public_virtual_results():
     return diag
 
 collect_public_virtual_results()
+
+
+# Betual leagues are exposed under Soccer competitions named "(Virtual Matches)",
+# not necessarily under the separate sport.type=1 Virtual Sports catalogue.
+def collect_betual_competition_results():
+    from datetime import datetime, timedelta, timezone
+    diag={"status":"not_started","soccer_sports":[],"catalogue_keys":[],
+          "queries":[],"parsed_count":0,"errors":[],"sample":[]}
+    try:
+        sess=swarm_call({"command":"request_session","params":{"site_id":SWARM_SITE_ID,"language":"eng"}})
+        sid=(sess.get("data") or {}).get("sid")
+        if not sid: raise RuntimeError("Swarm SID alınamadı")
+        def get(params):
+            return swarm_call({"command":"get","params":params},sid)
+        # Get all sports; do not confuse Soccer's Betual virtual leagues with
+        # the separate Virtual Football Pro / Virtual Football League products.
+        sr=get({"source":"betting","what":{"sport":["id","name","alias","type"]}})
+        sd=(sr.get("data") or {}).get("data") or sr.get("data") or {}
+        diag["catalogue_keys"]=list(sd.keys()) if isinstance(sd,dict) else []
+        raw=sd.get("sport",{}) if isinstance(sd,dict) else {}
+        if isinstance(raw,list): sports=raw
+        elif isinstance(raw,dict): sports=list(raw.values())
+        else: sports=[]
+        for sp in sports:
+            if not isinstance(sp,dict): continue
+            alias=str(sp.get("alias") or "").lower()
+            name=str(sp.get("name") or "").lower()
+            if alias=="soccer" or name in ("soccer","football"):
+                diag["soccer_sports"].append(sp)
+        # If catalogue response omitted sports, use the canonical Soccer sport id.
+        if not diag["soccer_sports"]:
+            diag["soccer_sports"]=[{"id":1,"name":"Soccer","alias":"Soccer","fallback":True}]
+        now=datetime.now(timezone.utc)
+        collected=[]
+        for sp in diag["soccer_sports"]:
+            sid_sport=int(sp.get("id") or 1)
+            base={"from_date":int((now-timedelta(days=60)).timestamp()),
+                  "to_date":int(now.timestamp()),"sport_id":sid_sport}
+            for label,params in [
+                ("soccer_60d",base),
+                ("soccer_60d_type2",dict(base,sport_type=2)),
+                ("soccer_no_dates",{"sport_id":sid_sport})
+            ]:
+                try:
+                    res=swarm_call({"command":"get_result_games","params":params},sid)
+                    data=res.get("data") or {}
+                    games=((data.get("games") or {}).get("game") or [])
+                    if isinstance(games,dict): games=list(games.values())
+                    virtual_seen=0
+                    for g in games:
+                        comp=str(g.get("competition_name") or "")
+                        name=str(g.get("game_name") or "")
+                        # Strictly require Betual's virtual competition label and
+                        # virtual team names; ordinary football is never imported.
+                        if "virtual matches" not in comp.lower(): continue
+                        virtual_seen+=1
+                        if " - " not in name: continue
+                        home,away=name.split(" - ",1)
+                        if "virtual" not in home.lower() or "virtual" not in away.lower(): continue
+                        ft=score_pair(g.get("scores")); ht=score_pair(g.get("scores1"))
+                        if not ft or not ht: continue
+                        collected.append({"home_team":home.strip(),"away_team":away.strip(),
+                          "ft_home":ft[0],"ft_away":ft[1],"ht_home":ht[0],"ht_away":ht[1],
+                          "date":g.get("date"),"game_id":str(g.get("game_id") or ""),
+                          "sport_id":str(sid_sport),"competition":comp,
+                          "source":"BetConstruct Swarm get_result_games Soccer / Betual Virtual Matches"})
+                    diag["queries"].append({"sport_id":sid_sport,"variant":label,
+                      "code":res.get("code"),"total_games":len(games),"virtual_competition_games":virtual_seen})
+                    # The broadest response usually contains all results; avoid
+                    # redundant calls once this sport returns any virtual rows.
+                    if virtual_seen: break
+                except Exception as e:
+                    diag["errors"].append(str(sid_sport)+" "+label+": "+str(e)[:300])
+        # De-duplicate only by stable game ID or the complete score signature.
+        path=Path("data/matches.json")
+        previous=json.loads(path.read_text(encoding="utf-8")) if path.exists() and path.stat().st_size else {}
+        merged={}
+        for x in previous.get("matches",[])+collected:
+            key=str(x.get("game_id") or (x.get("competition"),x.get("date"),x.get("home_team"),
+                x.get("away_team"),x.get("ft_home"),x.get("ft_away"),x.get("ht_home"),x.get("ht_away")))
+            merged[key]=x
+        all_matches=sorted(merged.values(),key=lambda x:str(x.get("date") or ""))
+        Path("data").mkdir(exist_ok=True)
+        Path("data/matches.json").write_text(json.dumps({
+          "updated_at":datetime.now(timezone.utc).isoformat(),"match_count":len(all_matches),
+          "sources":[{"url":SWARM_LP,"method":"get_result_games","filter":"Soccer competition contains Betual Virtual Matches"}],
+          "matches":all_matches},ensure_ascii=False,indent=2),encoding="utf-8")
+        diag["parsed_count"]=len(collected);diag["sample"]=collected[:8]
+        diag["status"]="success" if collected else "no_verified_matches"
+    except Exception as e:
+        diag["status"]="failed";diag["errors"].append(str(e)[:800])
+    Path("data/betual_competition_probe.json").write_text(json.dumps(diag,ensure_ascii=False,indent=2),encoding="utf-8")
+    print("BETUAL_COMPETITION_PROBE="+json.dumps({k:v for k,v in diag.items() if k!="sample"},ensure_ascii=False))
+    return diag
+
+collect_betual_competition_results()
