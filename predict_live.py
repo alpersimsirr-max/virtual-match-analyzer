@@ -55,10 +55,10 @@ def main():
                 "status": "waiting_for_verified_live_score_and_minute",
             })
             continue
-        candidates.append((m, minute, hs, aws))
+        candidates.append((m, minute, hs, aws, sport))
 
     forecasts = []
-    for m, minute, hs, aws in candidates:
+    for m, minute, hs, aws, sport in candidates:
         try:
             from types import SimpleNamespace
             args = SimpleNamespace(
@@ -92,7 +92,7 @@ def main():
         "status": status,
         "archive_match_count": len(archive.get("matches", [])),
         "live_catalogue_count": len(live.get("matches", [])),
-        "football_live_count": sum(1 for m in live.get("matches", []) if "virtual" in (str(m.get("home_team",""))+" "+str(m.get("away_team","")).lower()) and isinstance((m.get("raw_score_fields") or {}).get("stats",{}).get("goal"),dict)),
+        "football_live_count": sum(1 for m in live.get("matches", []) if "virtual" in (str(m.get("home_team",""))+" "+str(m.get("away_team",""))).casefold() and isinstance(((m.get("raw_score_fields") or {}).get("stats") or {}).get("goal"),dict)),
         "live_forecast_count": len(forecasts),
         "waiting_count": len(waiting),
         "note": "Only verified live score and minute can trigger a live prediction. No pre-match estimate is presented as a live prediction.",
