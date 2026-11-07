@@ -2,16 +2,10 @@
   "status": "no_verified_matches",
   "sports": [
     {
-      "alias": "VirtualHorseRacing",
-      "type": 1,
-      "id": 54,
-      "name": "Virtual Horse Racing"
-    },
-    {
-      "alias": "VirtualGreyhoundRacing",
-      "type": 1,
       "id": 55,
-      "name": "Virtual Greyhounds"
+      "name": "Virtual Greyhounds",
+      "alias": "VirtualGreyhoundRacing",
+      "type": 1
     },
     {
       "id": 118,
@@ -20,10 +14,10 @@
       "type": 1
     },
     {
-      "alias": "VirtualBicycle",
-      "type": 1,
       "id": 150,
-      "name": "Virtual Cycling"
+      "name": "Virtual Cycling",
+      "alias": "VirtualBicycle",
+      "type": 1
     },
     {
       "id": 173,
@@ -48,22 +42,16 @@
       "name": "Virtual Drag Racing",
       "alias": "VirtualDragRacing",
       "type": 1
+    },
+    {
+      "alias": "VirtualHorseRacing",
+      "type": 1,
+      "id": 54,
+      "name": "Virtual Horse Racing"
     }
   ],
   "queries": [
     {
-      "sport_id": 54,
-      "variant": "sport_id",
-      "code": 0,
-      "count": 0
-    },
-    {
-      "sport_id": 54,
-      "variant": "sport_id_type",
-      "code": 0,
-      "count": 0
-    },
-    {
       "sport_id": 55,
       "variant": "sport_id",
       "code": 0,
@@ -143,6 +131,18 @@
     },
     {
       "sport_id": 209,
+      "variant": "sport_id_type",
+      "code": 0,
+      "count": 0
+    },
+    {
+      "sport_id": 54,
+      "variant": "sport_id",
+      "code": 0,
+      "count": 0
+    },
+    {
+      "sport_id": 54,
       "variant": "sport_id_type",
       "code": 0,
       "count": 0
