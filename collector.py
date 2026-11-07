@@ -141,3 +141,52 @@ def collect_swarm_results():
     return probe
 
 collect_swarm_results()
+
+# Discover the sportsbook's own virtual-sports IDs through the documented
+# BetConstruct Swarm "get" data source. This is diagnostic only; it does not
+# merge unverified events into the prediction archive.
+def discover_virtual_catalog():
+    probe = {"endpoint": SWARM_LP, "status":"not_tested", "queries":[], "errors":[]}
+    try:
+        session = swarm_call({"command":"request_session",
+                              "params":{"site_id":SWARM_SITE_ID,"language":"eng"}})
+        sid = (session.get("data") or {}).get("sid")
+        if not sid:
+            raise RuntimeError("No Swarm SID")
+        requests_to_try = [
+            {"label":"sports_catalog",
+             "params":{"source":"betting","what":{"sport":["id","name","alias","type"]}}},
+            {"label":"virtual_sports_catalog",
+             "params":{"source":"betting","what":{"sport":["id","name","alias","type"]},
+                       "where":{"sport":{"type":{"@in":[2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]}}}}},
+            {"label":"virtual_competitions",
+             "params":{"source":"betting","what":{"competition":["id","name","_parent_id"]},
+                       "where":{"sport":{"type":{"@in":[2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]}}}}},
+            {"label":"virtual_games",
+             "params":{"source":"betting","what":{"game":["id","team1_name","team2_name","start_ts","is_live","sport_alias","sport_id","competition_id"]},
+                       "where":{"sport":{"type":{"@in":[2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]}}}}}
+        ]
+        for item in requests_to_try:
+            try:
+                response = swarm_call({"command":"get","params":item["params"]}, sid)
+                data = response.get("data") or {}
+                # Keep compact but useful evidence, including response code and
+                # the returned entity collections for schema inspection.
+                compact = {"label":item["label"],"code":response.get("code"),
+                           "data_keys":list(data.keys()) if isinstance(data,dict) else [],
+                           "data":data}
+                probe["queries"].append(compact)
+            except Exception as exc:
+                probe["errors"].append(item["label"]+": "+str(exc)[:400])
+        probe["status"] = "success" if probe["queries"] else "failed"
+    except Exception as exc:
+        probe["status"]="failed"
+        probe["errors"].append(str(exc)[:800])
+    Path("data/virtual_discovery.json").write_text(
+        json.dumps(probe,ensure_ascii=False,indent=2),encoding="utf-8")
+    print("VIRTUAL_DISCOVERY=" + json.dumps(
+        {"status":probe["status"],"queries":[{"label":q["label"],"code":q["code"],"data_keys":q["data_keys"]} for q in probe["queries"]],"errors":probe["errors"]},
+        ensure_ascii=False))
+    return probe
+
+discover_virtual_catalog()
