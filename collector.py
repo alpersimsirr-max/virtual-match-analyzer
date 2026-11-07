@@ -603,10 +603,18 @@ def collect_betual_live_virtual_games():
             if clock_match:
                 elapsed=int(clock_match.group(1)) + int(clock_match.group(2) or 0)/60
             minute=None
-            if elapsed is not None and period=="first_half" and 0 <= elapsed <= 17:
-                minute=round(elapsed*3)
-            elif elapsed is not None and period=="second_half" and 0 <= elapsed <= 17:
-                minute=round((15+elapsed)*3)
+            # Betual virtual football has two 15-minute halves. The feed may
+            # send mm:ss (elapsed virtual minutes) or a plain numeric clock.
+            if elapsed is not None and period=="first_half":
+                if ":" in clock and 0 <= elapsed <= 17:
+                    minute=round(elapsed*3)
+                elif re.fullmatch(r"\d{1,2}",clock) and 0 <= elapsed <= 15:
+                    minute=round(elapsed*3)
+            elif elapsed is not None and period=="second_half":
+                if ":" in clock and 0 <= elapsed <= 17:
+                    minute=round((15+elapsed)*3)
+                elif re.fullmatch(r"\d{1,2}",clock) and 0 <= elapsed <= 45:
+                    minute=round(45+elapsed)
             goals=stats.get("goal") if isinstance(stats.get("goal"),dict) else {}
             stat_home=as_int(goals.get("team1_value")); stat_away=as_int(goals.get("team2_value"))
             stats_agree=(stat_home is None or stat_home==score_home) and (stat_away is None or stat_away==score_away)
