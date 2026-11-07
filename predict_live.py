@@ -17,6 +17,14 @@ def main():
     live = json.loads(live_path.read_text(encoding="utf-8")) if live_path.exists() else {"matches": []}
     archive = json.loads(archive_path.read_text(encoding="utf-8")) if archive_path.exists() else {"matches": []}
 
+    source_fetched_at = live.get("source_fetched_at") or live.get("updated_at")
+    try:
+        source_age_seconds = max(0, (datetime.now(timezone.utc) - datetime.fromisoformat(source_fetched_at.replace("Z", "+00:00"))).total_seconds())
+        source_fresh = source_age_seconds <= 120
+    except (AttributeError, TypeError, ValueError):
+        source_age_seconds = None
+        source_fresh = False
+
     candidates = []
     waiting = []
     for m in live.get("matches", []):
@@ -37,6 +45,14 @@ def main():
             continue
         if sport == "basketball":
             continue  # separate basketball forecast model is added below
+        if not source_fresh:
+            waiting.append({
+                "game_id": m.get("game_id"), "home_team": m.get("home_team"),
+                "away_team": m.get("away_team"), "sport": sport,
+                "status": "blocked_stale_or_missing_source_timestamp",
+                "source_age_seconds": source_age_seconds,
+            })
+            continue
         minute = m.get("minute")
         hs, aws = m.get("home_score"), m.get("away_score")
         # Never infer a live score from a fixture or kickoff timestamp.
@@ -89,6 +105,9 @@ def main():
     status = "success" if forecasts else "waiting_for_live_data"
     output = {
         "updated_at": datetime.now(timezone.utc).isoformat(),
+        "source_fetched_at": source_fetched_at,
+        "source_age_seconds": round(source_age_seconds, 1) if source_age_seconds is not None else None,
+        "source_fresh": source_fresh,
         "status": status,
         "archive_match_count": len(archive.get("matches", [])),
         "live_catalogue_count": len(live.get("matches", [])),
