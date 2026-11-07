@@ -28,9 +28,8 @@ jobs:
       - name: Collect rendered Betual virtual results
         run: python collect_browser_results.py
       - name: Inspect supplied live match URL
-        if: ${{ inputs.match_url != '' }}
         env:
-          MATCH_URL: ${{ inputs.match_url }}
+          MATCH_URL: ${{ inputs.match_url || 'https://m.milyoner549.com/tr/sports/live/event-view/Soccer/Virtual%20Matches/18296755/betual-england-premier-league/31486770/chelsea-virtual-liverpool-virtual?s=2948.622314453125' }}
         run: python live_link_probe.py
       - name: Generate automatic virtual football forecasts
         run: python predict_live.py
