@@ -461,6 +461,24 @@ def probe_betual_event_ids():
                 diag["get_result_games"].append({"game_id":gid,"code":r.get("code"),
                   "count":len(games),"sample":games[:2]})
             except Exception as e: diag["errors"].append("get_result_games "+str(gid)+": "+str(e)[:300])
+        # Inspect the live betting catalogue records behind the URL IDs.
+        # The URL's first ID appears to be a competition and the second a game;
+        # verify this via catalogue lookups before importing anything.
+        diag["catalogue_lookups"]=[]
+        for kind, ids, fields in [
+            ("competition", [18296834, 18296755], ["id","name","sport_id","_parent_id"]),
+            ("game", [31485451, 31485775], ["id","team1_name","team2_name","start_ts","is_live","sport_id","competition_id"])
+        ]:
+            for item_id in ids:
+                try:
+                    q={"source":"betting","what":{kind:fields},"where":{kind:{"id":item_id}}}
+                    rr=swarm_call({"command":"get","params":q},sid)
+                    dd=rr.get("data") or {}
+                    nested=dd.get("data") or dd
+                    diag["catalogue_lookups"].append({"kind":kind,"id":item_id,
+                        "code":rr.get("code"),"data":nested})
+                except Exception as e:
+                    diag["errors"].append("catalogue "+kind+" "+str(item_id)+": "+str(e)[:300])
         # Check whether the historical endpoint responds when no filters are supplied,
         # and with each documented sport_type value.
         now=datetime.now(timezone.utc)
