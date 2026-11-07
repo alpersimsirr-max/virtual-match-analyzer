@@ -16,7 +16,7 @@ from pathlib import Path
 
 
 def norm(value):
-    return re.sub(r"\\s+", " ", str(value or "")).strip().casefold()
+    return re.sub(r"\s+", " ", str(value or "")).strip().casefold()
 
 
 def poisson(k, lam):
