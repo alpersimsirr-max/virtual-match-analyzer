@@ -1,142 +1,32 @@
 {
-  "updated_at": "2026-11-12T00:02:33.941452+00:00",
+  "updated_at": "2026-11-12T00:19:19.276087+00:00",
   "source_fetched_at": "2026-11-12T00:02:33.082433+00:00",
-  "source_age_seconds": 0.8,
-  "source_fresh": true,
-  "status": "success",
+  "source_age_seconds": 1006.2,
+  "source_fresh": false,
+  "status": "waiting_for_live_data",
   "archive_match_count": 680,
   "live_catalogue_count": 48,
   "football_live_count": 2,
-  "live_forecast_count": 2,
-  "waiting_count": 0,
+  "live_forecast_count": 0,
+  "waiting_count": 2,
   "note": "Only verified live score and minute can trigger a live prediction. No pre-match estimate is presented as a live prediction.",
-  "forecasts": [
+  "forecasts": [],
+  "waiting_for_live_data": [
     {
       "game_id": "31539732",
       "home_team": "Arsenal Virtual",
       "away_team": "Brentford Virtual",
-      "live_state": {
-        "minute": 9,
-        "score": "1-0"
-      },
       "sport": "football",
-      "display_clock": "3",
-      "period": "first_half",
-      "status": "live_prediction",
-      "prediction": {
-        "match": "Arsenal Virtual - Brentford Virtual",
-        "historical_team_stats": {
-          "home": {
-            "played": 13,
-            "goals_for": 23,
-            "goals_against": 12,
-            "avg_scored": 1.77,
-            "avg_conceded": 0.92,
-            "ht_goals_for": 11,
-            "ht_goals_against": 4
-          },
-          "away": {
-            "played": 12,
-            "goals_for": 16,
-            "goals_against": 16,
-            "avg_scored": 1.33,
-            "avg_conceded": 1.33,
-            "ht_goals_for": 10,
-            "ht_goals_against": 7
-          }
-        },
-        "data_matches": 680,
-        "home_team_matches": 13,
-        "away_team_matches": 12,
-        "live_state": {
-          "minute": 9,
-          "score": "1-0"
-        },
-        "half_time_prediction": "1-0",
-        "half_time_status": "forecast",
-        "full_time_prediction": "2-1",
-        "alternative_scores": [
-          "2-0",
-          "1-1"
-        ],
-        "probabilities": {
-          "over_2_5": 0.695,
-          "over_3_5": 0.435,
-          "over_4_5": 0.225,
-          "home_win": 0.702,
-          "draw": 0.183,
-          "away_win": 0.115,
-          "home_to_score_again": 0.739,
-          "away_to_score_again": 0.658,
-          "any_more_goal": 0.911,
-          "half_time_over_0_5": 1.0
-        },
-        "warning": "Deneysel tahmin: veri kümesi küçük ve takım başına maç sayısı sınırlı."
-      }
+      "status": "blocked_stale_or_missing_source_timestamp",
+      "source_age_seconds": 1006.19359
     },
     {
       "game_id": "31539759",
       "home_team": "Freiburg Virtual",
       "away_team": "Eintracht Frankfurt Virtual",
-      "live_state": {
-        "minute": 6,
-        "score": "1-0"
-      },
       "sport": "football",
-      "display_clock": "2",
-      "period": "first_half",
-      "status": "live_prediction",
-      "prediction": {
-        "match": "Freiburg Virtual - Eintracht Frankfurt Virtual",
-        "historical_team_stats": {
-          "home": {
-            "played": 13,
-            "goals_for": 19,
-            "goals_against": 10,
-            "avg_scored": 1.46,
-            "avg_conceded": 0.77,
-            "ht_goals_for": 11,
-            "ht_goals_against": 7
-          },
-          "away": {
-            "played": 14,
-            "goals_for": 21,
-            "goals_against": 17,
-            "avg_scored": 1.5,
-            "avg_conceded": 1.21,
-            "ht_goals_for": 12,
-            "ht_goals_against": 9
-          }
-        },
-        "data_matches": 680,
-        "home_team_matches": 13,
-        "away_team_matches": 14,
-        "live_state": {
-          "minute": 6,
-          "score": "1-0"
-        },
-        "half_time_prediction": "1-0",
-        "half_time_status": "forecast",
-        "full_time_prediction": "2-1",
-        "alternative_scores": [
-          "2-0",
-          "1-1"
-        ],
-        "probabilities": {
-          "over_2_5": 0.674,
-          "over_3_5": 0.409,
-          "over_4_5": 0.205,
-          "home_win": 0.691,
-          "draw": 0.191,
-          "away_win": 0.119,
-          "home_to_score_again": 0.717,
-          "away_to_score_again": 0.653,
-          "any_more_goal": 0.902,
-          "half_time_over_0_5": 1.0
-        },
-        "warning": "Deneysel tahmin: veri kümesi küçük ve takım başına maç sayısı sınırlı."
-      }
+      "status": "blocked_stale_or_missing_source_timestamp",
+      "source_age_seconds": 1006.19359
     }
-  ],
-  "waiting_for_live_data": []
+  ]
 }
