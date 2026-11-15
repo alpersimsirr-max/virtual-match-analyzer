@@ -1,108 +1,51 @@
 {
   "status": "success",
-  "live_virtual_count": 13,
+  "live_virtual_count": 9,
   "queries": [
     {
       "label": "live_game_catalogue",
       "code": 0,
-      "total_rows": 261,
-      "virtual_rows": 13,
+      "total_rows": 204,
+      "virtual_rows": 9,
       "sample": [
         {
-          "game_id": "31579109",
-          "home_team": "Serbia (Wom)",
-          "away_team": "Belgium (Wom) Virtual",
-          "start_ts": 1794763860,
+          "game_id": "31579403",
+          "home_team": "Pinar Karsiyaka Virtual",
+          "away_team": "Fenerbahce Virtual",
+          "start_ts": 1794768300,
           "is_live": 1,
           "competition_id": null,
           "competition": null,
-          "home_score": 1,
-          "away_score": 2,
-          "minute": null,
-          "period": null,
-          "live_state_verified": false,
-          "score_stats_agree": true,
-          "display_clock": "",
-          "current_game_state": "set4",
-          "raw_score_fields": {
-            "info": {
-              "additional_data": {},
-              "add_info": "",
-              "current_game_state": "set4",
-              "score1": "1",
-              "pass_team": "team1",
-              "shirt1_color": "000000",
-              "short1_color": "000000",
-              "short2_color": "000000",
-              "field": 0,
-              "score2": "2",
-              "shirt2_color": "000000"
-            },
-            "stats": {
-              "score_set1": {
-                "team1_value": 25,
-                "team2_value": 16
-              },
-              "score_set2": {
-                "team1_value": 19,
-                "team2_value": 25
-              },
-              "score_set3": {
-                "team1_value": 18,
-                "team2_value": 25
-              },
-              "score_set4": {
-                "team1_value": 15,
-                "team2_value": 16
-              },
-              "point": {
-                "team1_value": 77,
-                "team2_value": 82
-              },
-              "period": {
-                "team2_value": 4,
-                "team1_value": 3
-              },
-              "passes": {
-                "team1_value": null,
-                "team2_value": null
-              }
-            }
-          },
-          "source": "BetConstruct Swarm live betting catalogue game.info"
-        },
-        {
-          "game_id": "31579252",
-          "home_team": "Orlando Magic Virtual",
-          "away_team": "Charlotte Hornets Virtual",
-          "start_ts": 1794765690,
-          "is_live": 1,
-          "competition_id": null,
-          "competition": null,
-          "home_score": 24,
-          "away_score": 25,
-          "minute": 9,
+          "home_score": 13,
+          "away_score": 12,
+          "minute": 18,
           "period": "first_half",
           "live_state_verified": true,
           "score_stats_agree": true,
-          "display_clock": "03:00",
+          "display_clock": "06:00",
           "current_game_state": "set1",
           "raw_score_fields": {
             "info": {
-              "field": 0,
-              "score1": "24",
-              "score2": "25",
+              "add_info": "",
+              "current_game_state": "set1",
+              "score1": "13",
+              "score2": "12",
+              "short2_color": "000000",
+              "current_game_time": "06:00",
               "pass_team": "none",
+              "shirt1_color": "000000",
               "shirt2_color": "000000",
+              "short1_color": "000000",
+              "field": 0,
               "additional_data": {
                 "quarter": 1,
                 "quarterScores": [
                   {
                     "foulScore": {
-                      "team1": 1,
-                      "team2": 2
+                      "team2": 2,
+                      "team1": 2
                     },
-                    "stealScore": {
+                    "threePointScore": {
                       "team1": 0,
                       "team2": 0
                     },
@@ -115,23 +58,128 @@
                       "team2": 0
                     },
                     "assistScore": {
-                      "team2": 0,
-                      "team1": 0
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    "twoPointScore": {
+                      "team2": 4,
+                      "team1": 5
+                    },
+                    "stealScore": {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    "reboundScore": {
+                      "team1": 0,
+                      "team2": 0
                     },
                     "quarterNumber": 1,
                     "score": {
-                      "team1": 24,
-                      "team2": 25
+                      "team1": 13,
+                      "team2": 12
+                    }
+                  }
+                ],
+                "team1Players": null,
+                "team2Players": null
+              }
+            },
+            "stats": {
+              "twoPoints": {
+                "team1_value": 0,
+                "team2_value": 0
+              },
+              "threePoints": {
+                "team1_value": 0,
+                "team2_value": 0
+              },
+              "timeout": {
+                "team1_value": 5,
+                "team2_value": 5
+              },
+              "passes": {
+                "team1_value": null,
+                "team2_value": null
+              },
+              "score_set1": {
+                "team1_value": 13,
+                "team2_value": 12
+              },
+              "foul": {
+                "team1_value": 3,
+                "team2_value": 2
+              },
+              "point": {
+                "team1_value": 0,
+                "team2_value": 0
+              }
+            }
+          },
+          "source": "BetConstruct Swarm live betting catalogue game.info"
+        },
+        {
+          "game_id": "31579404",
+          "home_team": "Mersin MSK Virtual",
+          "away_team": "Aliaga Petkim Spor Virtual",
+          "start_ts": 1794768300,
+          "is_live": 1,
+          "competition_id": null,
+          "competition": null,
+          "home_score": 14,
+          "away_score": 11,
+          "minute": 18,
+          "period": "first_half",
+          "live_state_verified": true,
+          "score_stats_agree": true,
+          "display_clock": "06:00",
+          "current_game_state": "set1",
+          "raw_score_fields": {
+            "info": {
+              "field": 0,
+              "current_game_state": "set1",
+              "current_game_time": "06:00",
+              "score2": "11",
+              "pass_team": "none",
+              "short1_color": "000000",
+              "short2_color": "000000",
+              "additional_data": {
+                "quarter": 1,
+                "quarterScores": [
+                  {
+                    "score": {
+                      "team1": 14,
+                      "team2": 11
                     },
                     "twoPointScore": {
-                      "team1": 6,
-                      "team2": 6
-                    },
-                    "threePointScore": {
                       "team1": 3,
                       "team2": 4
                     },
+                    "threePointScore": {
+                      "team1": 1,
+                      "team2": 1
+                    },
                     "reboundScore": {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    "assistScore": {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    "quarterNumber": 1,
+                    "foulScore": {
+                      "team1": 0,
+                      "team2": 3
+                    },
+                    "stealScore": {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    "blockScore": {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    "timeoutScore": {
                       "team1": 0,
                       "team2": 0
                     }
@@ -140,16 +188,15 @@
                 "team1Players": null,
                 "team2Players": null
               },
-              "current_game_state": "set1",
-              "current_game_time": "03:00",
+              "add_info": "",
+              "score1": "14",
               "shirt1_color": "000000",
-              "short1_color": "000000",
-              "short2_color": "000000"
+              "shirt2_color": "000000"
             },
             "stats": {
               "point": {
-                "team2_value": 0,
-                "team1_value": 0
+                "team1_value": 0,
+                "team2_value": 0
               },
               "twoPoints": {
                 "team1_value": 0,
@@ -168,125 +215,95 @@
                 "team2_value": null
               },
               "score_set1": {
-                "team1_value": 24,
-                "team2_value": 25
+                "team1_value": 14,
+                "team2_value": 11
               },
               "foul": {
-                "team1_value": 1,
-                "team2_value": 2
+                "team1_value": 0,
+                "team2_value": 4
               }
             }
           },
           "source": "BetConstruct Swarm live betting catalogue game.info"
         },
         {
-          "game_id": "31579245",
-          "home_team": "Ukraine Virtual",
-          "away_team": "Netherlands Virtual",
-          "start_ts": 1794765460,
+          "game_id": "31579351",
+          "home_team": "Paris Basketball Virtual",
+          "away_team": "BC Dubai Virtual",
+          "start_ts": 1794767399,
           "is_live": 1,
           "competition_id": null,
           "competition": null,
-          "home_score": 1,
-          "away_score": 0,
-          "minute": null,
+          "home_score": 48,
+          "away_score": 53,
+          "minute": 48,
           "period": "second_half",
-          "live_state_verified": false,
+          "live_state_verified": true,
           "score_stats_agree": true,
-          "display_clock": "",
+          "display_clock": "01:00",
           "current_game_state": "set2",
           "raw_score_fields": {
             "info": {
-              "additional_data": {},
-              "current_game_state": "set2",
-              "score1": "1",
-              "pass_team": "team1",
-              "shirt2_color": "000000",
-              "field": 0,
-              "add_info": "",
-              "score2": "0",
-              "shirt1_color": "000000",
-              "short1_color": "000000",
-              "short2_color": "000000"
-            },
-            "stats": {
-              "passes": {
-                "team1_value": null,
-                "team2_value": null
-              },
-              "score_set1": {
-                "team1_value": 25,
-                "team2_value": 12
-              },
-              "score_set2": {
-                "team1_value": 9,
-                "team2_value": 7
-              },
-              "point": {
-                "team1_value": 34,
-                "team2_value": 19
-              },
-              "period": {
-                "team1_value": 2,
-                "team2_value": 1
-              }
-            }
-          },
-          "source": "BetConstruct Swarm live betting catalogue game.info"
-        },
-        {
-          "game_id": "31579299",
-          "home_team": "Anadolu Efes SK Virtual",
-          "away_team": "Tofas SK Virtual",
-          "start_ts": 1794765900,
-          "is_live": 1,
-          "competition_id": null,
-          "competition": null,
-          "home_score": 15,
-          "away_score": 19,
-          "minute": 15,
-          "period": "first_half",
-          "live_state_verified": true,
-          "score_stats_agree": true,
-          "display_clock": "05:00",
-          "current_game_state": "set1",
-          "raw_score_fields": {
-            "info": {
-              "score1": "15",
-              "score2": "19",
-              "pass_team": "none",
-              "shirt2_color": "000000",
-              "short1_color": "000000",
-              "short2_color": "000000",
               "additional_data": {
+                "quarter": 2,
                 "quarterScores": [
                   {
-                    "foulScore": {
+                    "assistScore": {
                       "team2": 0,
-                      "team1": 1
-                    },
-                    "twoPointScore": {
-                      "team1": 6,
-                      "team2": 7
+                      "team1": 0
                     },
                     "quarterNumber": 1,
-                    "threePointScore": {
-                      "team1": 1,
-                      "team2": 1
+                    "twoPointScore": {
+                      "team2": 6,
+                      "team1": 3
                     },
                     "stealScore": {
-                      "team1": 0,
-                      "team2": 0
+                      "team2": 0,
+                      "team1": 0
                     },
                     "blockScore": {
-                      "team1": 0,
-                      "team2": 0
+                      "team2": 0,
+                      "team1": 0
+                    },
+                    "score": {
+                      "team1": 29,
+                      "team2": 25
+                    },
+                    "foulScore": {
+                      "team1": 2,
+                      "team2": 3
+                    },
+                    "threePointScore": {
+                      "team1": 6,
+                      "team2": 3
                     },
                     "timeoutScore": {
                       "team1": 0,
                       "team2": 0
                     },
                     "reboundScore": {
+                      "team2": 0,
+                      "team1": 0
+                    }
+                  },
+                  {
+                    "reboundScore": {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    "score": {
+                      "team1": 19,
+                      "team2": 28
+                    },
+                    "twoPointScore": {
+                      "team1": 3,
+                      "team2": 8
+                    },
+                    "threePointScore": {
+                      "team1": 3,
+                      "team2": 3
+                    },
+                    "blockScore": {
                       "team1": 0,
                       "team2": 0
                     },
@@ -294,23 +311,45 @@
                       "team1": 0,
                       "team2": 0
                     },
-                    "score": {
-                      "team1": 15,
-                      "team2": 19
+                    "quarterNumber": 2,
+                    "foulScore": {
+                      "team1": 2,
+                      "team2": 2
+                    },
+                    "stealScore": {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    "timeoutScore": {
+                      "team2": 0,
+                      "team1": 0
                     }
                   }
                 ],
                 "team1Players": null,
-                "team2Players": null,
-                "quarter": 1
+                "team2Players": null
               },
               "add_info": "",
-              "current_game_state": "set1",
+              "score2": "53",
+              "pass_team": "none",
+              "short1_color": "000000",
+              "short2_color": "000000",
+              "current_game_state": "set2",
+              "current_game_time": "01:00",
+              "score1": "48",
               "shirt1_color": "000000",
-              "field": 0,
-              "current_game_time": "05:00"
+              "shirt2_color": "000000",
+              "field": 0
             },
             "stats": {
+              "foul": {
+                "team1_value": 2,
+                "team2_value": 2
+              },
+              "point": {
+                "team1_value": 0,
+                "team2_value": 0
+              },
               "twoPoints": {
                 "team1_value": 0,
                 "team2_value": 0
@@ -324,72 +363,72 @@
                 "team2_value": 5
               },
               "passes": {
-                "team2_value": null,
-                "team1_value": null
+                "team1_value": null,
+                "team2_value": null
               },
               "score_set1": {
-                "team1_value": 15,
-                "team2_value": 19
+                "team1_value": 29,
+                "team2_value": 25
               },
-              "foul": {
-                "team1_value": 1,
-                "team2_value": 0
-              },
-              "point": {
-                "team1_value": 0,
-                "team2_value": 0
+              "score_set2": {
+                "team1_value": 19,
+                "team2_value": 28
               }
             }
           },
           "source": "BetConstruct Swarm live betting catalogue game.info"
         },
         {
-          "game_id": "31579301",
-          "home_team": "Denizli Basket SK Virtual",
-          "away_team": "Mersin MSK Virtual",
-          "start_ts": 1794765900,
+          "game_id": "31579406",
+          "home_team": "Memphis Grizzlies Virtual",
+          "away_team": "Denver Nuggets Virtual",
+          "start_ts": 1794768570,
           "is_live": 1,
           "competition_id": null,
           "competition": null,
-          "home_score": 21,
-          "away_score": 15,
-          "minute": 15,
+          "home_score": 2,
+          "away_score": 0,
+          "minute": 30,
           "period": "first_half",
           "live_state_verified": true,
           "score_stats_agree": true,
-          "display_clock": "05:00",
+          "display_clock": "10:00",
           "current_game_state": "set1",
           "raw_score_fields": {
             "info": {
               "add_info": "",
+              "current_game_time": "10:00",
+              "score1": "2",
+              "score2": "0",
+              "shirt1_color": "000000",
+              "short1_color": "000000",
+              "short2_color": "000000",
               "current_game_state": "set1",
-              "score1": "21",
-              "score2": "15",
               "pass_team": "none",
               "shirt2_color": "000000",
-              "short1_color": "000000",
+              "field": 0,
               "additional_data": {
                 "team1Players": null,
                 "team2Players": null,
                 "quarter": 1,
                 "quarterScores": [
                   {
+                    "twoPointScore": {
+                      "team1": 1,
+                      "team2": 0
+                    },
                     "quarterNumber": 1,
                     "score": {
-                      "team1": 23,
-                      "team2": 15
-                    },
-                    "foulScore": {
-                      "team1": 1,
-                      "team2": 2
-                    },
-                    "twoPointScore": {
-                      "team2": 1,
-                      "team1": 8
+                      "team1": 2,
+                      "team2": 0
                     },
                     "threePointScore": {
-                      "team2": 4,
-                      "team1": 1
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    "stealScore": {
+                      "team1": 0,
+                      "team2": 0
                     },
                     "blockScore": {
                       "team1": 0,
@@ -399,34 +438,34 @@
                       "team1": 0,
                       "team2": 0
                     },
+                    "reboundScore": {
+                      "team1": 0,
+                      "team2": 0
+                    },
                     "assistScore": {
                       "team1": 0,
                       "team2": 0
                     },
-                    "stealScore": {
-                      "team1": 0,
-                      "team2": 0
-                    },
-                    "reboundScore": {
+                    "foulScore": {
                       "team1": 0,
                       "team2": 0
                     }
                   }
                 ]
-              },
-              "current_game_time": "05:00",
-              "shirt1_color": "000000",
-              "short2_color": "000000",
-              "field": 0
+              }
             },
             "stats": {
-              "twoPoints": {
-                "team2_value": 0,
-                "team1_value": 0
-              },
-              "threePoints": {
+              "point": {
                 "team1_value": 0,
                 "team2_value": 0
+              },
+              "twoPoints": {
+                "team1_value": 0,
+                "team2_value": 0
+              },
+              "threePoints": {
+                "team2_value": 0,
+                "team1_value": 0
               },
               "timeout": {
                 "team2_value": 5,
@@ -437,14 +476,415 @@
                 "team2_value": null
               },
               "score_set1": {
-                "team1_value": 21,
-                "team2_value": 15
+                "team1_value": 2,
+                "team2_value": 0
+              }
+            }
+          },
+          "source": "BetConstruct Swarm live betting catalogue game.info"
+        },
+        {
+          "game_id": "31579352",
+          "home_team": "Anadolu Efes SK Virtual",
+          "away_team": "AS Monaco Virtual",
+          "start_ts": 1794767399,
+          "is_live": 1,
+          "competition_id": null,
+          "competition": null,
+          "home_score": 34,
+          "away_score": 45,
+          "minute": 48,
+          "period": "second_half",
+          "live_state_verified": true,
+          "score_stats_agree": true,
+          "display_clock": "01:00",
+          "current_game_state": "set2",
+          "raw_score_fields": {
+            "info": {
+              "short2_color": "000000",
+              "field": 0,
+              "additional_data": {
+                "team2Players": null,
+                "quarter": 2,
+                "quarterScores": [
+                  {
+                    "quarterNumber": 1,
+                    "score": {
+                      "team1": 20,
+                      "team2": 21
+                    },
+                    "foulScore": {
+                      "team1": 4,
+                      "team2": 5
+                    },
+                    "twoPointScore": {
+                      "team1": 5,
+                      "team2": 3
+                    },
+                    "blockScore": {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    "threePointScore": {
+                      "team1": 1,
+                      "team2": 3
+                    },
+                    "stealScore": {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    "timeoutScore": {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    "reboundScore": {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    "assistScore": {
+                      "team1": 0,
+                      "team2": 0
+                    }
+                  },
+                  {
+                    "reboundScore": {
+                      "team2": 0,
+                      "team1": 0
+                    },
+                    "assistScore": {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    "score": {
+                      "team1": 14,
+                      "team2": 24
+                    },
+                    "twoPointScore": {
+                      "team2": 7,
+                      "team1": 3
+                    },
+                    "threePointScore": {
+                      "team1": 2,
+                      "team2": 2
+                    },
+                    "quarterNumber": 2,
+                    "foulScore": {
+                      "team1": 3,
+                      "team2": 2
+                    },
+                    "stealScore": {
+                      "team2": 0,
+                      "team1": 0
+                    },
+                    "blockScore": {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    "timeoutScore": {
+                      "team1": 0,
+                      "team2": 0
+                    }
+                  }
+                ],
+                "team1Players": null
               },
+              "add_info": "",
+              "current_game_state": "set2",
+              "score1": "34",
+              "shirt2_color": "000000",
+              "current_game_time": "01:00",
+              "score2": "45",
+              "pass_team": "none",
+              "shirt1_color": "000000",
+              "short1_color": "000000"
+            },
+            "stats": {
               "foul": {
-                "team2_value": 1,
-                "team1_value": 1
+                "team1_value": 3,
+                "team2_value": 2
               },
               "point": {
+                "team1_value": 0,
+                "team2_value": 0
+              },
+              "twoPoints": {
+                "team1_value": 0,
+                "team2_value": 0
+              },
+              "threePoints": {
+                "team1_value": 0,
+                "team2_value": 0
+              },
+              "timeout": {
+                "team1_value": 5,
+                "team2_value": 5
+              },
+              "passes": {
+                "team1_value": null,
+                "team2_value": null
+              },
+              "score_set1": {
+                "team1_value": 20,
+                "team2_value": 21
+              },
+              "score_set2": {
+                "team1_value": 14,
+                "team2_value": 24
+              }
+            }
+          },
+          "source": "BetConstruct Swarm live betting catalogue game.info"
+        },
+        {
+          "game_id": "31579405",
+          "home_team": "Cleveland Cavaliers Virtual",
+          "away_team": "Houston Rockets Virtual",
+          "start_ts": 1794768570,
+          "is_live": 1,
+          "competition_id": null,
+          "competition": null,
+          "home_score": 0,
+          "away_score": 2,
+          "minute": 30,
+          "period": "first_half",
+          "live_state_verified": true,
+          "score_stats_agree": true,
+          "display_clock": "10:00",
+          "current_game_state": "set1",
+          "raw_score_fields": {
+            "info": {
+              "field": 0,
+              "additional_data": {
+                "quarter": 1,
+                "quarterScores": [
+                  {
+                    "twoPointScore": {
+                      "team1": 0,
+                      "team2": 1
+                    },
+                    "blockScore": {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    "assistScore": {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    "quarterNumber": 1,
+                    "threePointScore": {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    "stealScore": {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    "timeoutScore": {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    "reboundScore": {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    "score": {
+                      "team1": 0,
+                      "team2": 2
+                    },
+                    "foulScore": {
+                      "team1": 0,
+                      "team2": 0
+                    }
+                  }
+                ],
+                "team1Players": null,
+                "team2Players": null
+              },
+              "add_info": "",
+              "current_game_state": "set1",
+              "current_game_time": "10:00",
+              "score2": "2",
+              "pass_team": "none",
+              "score1": "0",
+              "shirt1_color": "000000",
+              "shirt2_color": "000000",
+              "short1_color": "000000",
+              "short2_color": "000000"
+            },
+            "stats": {
+              "passes": {
+                "team1_value": null,
+                "team2_value": null
+              },
+              "score_set1": {
+                "team1_value": 0,
+                "team2_value": 2
+              },
+              "point": {
+                "team1_value": 0,
+                "team2_value": 0
+              },
+              "twoPoints": {
+                "team1_value": 0,
+                "team2_value": 0
+              },
+              "threePoints": {
+                "team1_value": 0,
+                "team2_value": 0
+              },
+              "timeout": {
+                "team1_value": 5,
+                "team2_value": 5
+              }
+            }
+          },
+          "source": "BetConstruct Swarm live betting catalogue game.info"
+        },
+        {
+          "game_id": "31579353",
+          "home_team": "Saski Baskonia Virtual",
+          "away_team": "FC Barcelona Basquet Virtual",
+          "start_ts": 1794767399,
+          "is_live": 1,
+          "competition_id": null,
+          "competition": null,
+          "home_score": 58,
+          "away_score": 42,
+          "minute": 48,
+          "period": "second_half",
+          "live_state_verified": true,
+          "score_stats_agree": true,
+          "display_clock": "01:00",
+          "current_game_state": "set2",
+          "raw_score_fields": {
+            "info": {
+              "add_info": "",
+              "current_game_state": "set2",
+              "current_game_time": "01:00",
+              "pass_team": "none",
+              "short2_color": "000000",
+              "field": 0,
+              "score1": "58",
+              "score2": "42",
+              "shirt1_color": "000000",
+              "shirt2_color": "000000",
+              "short1_color": "000000",
+              "additional_data": {
+                "quarter": 2,
+                "quarterScores": [
+                  {
+                    "quarterNumber": 1,
+                    "score": {
+                      "team1": 24,
+                      "team2": 22
+                    },
+                    "stealScore": {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    "blockScore": {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    "timeoutScore": {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    "assistScore": {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    "foulScore": {
+                      "team2": 5,
+                      "team1": 6
+                    },
+                    "twoPointScore": {
+                      "team1": 3,
+                      "team2": 7
+                    },
+                    "threePointScore": {
+                      "team1": 3,
+                      "team2": 0
+                    },
+                    "reboundScore": {
+                      "team1": 0,
+                      "team2": 0
+                    }
+                  },
+                  {
+                    "reboundScore": {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    "assistScore": {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    "quarterNumber": 2,
+                    "stealScore": {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    "timeoutScore": {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    "score": {
+                      "team1": 34,
+                      "team2": 20
+                    },
+                    "foulScore": {
+                      "team1": 5,
+                      "team2": 3
+                    },
+                    "twoPointScore": {
+                      "team1": 11,
+                      "team2": 4
+                    },
+                    "threePointScore": {
+                      "team1": 2,
+                      "team2": 1
+                    },
+                    "blockScore": {
+                      "team1": 0,
+                      "team2": 0
+                    }
+                  }
+                ],
+                "team1Players": null,
+                "team2Players": null
+              }
+            },
+            "stats": {
+              "threePoints": {
+                "team2_value": 0,
+                "team1_value": 0
+              },
+              "timeout": {
+                "team1_value": 5,
+                "team2_value": 5
+              },
+              "passes": {
+                "team2_value": null,
+                "team1_value": null
+              },
+              "score_set1": {
+                "team1_value": 24,
+                "team2_value": 22
+              },
+              "score_set2": {
+                "team1_value": 34,
+                "team2_value": 20
+              },
+              "foul": {
+                "team2_value": 3,
+                "team1_value": 5
+              },
+              "point": {
+                "team1_value": 0,
+                "team2_value": 0
+              },
+              "twoPoints": {
                 "team1_value": 0,
                 "team2_value": 0
               }
@@ -453,185 +893,105 @@
           "source": "BetConstruct Swarm live betting catalogue game.info"
         },
         {
-          "game_id": "31579108",
-          "home_team": "Germany (Wom) Virtual",
-          "away_team": "Austria (Wom) Virtual",
-          "start_ts": 1794763860,
+          "game_id": "31579407",
+          "home_team": "Golden State Warriors Virtual",
+          "away_team": "Charlotte Hornets Virtual",
+          "start_ts": 1794768570,
           "is_live": 1,
           "competition_id": null,
           "competition": null,
-          "home_score": 2,
-          "away_score": 1,
-          "minute": null,
-          "period": null,
-          "live_state_verified": false,
-          "score_stats_agree": true,
-          "display_clock": "",
-          "current_game_state": "set4",
-          "raw_score_fields": {
-            "info": {
-              "add_info": "",
-              "score1": "2",
-              "pass_team": "team2",
-              "shirt1_color": "000000",
-              "short2_color": "000000",
-              "field": 0,
-              "current_game_state": "set4",
-              "score2": "1",
-              "shirt2_color": "000000",
-              "short1_color": "000000",
-              "additional_data": {}
-            },
-            "stats": {
-              "period": {
-                "team2_value": 3,
-                "team1_value": 4
-              },
-              "passes": {
-                "team2_value": null,
-                "team1_value": null
-              },
-              "score_set1": {
-                "team2_value": 12,
-                "team1_value": 25
-              },
-              "score_set2": {
-                "team1_value": 25,
-                "team2_value": 18
-              },
-              "score_set3": {
-                "team1_value": 16,
-                "team2_value": 25
-              },
-              "score_set4": {
-                "team2_value": 21,
-                "team1_value": 17
-              },
-              "point": {
-                "team1_value": 83,
-                "team2_value": 76
-              }
-            }
-          },
-          "source": "BetConstruct Swarm live betting catalogue game.info"
-        },
-        {
-          "game_id": "31579120",
-          "home_team": "Jastrzebski Wegiel Virtual",
-          "away_team": "Sada Cruzeiro Virtual",
-          "start_ts": 1794764310,
-          "is_live": 1,
-          "competition_id": null,
-          "competition": null,
-          "home_score": 1,
+          "home_score": 0,
           "away_score": 2,
-          "minute": null,
-          "period": null,
-          "live_state_verified": false,
+          "minute": 30,
+          "period": "first_half",
+          "live_state_verified": true,
           "score_stats_agree": true,
-          "display_clock": "",
-          "current_game_state": "set4",
+          "display_clock": "10:00",
+          "current_game_state": "set1",
           "raw_score_fields": {
             "info": {
-              "add_info": "",
+              "score1": "0",
               "score2": "2",
+              "pass_team": "none",
               "shirt1_color": "000000",
               "short1_color": "000000",
-              "short2_color": "000000",
-              "additional_data": {},
-              "current_game_state": "set4",
-              "score1": "1",
-              "pass_team": "team2",
+              "current_game_state": "set1",
               "shirt2_color": "000000",
-              "field": 0
-            },
-            "stats": {
-              "point": {
-                "team1_value": 58,
-                "team2_value": 71
-              },
-              "period": {
-                "team1_value": 3,
-                "team2_value": 4
-              },
-              "passes": {
-                "team1_value": null,
-                "team2_value": null
-              },
-              "score_set1": {
-                "team1_value": 20,
-                "team2_value": 25
-              },
-              "score_set2": {
-                "team1_value": 13,
-                "team2_value": 25
-              },
-              "score_set3": {
-                "team1_value": 25,
-                "team2_value": 20
-              },
-              "score_set4": {
-                "team1_value": 0,
-                "team2_value": 1
-              }
-            }
-          },
-          "source": "BetConstruct Swarm live betting catalogue game.info"
-        },
-        {
-          "game_id": "31579119",
-          "home_team": "Sir Safety Perugia Virtual",
-          "away_team": "Itas Trentino Virtual",
-          "start_ts": 1794764310,
-          "is_live": 1,
-          "competition_id": null,
-          "competition": null,
-          "home_score": 1,
-          "away_score": 1,
-          "minute": null,
-          "period": null,
-          "live_state_verified": false,
-          "score_stats_agree": true,
-          "display_clock": "",
-          "current_game_state": "set3",
-          "raw_score_fields": {
-            "info": {
-              "score1": "1",
-              "pass_team": "team1",
-              "shirt1_color": "000000",
-              "shirt2_color": "000000",
-              "add_info": "",
-              "current_game_state": "set3",
-              "score2": "1",
-              "short1_color": "000000",
               "short2_color": "000000",
               "field": 0,
-              "additional_data": {}
+              "additional_data": {
+                "team1Players": null,
+                "team2Players": null,
+                "quarter": 1,
+                "quarterScores": [
+                  {
+                    "quarterNumber": 1,
+                    "foulScore": {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    "twoPointScore": {
+                      "team1": 0,
+                      "team2": 1
+                    },
+                    "threePointScore": {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    "stealScore": {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    "blockScore": {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    "reboundScore": {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    "score": {
+                      "team1": 0,
+                      "team2": 2
+                    },
+                    "timeoutScore": {
+                      "team2": 0,
+                      "team1": 0
+                    },
+                    "assistScore": {
+                      "team2": 0,
+                      "team1": 0
+                    }
+                  }
+                ]
+              },
+              "add_info": "",
+              "current_game_time": "10:00"
             },
             "stats": {
               "point": {
-                "team1_value": 65,
-                "team2_value": 64
+                "team1_value": 0,
+                "team2_value": 0
               },
-              "period": {
-                "team1_value": 3,
-                "team2_value": 2
+              "twoPoints": {
+                "team2_value": 0,
+                "team1_value": 0
+              },
+              "threePoints": {
+                "team1_value": 0,
+                "team2_value": 0
+              },
+              "timeout": {
+                "team1_value": 5,
+                "team2_value": 5
               },
               "passes": {
                 "team1_value": null,
                 "team2_value": null
               },
               "score_set1": {
-                "team1_value": 21,
-                "team2_value": 25
-              },
-              "score_set2": {
-                "team1_value": 25,
-                "team2_value": 17
-              },
-              "score_set3": {
-                "team2_value": 22,
-                "team1_value": 19
+                "team1_value": 0,
+                "team2_value": 2
               }
             }
           },
@@ -643,100 +1003,43 @@
   "errors": [],
   "matches": [
     {
-      "game_id": "31579109",
-      "home_team": "Serbia (Wom)",
-      "away_team": "Belgium (Wom) Virtual",
-      "start_ts": 1794763860,
+      "game_id": "31579403",
+      "home_team": "Pinar Karsiyaka Virtual",
+      "away_team": "Fenerbahce Virtual",
+      "start_ts": 1794768300,
       "is_live": 1,
       "competition_id": null,
       "competition": null,
-      "home_score": 1,
-      "away_score": 2,
-      "minute": null,
-      "period": null,
-      "live_state_verified": false,
-      "score_stats_agree": true,
-      "display_clock": "",
-      "current_game_state": "set4",
-      "raw_score_fields": {
-        "info": {
-          "additional_data": {},
-          "add_info": "",
-          "current_game_state": "set4",
-          "score1": "1",
-          "pass_team": "team1",
-          "shirt1_color": "000000",
-          "short1_color": "000000",
-          "short2_color": "000000",
-          "field": 0,
-          "score2": "2",
-          "shirt2_color": "000000"
-        },
-        "stats": {
-          "score_set1": {
-            "team1_value": 25,
-            "team2_value": 16
-          },
-          "score_set2": {
-            "team1_value": 19,
-            "team2_value": 25
-          },
-          "score_set3": {
-            "team1_value": 18,
-            "team2_value": 25
-          },
-          "score_set4": {
-            "team1_value": 15,
-            "team2_value": 16
-          },
-          "point": {
-            "team1_value": 77,
-            "team2_value": 82
-          },
-          "period": {
-            "team2_value": 4,
-            "team1_value": 3
-          },
-          "passes": {
-            "team1_value": null,
-            "team2_value": null
-          }
-        }
-      },
-      "source": "BetConstruct Swarm live betting catalogue game.info"
-    },
-    {
-      "game_id": "31579252",
-      "home_team": "Orlando Magic Virtual",
-      "away_team": "Charlotte Hornets Virtual",
-      "start_ts": 1794765690,
-      "is_live": 1,
-      "competition_id": null,
-      "competition": null,
-      "home_score": 24,
-      "away_score": 25,
-      "minute": 9,
+      "home_score": 13,
+      "away_score": 12,
+      "minute": 18,
       "period": "first_half",
       "live_state_verified": true,
       "score_stats_agree": true,
-      "display_clock": "03:00",
+      "display_clock": "06:00",
       "current_game_state": "set1",
       "raw_score_fields": {
         "info": {
-          "field": 0,
-          "score1": "24",
-          "score2": "25",
+          "add_info": "",
+          "current_game_state": "set1",
+          "score1": "13",
+          "score2": "12",
+          "short2_color": "000000",
+          "current_game_time": "06:00",
           "pass_team": "none",
+          "shirt1_color": "000000",
           "shirt2_color": "000000",
+          "short1_color": "000000",
+          "field": 0,
           "additional_data": {
             "quarter": 1,
             "quarterScores": [
               {
                 "foulScore": {
-                  "team1": 1,
-                  "team2": 2
+                  "team2": 2,
+                  "team1": 2
                 },
-                "stealScore": {
+                "threePointScore": {
                   "team1": 0,
                   "team2": 0
                 },
@@ -749,23 +1052,128 @@
                   "team2": 0
                 },
                 "assistScore": {
-                  "team2": 0,
-                  "team1": 0
+                  "team1": 0,
+                  "team2": 0
+                },
+                "twoPointScore": {
+                  "team2": 4,
+                  "team1": 5
+                },
+                "stealScore": {
+                  "team1": 0,
+                  "team2": 0
+                },
+                "reboundScore": {
+                  "team1": 0,
+                  "team2": 0
                 },
                 "quarterNumber": 1,
                 "score": {
-                  "team1": 24,
-                  "team2": 25
+                  "team1": 13,
+                  "team2": 12
+                }
+              }
+            ],
+            "team1Players": null,
+            "team2Players": null
+          }
+        },
+        "stats": {
+          "twoPoints": {
+            "team1_value": 0,
+            "team2_value": 0
+          },
+          "threePoints": {
+            "team1_value": 0,
+            "team2_value": 0
+          },
+          "timeout": {
+            "team1_value": 5,
+            "team2_value": 5
+          },
+          "passes": {
+            "team1_value": null,
+            "team2_value": null
+          },
+          "score_set1": {
+            "team1_value": 13,
+            "team2_value": 12
+          },
+          "foul": {
+            "team1_value": 3,
+            "team2_value": 2
+          },
+          "point": {
+            "team1_value": 0,
+            "team2_value": 0
+          }
+        }
+      },
+      "source": "BetConstruct Swarm live betting catalogue game.info"
+    },
+    {
+      "game_id": "31579404",
+      "home_team": "Mersin MSK Virtual",
+      "away_team": "Aliaga Petkim Spor Virtual",
+      "start_ts": 1794768300,
+      "is_live": 1,
+      "competition_id": null,
+      "competition": null,
+      "home_score": 14,
+      "away_score": 11,
+      "minute": 18,
+      "period": "first_half",
+      "live_state_verified": true,
+      "score_stats_agree": true,
+      "display_clock": "06:00",
+      "current_game_state": "set1",
+      "raw_score_fields": {
+        "info": {
+          "field": 0,
+          "current_game_state": "set1",
+          "current_game_time": "06:00",
+          "score2": "11",
+          "pass_team": "none",
+          "short1_color": "000000",
+          "short2_color": "000000",
+          "additional_data": {
+            "quarter": 1,
+            "quarterScores": [
+              {
+                "score": {
+                  "team1": 14,
+                  "team2": 11
                 },
                 "twoPointScore": {
-                  "team1": 6,
-                  "team2": 6
-                },
-                "threePointScore": {
                   "team1": 3,
                   "team2": 4
                 },
+                "threePointScore": {
+                  "team1": 1,
+                  "team2": 1
+                },
                 "reboundScore": {
+                  "team1": 0,
+                  "team2": 0
+                },
+                "assistScore": {
+                  "team1": 0,
+                  "team2": 0
+                },
+                "quarterNumber": 1,
+                "foulScore": {
+                  "team1": 0,
+                  "team2": 3
+                },
+                "stealScore": {
+                  "team1": 0,
+                  "team2": 0
+                },
+                "blockScore": {
+                  "team1": 0,
+                  "team2": 0
+                },
+                "timeoutScore": {
                   "team1": 0,
                   "team2": 0
                 }
@@ -774,16 +1182,15 @@
             "team1Players": null,
             "team2Players": null
           },
-          "current_game_state": "set1",
-          "current_game_time": "03:00",
+          "add_info": "",
+          "score1": "14",
           "shirt1_color": "000000",
-          "short1_color": "000000",
-          "short2_color": "000000"
+          "shirt2_color": "000000"
         },
         "stats": {
           "point": {
-            "team2_value": 0,
-            "team1_value": 0
+            "team1_value": 0,
+            "team2_value": 0
           },
           "twoPoints": {
             "team1_value": 0,
@@ -802,125 +1209,95 @@
             "team2_value": null
           },
           "score_set1": {
-            "team1_value": 24,
-            "team2_value": 25
+            "team1_value": 14,
+            "team2_value": 11
           },
           "foul": {
-            "team1_value": 1,
-            "team2_value": 2
+            "team1_value": 0,
+            "team2_value": 4
           }
         }
       },
       "source": "BetConstruct Swarm live betting catalogue game.info"
     },
     {
-      "game_id": "31579245",
-      "home_team": "Ukraine Virtual",
-      "away_team": "Netherlands Virtual",
-      "start_ts": 1794765460,
+      "game_id": "31579351",
+      "home_team": "Paris Basketball Virtual",
+      "away_team": "BC Dubai Virtual",
+      "start_ts": 1794767399,
       "is_live": 1,
       "competition_id": null,
       "competition": null,
-      "home_score": 1,
-      "away_score": 0,
-      "minute": null,
+      "home_score": 48,
+      "away_score": 53,
+      "minute": 48,
       "period": "second_half",
-      "live_state_verified": false,
+      "live_state_verified": true,
       "score_stats_agree": true,
-      "display_clock": "",
+      "display_clock": "01:00",
       "current_game_state": "set2",
       "raw_score_fields": {
         "info": {
-          "additional_data": {},
-          "current_game_state": "set2",
-          "score1": "1",
-          "pass_team": "team1",
-          "shirt2_color": "000000",
-          "field": 0,
-          "add_info": "",
-          "score2": "0",
-          "shirt1_color": "000000",
-          "short1_color": "000000",
-          "short2_color": "000000"
-        },
-        "stats": {
-          "passes": {
-            "team1_value": null,
-            "team2_value": null
-          },
-          "score_set1": {
-            "team1_value": 25,
-            "team2_value": 12
-          },
-          "score_set2": {
-            "team1_value": 9,
-            "team2_value": 7
-          },
-          "point": {
-            "team1_value": 34,
-            "team2_value": 19
-          },
-          "period": {
-            "team1_value": 2,
-            "team2_value": 1
-          }
-        }
-      },
-      "source": "BetConstruct Swarm live betting catalogue game.info"
-    },
-    {
-      "game_id": "31579299",
-      "home_team": "Anadolu Efes SK Virtual",
-      "away_team": "Tofas SK Virtual",
-      "start_ts": 1794765900,
-      "is_live": 1,
-      "competition_id": null,
-      "competition": null,
-      "home_score": 15,
-      "away_score": 19,
-      "minute": 15,
-      "period": "first_half",
-      "live_state_verified": true,
-      "score_stats_agree": true,
-      "display_clock": "05:00",
-      "current_game_state": "set1",
-      "raw_score_fields": {
-        "info": {
-          "score1": "15",
-          "score2": "19",
-          "pass_team": "none",
-          "shirt2_color": "000000",
-          "short1_color": "000000",
-          "short2_color": "000000",
           "additional_data": {
+            "quarter": 2,
             "quarterScores": [
               {
-                "foulScore": {
+                "assistScore": {
                   "team2": 0,
-                  "team1": 1
-                },
-                "twoPointScore": {
-                  "team1": 6,
-                  "team2": 7
+                  "team1": 0
                 },
                 "quarterNumber": 1,
-                "threePointScore": {
-                  "team1": 1,
-                  "team2": 1
+                "twoPointScore": {
+                  "team2": 6,
+                  "team1": 3
                 },
                 "stealScore": {
-                  "team1": 0,
-                  "team2": 0
+                  "team2": 0,
+                  "team1": 0
                 },
                 "blockScore": {
-                  "team1": 0,
-                  "team2": 0
+                  "team2": 0,
+                  "team1": 0
+                },
+                "score": {
+                  "team1": 29,
+                  "team2": 25
+                },
+                "foulScore": {
+                  "team1": 2,
+                  "team2": 3
+                },
+                "threePointScore": {
+                  "team1": 6,
+                  "team2": 3
                 },
                 "timeoutScore": {
                   "team1": 0,
                   "team2": 0
                 },
                 "reboundScore": {
+                  "team2": 0,
+                  "team1": 0
+                }
+              },
+              {
+                "reboundScore": {
+                  "team1": 0,
+                  "team2": 0
+                },
+                "score": {
+                  "team1": 19,
+                  "team2": 28
+                },
+                "twoPointScore": {
+                  "team1": 3,
+                  "team2": 8
+                },
+                "threePointScore": {
+                  "team1": 3,
+                  "team2": 3
+                },
+                "blockScore": {
                   "team1": 0,
                   "team2": 0
                 },
@@ -928,23 +1305,45 @@
                   "team1": 0,
                   "team2": 0
                 },
-                "score": {
-                  "team1": 15,
-                  "team2": 19
+                "quarterNumber": 2,
+                "foulScore": {
+                  "team1": 2,
+                  "team2": 2
+                },
+                "stealScore": {
+                  "team1": 0,
+                  "team2": 0
+                },
+                "timeoutScore": {
+                  "team2": 0,
+                  "team1": 0
                 }
               }
             ],
             "team1Players": null,
-            "team2Players": null,
-            "quarter": 1
+            "team2Players": null
           },
           "add_info": "",
-          "current_game_state": "set1",
+          "score2": "53",
+          "pass_team": "none",
+          "short1_color": "000000",
+          "short2_color": "000000",
+          "current_game_state": "set2",
+          "current_game_time": "01:00",
+          "score1": "48",
           "shirt1_color": "000000",
-          "field": 0,
-          "current_game_time": "05:00"
+          "shirt2_color": "000000",
+          "field": 0
         },
         "stats": {
+          "foul": {
+            "team1_value": 2,
+            "team2_value": 2
+          },
+          "point": {
+            "team1_value": 0,
+            "team2_value": 0
+          },
           "twoPoints": {
             "team1_value": 0,
             "team2_value": 0
@@ -958,72 +1357,72 @@
             "team2_value": 5
           },
           "passes": {
-            "team2_value": null,
-            "team1_value": null
+            "team1_value": null,
+            "team2_value": null
           },
           "score_set1": {
-            "team1_value": 15,
-            "team2_value": 19
+            "team1_value": 29,
+            "team2_value": 25
           },
-          "foul": {
-            "team1_value": 1,
-            "team2_value": 0
-          },
-          "point": {
-            "team1_value": 0,
-            "team2_value": 0
+          "score_set2": {
+            "team1_value": 19,
+            "team2_value": 28
           }
         }
       },
       "source": "BetConstruct Swarm live betting catalogue game.info"
     },
     {
-      "game_id": "31579301",
-      "home_team": "Denizli Basket SK Virtual",
-      "away_team": "Mersin MSK Virtual",
-      "start_ts": 1794765900,
+      "game_id": "31579406",
+      "home_team": "Memphis Grizzlies Virtual",
+      "away_team": "Denver Nuggets Virtual",
+      "start_ts": 1794768570,
       "is_live": 1,
       "competition_id": null,
       "competition": null,
-      "home_score": 21,
-      "away_score": 15,
-      "minute": 15,
+      "home_score": 2,
+      "away_score": 0,
+      "minute": 30,
       "period": "first_half",
       "live_state_verified": true,
       "score_stats_agree": true,
-      "display_clock": "05:00",
+      "display_clock": "10:00",
       "current_game_state": "set1",
       "raw_score_fields": {
         "info": {
           "add_info": "",
+          "current_game_time": "10:00",
+          "score1": "2",
+          "score2": "0",
+          "shirt1_color": "000000",
+          "short1_color": "000000",
+          "short2_color": "000000",
           "current_game_state": "set1",
-          "score1": "21",
-          "score2": "15",
           "pass_team": "none",
           "shirt2_color": "000000",
-          "short1_color": "000000",
+          "field": 0,
           "additional_data": {
             "team1Players": null,
             "team2Players": null,
             "quarter": 1,
             "quarterScores": [
               {
+                "twoPointScore": {
+                  "team1": 1,
+                  "team2": 0
+                },
                 "quarterNumber": 1,
                 "score": {
-                  "team1": 23,
-                  "team2": 15
-                },
-                "foulScore": {
-                  "team1": 1,
-                  "team2": 2
-                },
-                "twoPointScore": {
-                  "team2": 1,
-                  "team1": 8
+                  "team1": 2,
+                  "team2": 0
                 },
                 "threePointScore": {
-                  "team2": 4,
-                  "team1": 1
+                  "team1": 0,
+                  "team2": 0
+                },
+                "stealScore": {
+                  "team1": 0,
+                  "team2": 0
                 },
                 "blockScore": {
                   "team1": 0,
@@ -1033,34 +1432,34 @@
                   "team1": 0,
                   "team2": 0
                 },
+                "reboundScore": {
+                  "team1": 0,
+                  "team2": 0
+                },
                 "assistScore": {
                   "team1": 0,
                   "team2": 0
                 },
-                "stealScore": {
-                  "team1": 0,
-                  "team2": 0
-                },
-                "reboundScore": {
+                "foulScore": {
                   "team1": 0,
                   "team2": 0
                 }
               }
             ]
-          },
-          "current_game_time": "05:00",
-          "shirt1_color": "000000",
-          "short2_color": "000000",
-          "field": 0
+          }
         },
         "stats": {
-          "twoPoints": {
-            "team2_value": 0,
-            "team1_value": 0
-          },
-          "threePoints": {
+          "point": {
             "team1_value": 0,
             "team2_value": 0
+          },
+          "twoPoints": {
+            "team1_value": 0,
+            "team2_value": 0
+          },
+          "threePoints": {
+            "team2_value": 0,
+            "team1_value": 0
           },
           "timeout": {
             "team2_value": 5,
@@ -1071,15 +1470,7 @@
             "team2_value": null
           },
           "score_set1": {
-            "team1_value": 21,
-            "team2_value": 15
-          },
-          "foul": {
-            "team2_value": 1,
-            "team1_value": 1
-          },
-          "point": {
-            "team1_value": 0,
+            "team1_value": 2,
             "team2_value": 0
           }
         }
@@ -1087,353 +1478,49 @@
       "source": "BetConstruct Swarm live betting catalogue game.info"
     },
     {
-      "game_id": "31579108",
-      "home_team": "Germany (Wom) Virtual",
-      "away_team": "Austria (Wom) Virtual",
-      "start_ts": 1794763860,
+      "game_id": "31579352",
+      "home_team": "Anadolu Efes SK Virtual",
+      "away_team": "AS Monaco Virtual",
+      "start_ts": 1794767399,
       "is_live": 1,
       "competition_id": null,
       "competition": null,
-      "home_score": 2,
-      "away_score": 1,
-      "minute": null,
-      "period": null,
-      "live_state_verified": false,
-      "score_stats_agree": true,
-      "display_clock": "",
-      "current_game_state": "set4",
-      "raw_score_fields": {
-        "info": {
-          "add_info": "",
-          "score1": "2",
-          "pass_team": "team2",
-          "shirt1_color": "000000",
-          "short2_color": "000000",
-          "field": 0,
-          "current_game_state": "set4",
-          "score2": "1",
-          "shirt2_color": "000000",
-          "short1_color": "000000",
-          "additional_data": {}
-        },
-        "stats": {
-          "period": {
-            "team2_value": 3,
-            "team1_value": 4
-          },
-          "passes": {
-            "team2_value": null,
-            "team1_value": null
-          },
-          "score_set1": {
-            "team2_value": 12,
-            "team1_value": 25
-          },
-          "score_set2": {
-            "team1_value": 25,
-            "team2_value": 18
-          },
-          "score_set3": {
-            "team1_value": 16,
-            "team2_value": 25
-          },
-          "score_set4": {
-            "team2_value": 21,
-            "team1_value": 17
-          },
-          "point": {
-            "team1_value": 83,
-            "team2_value": 76
-          }
-        }
-      },
-      "source": "BetConstruct Swarm live betting catalogue game.info"
-    },
-    {
-      "game_id": "31579120",
-      "home_team": "Jastrzebski Wegiel Virtual",
-      "away_team": "Sada Cruzeiro Virtual",
-      "start_ts": 1794764310,
-      "is_live": 1,
-      "competition_id": null,
-      "competition": null,
-      "home_score": 1,
-      "away_score": 2,
-      "minute": null,
-      "period": null,
-      "live_state_verified": false,
-      "score_stats_agree": true,
-      "display_clock": "",
-      "current_game_state": "set4",
-      "raw_score_fields": {
-        "info": {
-          "add_info": "",
-          "score2": "2",
-          "shirt1_color": "000000",
-          "short1_color": "000000",
-          "short2_color": "000000",
-          "additional_data": {},
-          "current_game_state": "set4",
-          "score1": "1",
-          "pass_team": "team2",
-          "shirt2_color": "000000",
-          "field": 0
-        },
-        "stats": {
-          "point": {
-            "team1_value": 58,
-            "team2_value": 71
-          },
-          "period": {
-            "team1_value": 3,
-            "team2_value": 4
-          },
-          "passes": {
-            "team1_value": null,
-            "team2_value": null
-          },
-          "score_set1": {
-            "team1_value": 20,
-            "team2_value": 25
-          },
-          "score_set2": {
-            "team1_value": 13,
-            "team2_value": 25
-          },
-          "score_set3": {
-            "team1_value": 25,
-            "team2_value": 20
-          },
-          "score_set4": {
-            "team1_value": 0,
-            "team2_value": 1
-          }
-        }
-      },
-      "source": "BetConstruct Swarm live betting catalogue game.info"
-    },
-    {
-      "game_id": "31579119",
-      "home_team": "Sir Safety Perugia Virtual",
-      "away_team": "Itas Trentino Virtual",
-      "start_ts": 1794764310,
-      "is_live": 1,
-      "competition_id": null,
-      "competition": null,
-      "home_score": 1,
-      "away_score": 1,
-      "minute": null,
-      "period": null,
-      "live_state_verified": false,
-      "score_stats_agree": true,
-      "display_clock": "",
-      "current_game_state": "set3",
-      "raw_score_fields": {
-        "info": {
-          "score1": "1",
-          "pass_team": "team1",
-          "shirt1_color": "000000",
-          "shirt2_color": "000000",
-          "add_info": "",
-          "current_game_state": "set3",
-          "score2": "1",
-          "short1_color": "000000",
-          "short2_color": "000000",
-          "field": 0,
-          "additional_data": {}
-        },
-        "stats": {
-          "point": {
-            "team1_value": 65,
-            "team2_value": 64
-          },
-          "period": {
-            "team1_value": 3,
-            "team2_value": 2
-          },
-          "passes": {
-            "team1_value": null,
-            "team2_value": null
-          },
-          "score_set1": {
-            "team1_value": 21,
-            "team2_value": 25
-          },
-          "score_set2": {
-            "team1_value": 25,
-            "team2_value": 17
-          },
-          "score_set3": {
-            "team2_value": 22,
-            "team1_value": 19
-          }
-        }
-      },
-      "source": "BetConstruct Swarm live betting catalogue game.info"
-    },
-    {
-      "game_id": "31579251",
-      "home_team": "Toronto Raptors Virtual",
-      "away_team": "Memphis Grizzlies Virtual",
-      "start_ts": 1794765690,
-      "is_live": 1,
-      "competition_id": null,
-      "competition": null,
-      "home_score": 27,
-      "away_score": 33,
-      "minute": 9,
-      "period": "first_half",
+      "home_score": 34,
+      "away_score": 45,
+      "minute": 48,
+      "period": "second_half",
       "live_state_verified": true,
       "score_stats_agree": true,
-      "display_clock": "03:00",
-      "current_game_state": "set1",
+      "display_clock": "01:00",
+      "current_game_state": "set2",
       "raw_score_fields": {
         "info": {
-          "shirt2_color": "000000",
           "short2_color": "000000",
           "field": 0,
-          "add_info": "",
-          "current_game_state": "set1",
-          "current_game_time": "03:00",
-          "score1": "27",
-          "score2": "33",
-          "short1_color": "000000",
           "additional_data": {
-            "quarter": 1,
+            "team2Players": null,
+            "quarter": 2,
             "quarterScores": [
               {
-                "threePointScore": {
-                  "team1": 2,
+                "quarterNumber": 1,
+                "score": {
+                  "team1": 20,
+                  "team2": 21
+                },
+                "foulScore": {
+                  "team1": 4,
                   "team2": 5
                 },
-                "timeoutScore": {
-                  "team1": 0,
-                  "team2": 0
-                },
-                "score": {
-                  "team1": 27,
-                  "team2": 33
-                },
                 "twoPointScore": {
-                  "team1": 10,
-                  "team2": 8
-                },
-                "stealScore": {
-                  "team1": 0,
-                  "team2": 0
+                  "team1": 5,
+                  "team2": 3
                 },
                 "blockScore": {
                   "team1": 0,
                   "team2": 0
-                },
-                "reboundScore": {
-                  "team1": 0,
-                  "team2": 0
-                },
-                "assistScore": {
-                  "team1": 0,
-                  "team2": 0
-                },
-                "quarterNumber": 1,
-                "foulScore": {
-                  "team1": 1,
-                  "team2": 2
-                }
-              }
-            ],
-            "team1Players": null,
-            "team2Players": null
-          },
-          "pass_team": "none",
-          "shirt1_color": "000000"
-        },
-        "stats": {
-          "threePoints": {
-            "team1_value": 0,
-            "team2_value": 0
-          },
-          "timeout": {
-            "team1_value": 5,
-            "team2_value": 5
-          },
-          "passes": {
-            "team1_value": null,
-            "team2_value": null
-          },
-          "score_set1": {
-            "team1_value": 27,
-            "team2_value": 33
-          },
-          "foul": {
-            "team1_value": 1,
-            "team2_value": 2
-          },
-          "point": {
-            "team1_value": 0,
-            "team2_value": 0
-          },
-          "twoPoints": {
-            "team1_value": 0,
-            "team2_value": 0
-          }
-        }
-      },
-      "source": "BetConstruct Swarm live betting catalogue game.info"
-    },
-    {
-      "game_id": "31579250",
-      "home_team": "Cleveland Cavaliers Virtual",
-      "away_team": "Golden State Warriors Virtual",
-      "start_ts": 1794765690,
-      "is_live": 1,
-      "competition_id": null,
-      "competition": null,
-      "home_score": 26,
-      "away_score": 20,
-      "minute": 9,
-      "period": "first_half",
-      "live_state_verified": true,
-      "score_stats_agree": true,
-      "display_clock": "03:00",
-      "current_game_state": "set1",
-      "raw_score_fields": {
-        "info": {
-          "current_game_state": "set1",
-          "score2": "20",
-          "pass_team": "none",
-          "shirt2_color": "000000",
-          "short1_color": "000000",
-          "field": 0,
-          "add_info": "",
-          "current_game_time": "03:00",
-          "score1": "26",
-          "shirt1_color": "000000",
-          "short2_color": "000000",
-          "additional_data": {
-            "team1Players": null,
-            "team2Players": null,
-            "quarter": 1,
-            "quarterScores": [
-              {
-                "quarterNumber": 1,
-                "twoPointScore": {
-                  "team1": 6,
-                  "team2": 4
-                },
-                "blockScore": {
-                  "team2": 0,
-                  "team1": 0
-                },
-                "score": {
-                  "team1": 28,
-                  "team2": 20
-                },
-                "foulScore": {
-                  "team1": 1,
-                  "team2": 2
                 },
                 "threePointScore": {
-                  "team1": 4,
+                  "team1": 1,
                   "team2": 3
                 },
                 "stealScore": {
@@ -1452,21 +1539,62 @@
                   "team1": 0,
                   "team2": 0
                 }
+              },
+              {
+                "reboundScore": {
+                  "team2": 0,
+                  "team1": 0
+                },
+                "assistScore": {
+                  "team1": 0,
+                  "team2": 0
+                },
+                "score": {
+                  "team1": 14,
+                  "team2": 24
+                },
+                "twoPointScore": {
+                  "team2": 7,
+                  "team1": 3
+                },
+                "threePointScore": {
+                  "team1": 2,
+                  "team2": 2
+                },
+                "quarterNumber": 2,
+                "foulScore": {
+                  "team1": 3,
+                  "team2": 2
+                },
+                "stealScore": {
+                  "team2": 0,
+                  "team1": 0
+                },
+                "blockScore": {
+                  "team1": 0,
+                  "team2": 0
+                },
+                "timeoutScore": {
+                  "team1": 0,
+                  "team2": 0
+                }
               }
-            ]
-          }
+            ],
+            "team1Players": null
+          },
+          "add_info": "",
+          "current_game_state": "set2",
+          "score1": "34",
+          "shirt2_color": "000000",
+          "current_game_time": "01:00",
+          "score2": "45",
+          "pass_team": "none",
+          "shirt1_color": "000000",
+          "short1_color": "000000"
         },
         "stats": {
-          "passes": {
-            "team2_value": null,
-            "team1_value": null
-          },
-          "score_set1": {
-            "team1_value": 26,
-            "team2_value": 20
-          },
           "foul": {
-            "team1_value": 1,
+            "team1_value": 3,
             "team2_value": 2
           },
           "point": {
@@ -1481,91 +1609,6 @@
             "team1_value": 0,
             "team2_value": 0
           },
-          "timeout": {
-            "team1_value": 5,
-            "team2_value": 5
-          }
-        }
-      },
-      "source": "BetConstruct Swarm live betting catalogue game.info"
-    },
-    {
-      "game_id": "31579300",
-      "home_team": "Buyukcekmece SK Virtual",
-      "away_team": "Korfez Basket Virtual",
-      "start_ts": 1794765900,
-      "is_live": 1,
-      "competition_id": null,
-      "competition": null,
-      "home_score": 20,
-      "away_score": 14,
-      "minute": 15,
-      "period": "first_half",
-      "live_state_verified": true,
-      "score_stats_agree": true,
-      "display_clock": "05:00",
-      "current_game_state": "set1",
-      "raw_score_fields": {
-        "info": {
-          "add_info": "",
-          "current_game_state": "set1",
-          "current_game_time": "05:00",
-          "pass_team": "none",
-          "shirt2_color": "000000",
-          "short1_color": "000000",
-          "score1": "20",
-          "score2": "14",
-          "shirt1_color": "000000",
-          "short2_color": "000000",
-          "field": 0,
-          "additional_data": {
-            "quarter": 1,
-            "quarterScores": [
-              {
-                "timeoutScore": {
-                  "team1": 0,
-                  "team2": 0
-                },
-                "reboundScore": {
-                  "team1": 0,
-                  "team2": 0
-                },
-                "assistScore": {
-                  "team1": 0,
-                  "team2": 0
-                },
-                "quarterNumber": 1,
-                "threePointScore": {
-                  "team1": 3,
-                  "team2": 0
-                },
-                "stealScore": {
-                  "team1": 0,
-                  "team2": 0
-                },
-                "blockScore": {
-                  "team1": 0,
-                  "team2": 0
-                },
-                "score": {
-                  "team1": 20,
-                  "team2": 14
-                },
-                "foulScore": {
-                  "team1": 0,
-                  "team2": 4
-                },
-                "twoPointScore": {
-                  "team1": 1,
-                  "team2": 7
-                }
-              }
-            ],
-            "team1Players": null,
-            "team2Players": null
-          }
-        },
-        "stats": {
           "timeout": {
             "team1_value": 5,
             "team2_value": 5
@@ -1576,11 +1619,100 @@
           },
           "score_set1": {
             "team1_value": 20,
-            "team2_value": 14
+            "team2_value": 21
           },
-          "foul": {
+          "score_set2": {
+            "team1_value": 14,
+            "team2_value": 24
+          }
+        }
+      },
+      "source": "BetConstruct Swarm live betting catalogue game.info"
+    },
+    {
+      "game_id": "31579405",
+      "home_team": "Cleveland Cavaliers Virtual",
+      "away_team": "Houston Rockets Virtual",
+      "start_ts": 1794768570,
+      "is_live": 1,
+      "competition_id": null,
+      "competition": null,
+      "home_score": 0,
+      "away_score": 2,
+      "minute": 30,
+      "period": "first_half",
+      "live_state_verified": true,
+      "score_stats_agree": true,
+      "display_clock": "10:00",
+      "current_game_state": "set1",
+      "raw_score_fields": {
+        "info": {
+          "field": 0,
+          "additional_data": {
+            "quarter": 1,
+            "quarterScores": [
+              {
+                "twoPointScore": {
+                  "team1": 0,
+                  "team2": 1
+                },
+                "blockScore": {
+                  "team1": 0,
+                  "team2": 0
+                },
+                "assistScore": {
+                  "team1": 0,
+                  "team2": 0
+                },
+                "quarterNumber": 1,
+                "threePointScore": {
+                  "team1": 0,
+                  "team2": 0
+                },
+                "stealScore": {
+                  "team1": 0,
+                  "team2": 0
+                },
+                "timeoutScore": {
+                  "team1": 0,
+                  "team2": 0
+                },
+                "reboundScore": {
+                  "team1": 0,
+                  "team2": 0
+                },
+                "score": {
+                  "team1": 0,
+                  "team2": 2
+                },
+                "foulScore": {
+                  "team1": 0,
+                  "team2": 0
+                }
+              }
+            ],
+            "team1Players": null,
+            "team2Players": null
+          },
+          "add_info": "",
+          "current_game_state": "set1",
+          "current_game_time": "10:00",
+          "score2": "2",
+          "pass_team": "none",
+          "score1": "0",
+          "shirt1_color": "000000",
+          "shirt2_color": "000000",
+          "short1_color": "000000",
+          "short2_color": "000000"
+        },
+        "stats": {
+          "passes": {
+            "team1_value": null,
+            "team2_value": null
+          },
+          "score_set1": {
             "team1_value": 0,
-            "team2_value": 4
+            "team2_value": 2
           },
           "point": {
             "team1_value": 0,
@@ -1593,120 +1725,376 @@
           "threePoints": {
             "team1_value": 0,
             "team2_value": 0
+          },
+          "timeout": {
+            "team1_value": 5,
+            "team2_value": 5
           }
         }
       },
       "source": "BetConstruct Swarm live betting catalogue game.info"
     },
     {
-      "game_id": "31579115",
-      "home_team": "Iller Bankasi (Wom) Virtual",
-      "away_team": "Vakifbank (Wom) Virtual",
-      "start_ts": 1794764110,
+      "game_id": "31579353",
+      "home_team": "Saski Baskonia Virtual",
+      "away_team": "FC Barcelona Basquet Virtual",
+      "start_ts": 1794767399,
       "is_live": 1,
       "competition_id": null,
       "competition": null,
-      "home_score": 1,
-      "away_score": 1,
-      "minute": null,
-      "period": null,
-      "live_state_verified": false,
-      "score_stats_agree": true,
-      "display_clock": "",
-      "current_game_state": "set3",
-      "raw_score_fields": {
-        "info": {
-          "short2_color": "000000",
-          "field": 0,
-          "add_info": "",
-          "current_game_state": "set3",
-          "score1": "1",
-          "score2": "1",
-          "pass_team": "team1",
-          "shirt1_color": "000000",
-          "short1_color": "000000",
-          "additional_data": {},
-          "shirt2_color": "000000"
-        },
-        "stats": {
-          "point": {
-            "team1_value": 77,
-            "team2_value": 66
-          },
-          "period": {
-            "team1_value": 3,
-            "team2_value": 2
-          },
-          "passes": {
-            "team1_value": null,
-            "team2_value": null
-          },
-          "score_set1": {
-            "team2_value": 35,
-            "team1_value": 33
-          },
-          "score_set2": {
-            "team1_value": 25,
-            "team2_value": 20
-          },
-          "score_set3": {
-            "team1_value": 19,
-            "team2_value": 11
-          }
-        }
-      },
-      "source": "BetConstruct Swarm live betting catalogue game.info"
-    },
-    {
-      "game_id": "31579246",
-      "home_team": "Argentina Virtual",
-      "away_team": "China Virtual",
-      "start_ts": 1794765460,
-      "is_live": 1,
-      "competition_id": null,
-      "competition": null,
-      "home_score": 1,
-      "away_score": 0,
-      "minute": null,
+      "home_score": 58,
+      "away_score": 42,
+      "minute": 48,
       "period": "second_half",
-      "live_state_verified": false,
+      "live_state_verified": true,
       "score_stats_agree": true,
-      "display_clock": "",
+      "display_clock": "01:00",
       "current_game_state": "set2",
       "raw_score_fields": {
         "info": {
-          "short1_color": "000000",
-          "short2_color": "000000",
+          "add_info": "",
           "current_game_state": "set2",
-          "score1": "1",
-          "score2": "0",
+          "current_game_time": "01:00",
+          "pass_team": "none",
+          "short2_color": "000000",
+          "field": 0,
+          "score1": "58",
+          "score2": "42",
           "shirt1_color": "000000",
           "shirt2_color": "000000",
-          "field": 0,
-          "additional_data": {},
-          "add_info": "",
-          "pass_team": "team2"
+          "short1_color": "000000",
+          "additional_data": {
+            "quarter": 2,
+            "quarterScores": [
+              {
+                "quarterNumber": 1,
+                "score": {
+                  "team1": 24,
+                  "team2": 22
+                },
+                "stealScore": {
+                  "team1": 0,
+                  "team2": 0
+                },
+                "blockScore": {
+                  "team1": 0,
+                  "team2": 0
+                },
+                "timeoutScore": {
+                  "team1": 0,
+                  "team2": 0
+                },
+                "assistScore": {
+                  "team1": 0,
+                  "team2": 0
+                },
+                "foulScore": {
+                  "team2": 5,
+                  "team1": 6
+                },
+                "twoPointScore": {
+                  "team1": 3,
+                  "team2": 7
+                },
+                "threePointScore": {
+                  "team1": 3,
+                  "team2": 0
+                },
+                "reboundScore": {
+                  "team1": 0,
+                  "team2": 0
+                }
+              },
+              {
+                "reboundScore": {
+                  "team1": 0,
+                  "team2": 0
+                },
+                "assistScore": {
+                  "team1": 0,
+                  "team2": 0
+                },
+                "quarterNumber": 2,
+                "stealScore": {
+                  "team1": 0,
+                  "team2": 0
+                },
+                "timeoutScore": {
+                  "team1": 0,
+                  "team2": 0
+                },
+                "score": {
+                  "team1": 34,
+                  "team2": 20
+                },
+                "foulScore": {
+                  "team1": 5,
+                  "team2": 3
+                },
+                "twoPointScore": {
+                  "team1": 11,
+                  "team2": 4
+                },
+                "threePointScore": {
+                  "team1": 2,
+                  "team2": 1
+                },
+                "blockScore": {
+                  "team1": 0,
+                  "team2": 0
+                }
+              }
+            ],
+            "team1Players": null,
+            "team2Players": null
+          }
         },
         "stats": {
+          "threePoints": {
+            "team2_value": 0,
+            "team1_value": 0
+          },
+          "timeout": {
+            "team1_value": 5,
+            "team2_value": 5
+          },
+          "passes": {
+            "team2_value": null,
+            "team1_value": null
+          },
+          "score_set1": {
+            "team1_value": 24,
+            "team2_value": 22
+          },
           "score_set2": {
-            "team1_value": 0,
-            "team2_value": 6
+            "team1_value": 34,
+            "team2_value": 20
+          },
+          "foul": {
+            "team2_value": 3,
+            "team1_value": 5
           },
           "point": {
-            "team1_value": 25,
-            "team2_value": 28
+            "team1_value": 0,
+            "team2_value": 0
           },
-          "period": {
-            "team1_value": 2,
-            "team2_value": 1
+          "twoPoints": {
+            "team1_value": 0,
+            "team2_value": 0
+          }
+        }
+      },
+      "source": "BetConstruct Swarm live betting catalogue game.info"
+    },
+    {
+      "game_id": "31579407",
+      "home_team": "Golden State Warriors Virtual",
+      "away_team": "Charlotte Hornets Virtual",
+      "start_ts": 1794768570,
+      "is_live": 1,
+      "competition_id": null,
+      "competition": null,
+      "home_score": 0,
+      "away_score": 2,
+      "minute": 30,
+      "period": "first_half",
+      "live_state_verified": true,
+      "score_stats_agree": true,
+      "display_clock": "10:00",
+      "current_game_state": "set1",
+      "raw_score_fields": {
+        "info": {
+          "score1": "0",
+          "score2": "2",
+          "pass_team": "none",
+          "shirt1_color": "000000",
+          "short1_color": "000000",
+          "current_game_state": "set1",
+          "shirt2_color": "000000",
+          "short2_color": "000000",
+          "field": 0,
+          "additional_data": {
+            "team1Players": null,
+            "team2Players": null,
+            "quarter": 1,
+            "quarterScores": [
+              {
+                "quarterNumber": 1,
+                "foulScore": {
+                  "team1": 0,
+                  "team2": 0
+                },
+                "twoPointScore": {
+                  "team1": 0,
+                  "team2": 1
+                },
+                "threePointScore": {
+                  "team1": 0,
+                  "team2": 0
+                },
+                "stealScore": {
+                  "team1": 0,
+                  "team2": 0
+                },
+                "blockScore": {
+                  "team1": 0,
+                  "team2": 0
+                },
+                "reboundScore": {
+                  "team1": 0,
+                  "team2": 0
+                },
+                "score": {
+                  "team1": 0,
+                  "team2": 2
+                },
+                "timeoutScore": {
+                  "team2": 0,
+                  "team1": 0
+                },
+                "assistScore": {
+                  "team2": 0,
+                  "team1": 0
+                }
+              }
+            ]
+          },
+          "add_info": "",
+          "current_game_time": "10:00"
+        },
+        "stats": {
+          "point": {
+            "team1_value": 0,
+            "team2_value": 0
+          },
+          "twoPoints": {
+            "team2_value": 0,
+            "team1_value": 0
+          },
+          "threePoints": {
+            "team1_value": 0,
+            "team2_value": 0
+          },
+          "timeout": {
+            "team1_value": 5,
+            "team2_value": 5
           },
           "passes": {
             "team1_value": null,
             "team2_value": null
           },
           "score_set1": {
-            "team2_value": 22,
-            "team1_value": 25
+            "team1_value": 0,
+            "team2_value": 2
+          }
+        }
+      },
+      "source": "BetConstruct Swarm live betting catalogue game.info"
+    },
+    {
+      "game_id": "31579402",
+      "home_team": "Besiktas JK Virtual",
+      "away_team": "Korfez Basket Virtual",
+      "start_ts": 1794768300,
+      "is_live": 1,
+      "competition_id": null,
+      "competition": null,
+      "home_score": 15,
+      "away_score": 11,
+      "minute": 18,
+      "period": "first_half",
+      "live_state_verified": true,
+      "score_stats_agree": true,
+      "display_clock": "06:00",
+      "current_game_state": "set1",
+      "raw_score_fields": {
+        "info": {
+          "add_info": "",
+          "current_game_time": "06:00",
+          "score1": "15",
+          "pass_team": "none",
+          "shirt2_color": "000000",
+          "field": 0,
+          "additional_data": {
+            "team2Players": null,
+            "quarter": 1,
+            "quarterScores": [
+              {
+                "foulScore": {
+                  "team2": 0,
+                  "team1": 2
+                },
+                "twoPointScore": {
+                  "team1": 3,
+                  "team2": 2
+                },
+                "threePointScore": {
+                  "team1": 3,
+                  "team2": 1
+                },
+                "blockScore": {
+                  "team1": 0,
+                  "team2": 0
+                },
+                "assistScore": {
+                  "team1": 0,
+                  "team2": 0
+                },
+                "score": {
+                  "team1": 15,
+                  "team2": 11
+                },
+                "stealScore": {
+                  "team1": 0,
+                  "team2": 0
+                },
+                "timeoutScore": {
+                  "team1": 0,
+                  "team2": 0
+                },
+                "reboundScore": {
+                  "team2": 0,
+                  "team1": 0
+                },
+                "quarterNumber": 1
+              }
+            ],
+            "team1Players": null
+          },
+          "current_game_state": "set1",
+          "score2": "11",
+          "shirt1_color": "000000",
+          "short1_color": "000000",
+          "short2_color": "000000"
+        },
+        "stats": {
+          "foul": {
+            "team1_value": 2,
+            "team2_value": 0
+          },
+          "point": {
+            "team1_value": 0,
+            "team2_value": 0
+          },
+          "twoPoints": {
+            "team1_value": 0,
+            "team2_value": 0
+          },
+          "threePoints": {
+            "team1_value": 0,
+            "team2_value": 0
+          },
+          "timeout": {
+            "team1_value": 5,
+            "team2_value": 5
+          },
+          "passes": {
+            "team1_value": null,
+            "team2_value": null
+          },
+          "score_set1": {
+            "team2_value": 11,
+            "team1_value": 15
           }
         }
       },
