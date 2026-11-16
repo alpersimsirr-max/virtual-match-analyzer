@@ -1,79 +1,24 @@
 {
-  "updated_at": "2026-11-16T05:13:38.710109+00:00",
+  "updated_at": "2026-11-16T06:06:53.700285+00:00",
   "source_fetched_at": "2026-11-16T05:13:37.526840+00:00",
-  "source_age_seconds": 1.2,
-  "source_fresh": true,
-  "status": "success",
+  "source_age_seconds": 3196.2,
+  "source_fresh": false,
+  "status": "waiting_for_live_data",
   "archive_match_count": 1193,
   "live_catalogue_count": 19,
   "football_live_count": 1,
-  "live_forecast_count": 1,
-  "waiting_count": 0,
+  "live_forecast_count": 0,
+  "waiting_count": 1,
   "note": "Only verified live score and minute can trigger a live prediction. No pre-match estimate is presented as a live prediction.",
-  "forecasts": [
+  "forecasts": [],
+  "waiting_for_live_data": [
     {
       "game_id": "31584347",
       "home_team": "Valencia Virtual",
       "away_team": "Espanyol Virtual",
-      "live_state": {
-        "minute": 12,
-        "score": "1-0"
-      },
       "sport": "football",
-      "display_clock": "4",
-      "period": "first_half",
-      "status": "live_prediction",
-      "prediction": {
-        "match": "Valencia Virtual - Espanyol Virtual",
-        "historical_team_stats": {
-          "home": {
-            "played": 19,
-            "goals_for": 28,
-            "goals_against": 29,
-            "avg_scored": 1.47,
-            "avg_conceded": 1.53,
-            "ht_goals_for": 16,
-            "ht_goals_against": 14
-          },
-          "away": {
-            "played": 22,
-            "goals_for": 25,
-            "goals_against": 36,
-            "avg_scored": 1.14,
-            "avg_conceded": 1.64,
-            "ht_goals_for": 10,
-            "ht_goals_against": 17
-          }
-        },
-        "data_matches": 1193,
-        "home_team_matches": 19,
-        "away_team_matches": 22,
-        "live_state": {
-          "minute": 12,
-          "score": "1-0"
-        },
-        "half_time_prediction": "1-0",
-        "half_time_status": "forecast",
-        "full_time_prediction": "2-1",
-        "alternative_scores": [
-          "2-0",
-          "1-1"
-        ],
-        "probabilities": {
-          "over_2_5": 0.725,
-          "over_3_5": 0.472,
-          "over_4_5": 0.255,
-          "home_win": 0.682,
-          "draw": 0.188,
-          "away_win": 0.13,
-          "home_to_score_again": 0.75,
-          "away_to_score_again": 0.691,
-          "any_more_goal": 0.923,
-          "half_time_over_0_5": 1.0
-        },
-        "warning": "Deneysel tahmin: veri kümesi küçük ve takım başına maç sayısı sınırlı."
-      }
+      "status": "blocked_stale_or_missing_source_timestamp",
+      "source_age_seconds": 3196.173414
     }
-  ],
-  "waiting_for_live_data": []
+  ]
 }
