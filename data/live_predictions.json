@@ -1,2788 +1,368 @@
 {
-  "updated_at": "2026-11-16T09:25:01.599262+00:00",
+  "updated_at": "2026-11-16T10:29:37.911962+00:00",
   "source_fetched_at": "2026-11-16T09:25:00.469668+00:00",
-  "source_age_seconds": 0.6,
-  "source_fresh": true,
-  "status": "success",
+  "source_age_seconds": 3877.4,
+  "source_fresh": false,
+  "status": "waiting_for_live_data",
   "archive_match_count": 1193,
   "live_catalogue_count": 107,
   "football_live_count": 44,
-  "live_forecast_count": 44,
-  "waiting_count": 0,
+  "live_forecast_count": 0,
+  "waiting_count": 44,
   "note": "Only verified live score and minute can trigger a live prediction. No pre-match estimate is presented as a live prediction.",
-  "forecasts": [
+  "forecasts": [],
+  "waiting_for_live_data": [
     {
       "game_id": "31585639",
       "home_team": "Chelsea Virtual",
       "away_team": "Nottingham Forest Virtual",
-      "live_state": {
-        "minute": 71,
-        "score": "1-1"
-      },
       "sport": "football",
-      "display_clock": "26",
-      "period": "second_half",
-      "status": "live_prediction",
-      "prediction": {
-        "match": "Chelsea Virtual - Nottingham Forest Virtual",
-        "historical_team_stats": {
-          "home": {
-            "played": 23,
-            "goals_for": 53,
-            "goals_against": 24,
-            "avg_scored": 2.3,
-            "avg_conceded": 1.04,
-            "ht_goals_for": 27,
-            "ht_goals_against": 14
-          },
-          "away": {
-            "played": 24,
-            "goals_for": 37,
-            "goals_against": 28,
-            "avg_scored": 1.54,
-            "avg_conceded": 1.17,
-            "ht_goals_for": 23,
-            "ht_goals_against": 15
-          }
-        },
-        "data_matches": 1193,
-        "home_team_matches": 23,
-        "away_team_matches": 24,
-        "live_state": {
-          "minute": 71,
-          "score": "1-1"
-        },
-        "half_time_prediction": null,
-        "half_time_status": "completed_not_reconstructed",
-        "full_time_prediction": "1-1",
-        "alternative_scores": [
-          "2-1",
-          "1-2"
-        ],
-        "probabilities": {
-          "over_2_5": 0.462,
-          "over_3_5": 0.128,
-          "over_4_5": 0.025,
-          "home_win": 0.233,
-          "draw": 0.591,
-          "away_win": 0.177,
-          "home_to_score_again": 0.292,
-          "away_to_score_again": 0.239,
-          "any_more_goal": 0.462,
-          "half_time_over_0_5": null
-        },
-        "warning": "Deneysel tahmin: veri kümesi küçük ve takım başına maç sayısı sınırlı."
-      }
+      "status": "blocked_stale_or_missing_source_timestamp",
+      "source_age_seconds": 3877.442128
     },
     {
       "game_id": "31585656",
       "home_team": "1. FC Koln Virtual",
       "away_team": "SV Elversberg Virtual",
-      "live_state": {
-        "minute": 70,
-        "score": "2-1"
-      },
       "sport": "football",
-      "display_clock": "25",
-      "period": "second_half",
-      "status": "live_prediction",
-      "prediction": {
-        "match": "1. FC Koln Virtual - SV Elversberg Virtual",
-        "historical_team_stats": {
-          "home": {
-            "played": 23,
-            "goals_for": 23,
-            "goals_against": 38,
-            "avg_scored": 1.0,
-            "avg_conceded": 1.65,
-            "ht_goals_for": 13,
-            "ht_goals_against": 18
-          },
-          "away": {
-            "played": 22,
-            "goals_for": 19,
-            "goals_against": 36,
-            "avg_scored": 0.86,
-            "avg_conceded": 1.64,
-            "ht_goals_for": 11,
-            "ht_goals_against": 20
-          }
-        },
-        "data_matches": 1193,
-        "home_team_matches": 23,
-        "away_team_matches": 22,
-        "live_state": {
-          "minute": 70,
-          "score": "2-1"
-        },
-        "half_time_prediction": null,
-        "half_time_status": "completed_not_reconstructed",
-        "full_time_prediction": "2-1",
-        "alternative_scores": [
-          "3-1",
-          "2-2"
-        ],
-        "probabilities": {
-          "over_2_5": 1.0,
-          "over_3_5": 0.431,
-          "over_4_5": 0.11,
-          "home_win": 0.816,
-          "draw": 0.16,
-          "away_win": 0.023,
-          "home_to_score_again": 0.254,
-          "away_to_score_again": 0.237,
-          "any_more_goal": 0.431,
-          "half_time_over_0_5": null
-        },
-        "warning": "Deneysel tahmin: veri kümesi küçük ve takım başına maç sayısı sınırlı."
-      }
+      "status": "blocked_stale_or_missing_source_timestamp",
+      "source_age_seconds": 3877.442128
     },
     {
       "game_id": "31585747",
       "home_team": "Bologna Virtual",
       "away_team": "Lazio Virtual",
-      "live_state": {
-        "minute": 30,
-        "score": "1-0"
-      },
       "sport": "football",
-      "display_clock": "10",
-      "period": "first_half",
-      "status": "live_prediction",
-      "prediction": {
-        "match": "Bologna Virtual - Lazio Virtual",
-        "historical_team_stats": {
-          "home": {
-            "played": 22,
-            "goals_for": 30,
-            "goals_against": 29,
-            "avg_scored": 1.36,
-            "avg_conceded": 1.32,
-            "ht_goals_for": 12,
-            "ht_goals_against": 15
-          },
-          "away": {
-            "played": 17,
-            "goals_for": 30,
-            "goals_against": 20,
-            "avg_scored": 1.76,
-            "avg_conceded": 1.18,
-            "ht_goals_for": 17,
-            "ht_goals_against": 11
-          }
-        },
-        "data_matches": 1193,
-        "home_team_matches": 22,
-        "away_team_matches": 17,
-        "live_state": {
-          "minute": 30,
-          "score": "1-0"
-        },
-        "half_time_prediction": "1-0",
-        "half_time_status": "forecast",
-        "full_time_prediction": "1-0",
-        "alternative_scores": [
-          "1-1",
-          "2-0"
-        ],
-        "probabilities": {
-          "over_2_5": 0.567,
-          "over_3_5": 0.297,
-          "over_4_5": 0.126,
-          "home_win": 0.637,
-          "draw": 0.226,
-          "away_win": 0.137,
-          "home_to_score_again": 0.597,
-          "away_to_score_again": 0.629,
-          "any_more_goal": 0.851,
-          "half_time_over_0_5": 1.0
-        },
-        "warning": "Deneysel tahmin: veri kümesi küçük ve takım başına maç sayısı sınırlı."
-      }
+      "status": "blocked_stale_or_missing_source_timestamp",
+      "source_age_seconds": 3877.442128
     },
     {
       "game_id": "31585683",
       "home_team": "Lille OSC Virtual",
       "away_team": "Olympique de Marseille Virtual",
-      "live_state": {
-        "minute": 65,
-        "score": "2-0"
-      },
       "sport": "football",
-      "display_clock": "20",
-      "period": "second_half",
-      "status": "live_prediction",
-      "prediction": {
-        "match": "Lille OSC Virtual - Olympique de Marseille Virtual",
-        "historical_team_stats": {
-          "home": {
-            "played": 21,
-            "goals_for": 23,
-            "goals_against": 25,
-            "avg_scored": 1.1,
-            "avg_conceded": 1.19,
-            "ht_goals_for": 5,
-            "ht_goals_against": 11
-          },
-          "away": {
-            "played": 22,
-            "goals_for": 20,
-            "goals_against": 22,
-            "avg_scored": 0.91,
-            "avg_conceded": 1.0,
-            "ht_goals_for": 10,
-            "ht_goals_against": 13
-          }
-        },
-        "data_matches": 1193,
-        "home_team_matches": 21,
-        "away_team_matches": 22,
-        "live_state": {
-          "minute": 65,
-          "score": "2-0"
-        },
-        "half_time_prediction": null,
-        "half_time_status": "completed_not_reconstructed",
-        "full_time_prediction": "2-0",
-        "alternative_scores": [
-          "3-0",
-          "2-1"
-        ],
-        "probabilities": {
-          "over_2_5": 0.462,
-          "over_3_5": 0.129,
-          "over_4_5": 0.025,
-          "home_win": 0.973,
-          "draw": 0.025,
-          "away_win": 0.003,
-          "home_to_score_again": 0.276,
-          "away_to_score_again": 0.258,
-          "any_more_goal": 0.462,
-          "half_time_over_0_5": null
-        },
-        "warning": "Deneysel tahmin: veri kümesi küçük ve takım başına maç sayısı sınırlı."
-      }
+      "status": "blocked_stale_or_missing_source_timestamp",
+      "source_age_seconds": 3877.442128
     },
     {
       "game_id": "31585704",
       "home_team": "Valencia Virtual",
       "away_team": "Athletic Bilbao Virtual",
-      "live_state": {
-        "minute": 61,
-        "score": "2-0"
-      },
       "sport": "football",
-      "display_clock": "16",
-      "period": "second_half",
-      "status": "live_prediction",
-      "prediction": {
-        "match": "Valencia Virtual - Athletic Bilbao Virtual",
-        "historical_team_stats": {
-          "home": {
-            "played": 19,
-            "goals_for": 28,
-            "goals_against": 29,
-            "avg_scored": 1.47,
-            "avg_conceded": 1.53,
-            "ht_goals_for": 16,
-            "ht_goals_against": 14
-          },
-          "away": {
-            "played": 22,
-            "goals_for": 32,
-            "goals_against": 23,
-            "avg_scored": 1.45,
-            "avg_conceded": 1.05,
-            "ht_goals_for": 15,
-            "ht_goals_against": 10
-          }
-        },
-        "data_matches": 1193,
-        "home_team_matches": 19,
-        "away_team_matches": 22,
-        "live_state": {
-          "minute": 61,
-          "score": "2-0"
-        },
-        "half_time_prediction": null,
-        "half_time_status": "completed_not_reconstructed",
-        "full_time_prediction": "2-0",
-        "alternative_scores": [
-          "2-1",
-          "3-0"
-        ],
-        "probabilities": {
-          "over_2_5": 0.602,
-          "over_3_5": 0.236,
-          "over_4_5": 0.067,
-          "home_win": 0.943,
-          "draw": 0.049,
-          "away_win": 0.009,
-          "home_to_score_again": 0.359,
-          "away_to_score_again": 0.38,
-          "any_more_goal": 0.602,
-          "half_time_over_0_5": null
-        },
-        "warning": "Deneysel tahmin: veri kümesi küçük ve takım başına maç sayısı sınırlı."
-      }
+      "status": "blocked_stale_or_missing_source_timestamp",
+      "source_age_seconds": 3877.442128
     },
     {
       "game_id": "31585699",
       "home_team": "Real Betis Virtual",
       "away_team": "Real Madrid Virtual",
-      "live_state": {
-        "minute": 61,
-        "score": "0-1"
-      },
       "sport": "football",
-      "display_clock": "16",
-      "period": "second_half",
-      "status": "live_prediction",
-      "prediction": {
-        "match": "Real Betis Virtual - Real Madrid Virtual",
-        "historical_team_stats": {
-          "home": {
-            "played": 23,
-            "goals_for": 38,
-            "goals_against": 43,
-            "avg_scored": 1.65,
-            "avg_conceded": 1.87,
-            "ht_goals_for": 13,
-            "ht_goals_against": 22
-          },
-          "away": {
-            "played": 19,
-            "goals_for": 59,
-            "goals_against": 14,
-            "avg_scored": 3.11,
-            "avg_conceded": 0.74,
-            "ht_goals_for": 29,
-            "ht_goals_against": 8
-          }
-        },
-        "data_matches": 1193,
-        "home_team_matches": 23,
-        "away_team_matches": 19,
-        "live_state": {
-          "minute": 61,
-          "score": "0-1"
-        },
-        "half_time_prediction": null,
-        "half_time_status": "completed_not_reconstructed",
-        "full_time_prediction": "0-1",
-        "alternative_scores": [
-          "0-2",
-          "1-1"
-        ],
-        "probabilities": {
-          "over_2_5": 0.33,
-          "over_3_5": 0.116,
-          "over_4_5": 0.032,
-          "home_win": 0.036,
-          "draw": 0.154,
-          "away_win": 0.81,
-          "home_to_score_again": 0.348,
-          "away_to_score_again": 0.529,
-          "any_more_goal": 0.692,
-          "half_time_over_0_5": null
-        },
-        "warning": "Deneysel tahmin: veri kümesi küçük ve takım başına maç sayısı sınırlı."
-      }
+      "status": "blocked_stale_or_missing_source_timestamp",
+      "source_age_seconds": 3877.442128
     },
     {
       "game_id": "31585743",
       "home_team": "Parma Calcio 1913 Virtual",
       "away_team": "AS Roma Virtual",
-      "live_state": {
-        "minute": 30,
-        "score": "1-0"
-      },
       "sport": "football",
-      "display_clock": "10",
-      "period": "first_half",
-      "status": "live_prediction",
-      "prediction": {
-        "match": "Parma Calcio 1913 Virtual - AS Roma Virtual",
-        "historical_team_stats": {
-          "home": {
-            "played": 20,
-            "goals_for": 22,
-            "goals_against": 34,
-            "avg_scored": 1.1,
-            "avg_conceded": 1.7,
-            "ht_goals_for": 7,
-            "ht_goals_against": 19
-          },
-          "away": {
-            "played": 19,
-            "goals_for": 37,
-            "goals_against": 22,
-            "avg_scored": 1.95,
-            "avg_conceded": 1.16,
-            "ht_goals_for": 20,
-            "ht_goals_against": 9
-          }
-        },
-        "data_matches": 1193,
-        "home_team_matches": 20,
-        "away_team_matches": 19,
-        "live_state": {
-          "minute": 30,
-          "score": "1-0"
-        },
-        "half_time_prediction": "1-0",
-        "half_time_status": "forecast",
-        "full_time_prediction": "1-1",
-        "alternative_scores": [
-          "1-0",
-          "2-1"
-        ],
-        "probabilities": {
-          "over_2_5": 0.595,
-          "over_3_5": 0.324,
-          "over_4_5": 0.143,
-          "home_win": 0.569,
-          "draw": 0.247,
-          "away_win": 0.184,
-          "home_to_score_again": 0.57,
-          "away_to_score_again": 0.686,
-          "any_more_goal": 0.865,
-          "half_time_over_0_5": 1.0
-        },
-        "warning": "Deneysel tahmin: veri kümesi küçük ve takım başına maç sayısı sınırlı."
-      }
+      "status": "blocked_stale_or_missing_source_timestamp",
+      "source_age_seconds": 3877.442128
     },
     {
       "game_id": "31585649",
       "home_team": "Eintracht Frankfurt Virtual",
       "away_team": "Schalke 04 Virtual",
-      "live_state": {
-        "minute": 70,
-        "score": "2-3"
-      },
       "sport": "football",
-      "display_clock": "25",
-      "period": "second_half",
-      "status": "live_prediction",
-      "prediction": {
-        "match": "Eintracht Frankfurt Virtual - Schalke 04 Virtual",
-        "historical_team_stats": {
-          "home": {
-            "played": 23,
-            "goals_for": 34,
-            "goals_against": 20,
-            "avg_scored": 1.48,
-            "avg_conceded": 0.87,
-            "ht_goals_for": 23,
-            "ht_goals_against": 10
-          },
-          "away": {
-            "played": 22,
-            "goals_for": 19,
-            "goals_against": 36,
-            "avg_scored": 0.86,
-            "avg_conceded": 1.64,
-            "ht_goals_for": 8,
-            "ht_goals_against": 20
-          }
-        },
-        "data_matches": 1193,
-        "home_team_matches": 23,
-        "away_team_matches": 22,
-        "live_state": {
-          "minute": 70,
-          "score": "2-3"
-        },
-        "half_time_prediction": null,
-        "half_time_status": "completed_not_reconstructed",
-        "full_time_prediction": "2-3",
-        "alternative_scores": [
-          "3-3",
-          "2-4"
-        ],
-        "probabilities": {
-          "over_2_5": 1.0,
-          "over_3_5": 1.0,
-          "over_4_5": 1.0,
-          "home_win": 0.038,
-          "draw": 0.203,
-          "away_win": 0.759,
-          "home_to_score_again": 0.287,
-          "away_to_score_again": 0.188,
-          "any_more_goal": 0.421,
-          "half_time_over_0_5": null
-        },
-        "warning": "Deneysel tahmin: veri kümesi küçük ve takım başına maç sayısı sınırlı."
-      }
+      "status": "blocked_stale_or_missing_source_timestamp",
+      "source_age_seconds": 3877.442128
     },
     {
       "game_id": "31585651",
       "home_team": "Bayern Munich Virtual",
       "away_team": "Borussia Dortmund Virtual",
-      "live_state": {
-        "minute": 70,
-        "score": "2-0"
-      },
       "sport": "football",
-      "display_clock": "25",
-      "period": "second_half",
-      "status": "live_prediction",
-      "prediction": {
-        "match": "Bayern Munich Virtual - Borussia Dortmund Virtual",
-        "historical_team_stats": {
-          "home": {
-            "played": 23,
-            "goals_for": 61,
-            "goals_against": 14,
-            "avg_scored": 2.65,
-            "avg_conceded": 0.61,
-            "ht_goals_for": 25,
-            "ht_goals_against": 8
-          },
-          "away": {
-            "played": 23,
-            "goals_for": 25,
-            "goals_against": 22,
-            "avg_scored": 1.09,
-            "avg_conceded": 0.96,
-            "ht_goals_for": 13,
-            "ht_goals_against": 11
-          }
-        },
-        "data_matches": 1193,
-        "home_team_matches": 23,
-        "away_team_matches": 23,
-        "live_state": {
-          "minute": 70,
-          "score": "2-0"
-        },
-        "half_time_prediction": null,
-        "half_time_status": "completed_not_reconstructed",
-        "full_time_prediction": "2-0",
-        "alternative_scores": [
-          "3-0",
-          "2-1"
-        ],
-        "probabilities": {
-          "over_2_5": 0.435,
-          "over_3_5": 0.113,
-          "over_4_5": 0.02,
-          "home_win": 0.987,
-          "draw": 0.012,
-          "away_win": 0.001,
-          "home_to_score_again": 0.308,
-          "away_to_score_again": 0.184,
-          "any_more_goal": 0.435,
-          "half_time_over_0_5": null
-        },
-        "warning": "Deneysel tahmin: veri kümesi küçük ve takım başına maç sayısı sınırlı."
-      }
+      "status": "blocked_stale_or_missing_source_timestamp",
+      "source_age_seconds": 3877.442128
     },
     {
       "game_id": "31585684",
       "home_team": "Lens Virtual",
       "away_team": "Toulouse Virtual",
-      "live_state": {
-        "minute": 65,
-        "score": "4-3"
-      },
       "sport": "football",
-      "display_clock": "20",
-      "period": "second_half",
-      "status": "live_prediction",
-      "prediction": {
-        "match": "Lens Virtual - Toulouse Virtual",
-        "historical_team_stats": {
-          "home": {
-            "played": 23,
-            "goals_for": 23,
-            "goals_against": 21,
-            "avg_scored": 1.0,
-            "avg_conceded": 0.91,
-            "ht_goals_for": 12,
-            "ht_goals_against": 12
-          },
-          "away": {
-            "played": 23,
-            "goals_for": 37,
-            "goals_against": 23,
-            "avg_scored": 1.61,
-            "avg_conceded": 1.0,
-            "ht_goals_for": 21,
-            "ht_goals_against": 9
-          }
-        },
-        "data_matches": 1193,
-        "home_team_matches": 23,
-        "away_team_matches": 23,
-        "live_state": {
-          "minute": 65,
-          "score": "4-3"
-        },
-        "half_time_prediction": null,
-        "half_time_status": "completed_not_reconstructed",
-        "full_time_prediction": "4-3",
-        "alternative_scores": [
-          "4-4",
-          "5-3"
-        ],
-        "probabilities": {
-          "over_2_5": 1.0,
-          "over_3_5": 1.0,
-          "over_4_5": 1.0,
-          "home_win": 0.778,
-          "draw": 0.187,
-          "away_win": 0.035,
-          "home_to_score_again": 0.268,
-          "away_to_score_again": 0.289,
-          "any_more_goal": 0.479,
-          "half_time_over_0_5": null
-        },
-        "warning": "Deneysel tahmin: veri kümesi küçük ve takım başına maç sayısı sınırlı."
-      }
+      "status": "blocked_stale_or_missing_source_timestamp",
+      "source_age_seconds": 3877.442128
     },
     {
       "game_id": "31585653",
       "home_team": "1. FC Union Berlin Virtual",
       "away_team": "RB Leipzig Virtual",
-      "live_state": {
-        "minute": 70,
-        "score": "0-1"
-      },
       "sport": "football",
-      "display_clock": "25",
-      "period": "second_half",
-      "status": "live_prediction",
-      "prediction": {
-        "match": "1. FC Union Berlin Virtual - RB Leipzig Virtual",
-        "historical_team_stats": {
-          "home": {
-            "played": 23,
-            "goals_for": 17,
-            "goals_against": 34,
-            "avg_scored": 0.74,
-            "avg_conceded": 1.48,
-            "ht_goals_for": 8,
-            "ht_goals_against": 21
-          },
-          "away": {
-            "played": 22,
-            "goals_for": 43,
-            "goals_against": 22,
-            "avg_scored": 1.95,
-            "avg_conceded": 1.0,
-            "ht_goals_for": 20,
-            "ht_goals_against": 13
-          }
-        },
-        "data_matches": 1193,
-        "home_team_matches": 23,
-        "away_team_matches": 22,
-        "live_state": {
-          "minute": 70,
-          "score": "0-1"
-        },
-        "half_time_prediction": null,
-        "half_time_status": "completed_not_reconstructed",
-        "full_time_prediction": "0-1",
-        "alternative_scores": [
-          "0-2",
-          "1-1"
-        ],
-        "probabilities": {
-          "over_2_5": 0.117,
-          "over_3_5": 0.022,
-          "over_4_5": 0.003,
-          "home_win": 0.015,
-          "draw": 0.129,
-          "away_win": 0.856,
-          "home_to_score_again": 0.199,
-          "away_to_score_again": 0.305,
-          "any_more_goal": 0.443,
-          "half_time_over_0_5": null
-        },
-        "warning": "Deneysel tahmin: veri kümesi küçük ve takım başına maç sayısı sınırlı."
-      }
+      "status": "blocked_stale_or_missing_source_timestamp",
+      "source_age_seconds": 3877.442128
     },
     {
       "game_id": "31585655",
       "home_team": "Augsburg Virtual",
       "away_team": "Hamburger SV Virtual",
-      "live_state": {
-        "minute": 70,
-        "score": "1-0"
-      },
       "sport": "football",
-      "display_clock": "25",
-      "period": "second_half",
-      "status": "live_prediction",
-      "prediction": {
-        "match": "Augsburg Virtual - Hamburger SV Virtual",
-        "historical_team_stats": {
-          "home": {
-            "played": 20,
-            "goals_for": 21,
-            "goals_against": 24,
-            "avg_scored": 1.05,
-            "avg_conceded": 1.2,
-            "ht_goals_for": 10,
-            "ht_goals_against": 12
-          },
-          "away": {
-            "played": 23,
-            "goals_for": 22,
-            "goals_against": 30,
-            "avg_scored": 0.96,
-            "avg_conceded": 1.3,
-            "ht_goals_for": 10,
-            "ht_goals_against": 12
-          }
-        },
-        "data_matches": 1193,
-        "home_team_matches": 20,
-        "away_team_matches": 23,
-        "live_state": {
-          "minute": 70,
-          "score": "1-0"
-        },
-        "half_time_prediction": null,
-        "half_time_status": "completed_not_reconstructed",
-        "full_time_prediction": "1-0",
-        "alternative_scores": [
-          "2-0",
-          "1-1"
-        ],
-        "probabilities": {
-          "over_2_5": 0.095,
-          "over_3_5": 0.016,
-          "over_4_5": 0.002,
-          "home_win": 0.831,
-          "draw": 0.15,
-          "away_win": 0.02,
-          "home_to_score_again": 0.238,
-          "away_to_score_again": 0.216,
-          "any_more_goal": 0.402,
-          "half_time_over_0_5": null
-        },
-        "warning": "Deneysel tahmin: veri kümesi küçük ve takım başına maç sayısı sınırlı."
-      }
+      "status": "blocked_stale_or_missing_source_timestamp",
+      "source_age_seconds": 3877.442128
     },
     {
       "game_id": "31585738",
       "home_team": "Juventus Virtual",
       "away_team": "Atalanta Virtual",
-      "live_state": {
-        "minute": 30,
-        "score": "1-1"
-      },
       "sport": "football",
-      "display_clock": "10",
-      "period": "first_half",
-      "status": "live_prediction",
-      "prediction": {
-        "match": "Juventus Virtual - Atalanta Virtual",
-        "historical_team_stats": {
-          "home": {
-            "played": 22,
-            "goals_for": 34,
-            "goals_against": 30,
-            "avg_scored": 1.55,
-            "avg_conceded": 1.36,
-            "ht_goals_for": 17,
-            "ht_goals_against": 17
-          },
-          "away": {
-            "played": 22,
-            "goals_for": 36,
-            "goals_against": 26,
-            "avg_scored": 1.64,
-            "avg_conceded": 1.18,
-            "ht_goals_for": 20,
-            "ht_goals_against": 13
-          }
-        },
-        "data_matches": 1193,
-        "home_team_matches": 22,
-        "away_team_matches": 22,
-        "live_state": {
-          "minute": 30,
-          "score": "1-1"
-        },
-        "half_time_prediction": "1-1",
-        "half_time_status": "forecast",
-        "full_time_prediction": "1-1",
-        "alternative_scores": [
-          "1-2",
-          "2-1"
-        ],
-        "probabilities": {
-          "over_2_5": 0.854,
-          "over_3_5": 0.573,
-          "over_4_5": 0.303,
-          "home_win": 0.335,
-          "draw": 0.316,
-          "away_win": 0.349,
-          "home_to_score_again": 0.613,
-          "away_to_score_again": 0.623,
-          "any_more_goal": 0.854,
-          "half_time_over_0_5": 1.0
-        },
-        "warning": "Deneysel tahmin: veri kümesi küçük ve takım başına maç sayısı sınırlı."
-      }
+      "status": "blocked_stale_or_missing_source_timestamp",
+      "source_age_seconds": 3877.442128
     },
     {
       "game_id": "31585765",
       "home_team": "Gaziantep FK Virtual",
       "away_team": "Samsunspor Virtual",
-      "live_state": {
-        "minute": 15,
-        "score": "0-1"
-      },
       "sport": "football",
-      "display_clock": "5",
-      "period": "first_half",
-      "status": "live_prediction",
-      "prediction": {
-        "match": "Gaziantep FK Virtual - Samsunspor Virtual",
-        "historical_team_stats": {
-          "home": {
-            "played": 19,
-            "goals_for": 13,
-            "goals_against": 41,
-            "avg_scored": 0.68,
-            "avg_conceded": 2.16,
-            "ht_goals_for": 6,
-            "ht_goals_against": 21
-          },
-          "away": {
-            "played": 19,
-            "goals_for": 27,
-            "goals_against": 30,
-            "avg_scored": 1.42,
-            "avg_conceded": 1.58,
-            "ht_goals_for": 11,
-            "ht_goals_against": 13
-          }
-        },
-        "data_matches": 1193,
-        "home_team_matches": 19,
-        "away_team_matches": 19,
-        "live_state": {
-          "minute": 15,
-          "score": "0-1"
-        },
-        "half_time_prediction": "0-1",
-        "half_time_status": "forecast",
-        "full_time_prediction": "1-2",
-        "alternative_scores": [
-          "0-2",
-          "1-3"
-        ],
-        "probabilities": {
-          "over_2_5": 0.705,
-          "over_3_5": 0.447,
-          "over_4_5": 0.235,
-          "home_win": 0.103,
-          "draw": 0.173,
-          "away_win": 0.724,
-          "home_to_score_again": 0.647,
-          "away_to_score_again": 0.759,
-          "any_more_goal": 0.915,
-          "half_time_over_0_5": 1.0
-        },
-        "warning": "Deneysel tahmin: veri kümesi küçük ve takım başına maç sayısı sınırlı."
-      }
+      "status": "blocked_stale_or_missing_source_timestamp",
+      "source_age_seconds": 3877.442128
     },
     {
       "game_id": "31585680",
       "home_team": "OGC Nice Virtual",
       "away_team": "Stade Rennais Virtual",
-      "live_state": {
-        "minute": 65,
-        "score": "0-1"
-      },
       "sport": "football",
-      "display_clock": "20",
-      "period": "second_half",
-      "status": "live_prediction",
-      "prediction": {
-        "match": "OGC Nice Virtual - Stade Rennais Virtual",
-        "historical_team_stats": {
-          "home": {
-            "played": 20,
-            "goals_for": 30,
-            "goals_against": 24,
-            "avg_scored": 1.5,
-            "avg_conceded": 1.2,
-            "ht_goals_for": 11,
-            "ht_goals_against": 9
-          },
-          "away": {
-            "played": 20,
-            "goals_for": 33,
-            "goals_against": 35,
-            "avg_scored": 1.65,
-            "avg_conceded": 1.75,
-            "ht_goals_for": 20,
-            "ht_goals_against": 12
-          }
-        },
-        "data_matches": 1193,
-        "home_team_matches": 20,
-        "away_team_matches": 20,
-        "live_state": {
-          "minute": 65,
-          "score": "0-1"
-        },
-        "half_time_prediction": null,
-        "half_time_status": "completed_not_reconstructed",
-        "full_time_prediction": "0-1",
-        "alternative_scores": [
-          "1-1",
-          "0-2"
-        ],
-        "probabilities": {
-          "over_2_5": 0.2,
-          "over_3_5": 0.051,
-          "over_4_5": 0.01,
-          "home_win": 0.053,
-          "draw": 0.211,
-          "away_win": 0.736,
-          "home_to_score_again": 0.358,
-          "away_to_score_again": 0.317,
-          "any_more_goal": 0.561,
-          "half_time_over_0_5": null
-        },
-        "warning": "Deneysel tahmin: veri kümesi küçük ve takım başına maç sayısı sınırlı."
-      }
+      "status": "blocked_stale_or_missing_source_timestamp",
+      "source_age_seconds": 3877.442128
     },
     {
       "game_id": "31585686",
       "home_team": "Paris Saint-Germain Virtual",
       "away_team": "Le Havre Virtual",
-      "live_state": {
-        "minute": 65,
-        "score": "4-0"
-      },
       "sport": "football",
-      "display_clock": "20",
-      "period": "second_half",
-      "status": "live_prediction",
-      "prediction": {
-        "match": "Paris Saint-Germain Virtual - Le Havre Virtual",
-        "historical_team_stats": {
-          "home": {
-            "played": 22,
-            "goals_for": 64,
-            "goals_against": 11,
-            "avg_scored": 2.91,
-            "avg_conceded": 0.5,
-            "ht_goals_for": 32,
-            "ht_goals_against": 5
-          },
-          "away": {
-            "played": 19,
-            "goals_for": 13,
-            "goals_against": 37,
-            "avg_scored": 0.68,
-            "avg_conceded": 1.95,
-            "ht_goals_for": 8,
-            "ht_goals_against": 15
-          }
-        },
-        "data_matches": 1193,
-        "home_team_matches": 22,
-        "away_team_matches": 19,
-        "live_state": {
-          "minute": 65,
-          "score": "4-0"
-        },
-        "half_time_prediction": null,
-        "half_time_status": "completed_not_reconstructed",
-        "full_time_prediction": "4-0",
-        "alternative_scores": [
-          "5-0",
-          "4-1"
-        ],
-        "probabilities": {
-          "over_2_5": 1.0,
-          "over_3_5": 1.0,
-          "over_4_5": 0.572,
-          "home_win": 1.0,
-          "draw": 0.0,
-          "away_win": 0.0,
-          "home_to_score_again": 0.472,
-          "away_to_score_again": 0.189,
-          "any_more_goal": 0.572,
-          "half_time_over_0_5": null
-        },
-        "warning": "Deneysel tahmin: veri kümesi küçük ve takım başına maç sayısı sınırlı."
-      }
+      "status": "blocked_stale_or_missing_source_timestamp",
+      "source_age_seconds": 3877.442128
     },
     {
       "game_id": "31585698",
       "home_team": "Barcelona Virtual",
       "away_team": "Getafe Virtual",
-      "live_state": {
-        "minute": 61,
-        "score": "0-1"
-      },
       "sport": "football",
-      "display_clock": "16",
-      "period": "second_half",
-      "status": "live_prediction",
-      "prediction": {
-        "match": "Barcelona Virtual - Getafe Virtual",
-        "historical_team_stats": {
-          "home": {
-            "played": 20,
-            "goals_for": 71,
-            "goals_against": 21,
-            "avg_scored": 3.55,
-            "avg_conceded": 1.05,
-            "ht_goals_for": 32,
-            "ht_goals_against": 8
-          },
-          "away": {
-            "played": 21,
-            "goals_for": 25,
-            "goals_against": 26,
-            "avg_scored": 1.19,
-            "avg_conceded": 1.24,
-            "ht_goals_for": 13,
-            "ht_goals_against": 13
-          }
-        },
-        "data_matches": 1193,
-        "home_team_matches": 20,
-        "away_team_matches": 21,
-        "live_state": {
-          "minute": 61,
-          "score": "0-1"
-        },
-        "half_time_prediction": null,
-        "half_time_status": "completed_not_reconstructed",
-        "full_time_prediction": "0-1",
-        "alternative_scores": [
-          "1-1",
-          "0-2"
-        ],
-        "probabilities": {
-          "over_2_5": 0.296,
-          "over_3_5": 0.097,
-          "over_4_5": 0.025,
-          "home_win": 0.115,
-          "draw": 0.269,
-          "away_win": 0.616,
-          "home_to_score_again": 0.503,
-          "away_to_score_again": 0.322,
-          "any_more_goal": 0.663,
-          "half_time_over_0_5": null
-        },
-        "warning": "Deneysel tahmin: veri kümesi küçük ve takım başına maç sayısı sınırlı."
-      }
+      "status": "blocked_stale_or_missing_source_timestamp",
+      "source_age_seconds": 3877.442128
     },
     {
       "game_id": "31585679",
       "home_team": "AJ Auxerre Virtual",
       "away_team": "Olympique Lyonnais Virtual",
-      "live_state": {
-        "minute": 66,
-        "score": "0-1"
-      },
       "sport": "football",
-      "display_clock": "21",
-      "period": "second_half",
-      "status": "live_prediction",
-      "prediction": {
-        "match": "AJ Auxerre Virtual - Olympique Lyonnais Virtual",
-        "historical_team_stats": {
-          "home": {
-            "played": 21,
-            "goals_for": 25,
-            "goals_against": 30,
-            "avg_scored": 1.19,
-            "avg_conceded": 1.43,
-            "ht_goals_for": 14,
-            "ht_goals_against": 14
-          },
-          "away": {
-            "played": 17,
-            "goals_for": 33,
-            "goals_against": 18,
-            "avg_scored": 1.94,
-            "avg_conceded": 1.06,
-            "ht_goals_for": 15,
-            "ht_goals_against": 13
-          }
-        },
-        "data_matches": 1193,
-        "home_team_matches": 21,
-        "away_team_matches": 17,
-        "live_state": {
-          "minute": 66,
-          "score": "0-1"
-        },
-        "half_time_prediction": null,
-        "half_time_status": "completed_not_reconstructed",
-        "full_time_prediction": "0-1",
-        "alternative_scores": [
-          "0-2",
-          "1-1"
-        ],
-        "probabilities": {
-          "over_2_5": 0.173,
-          "over_3_5": 0.04,
-          "over_4_5": 0.007,
-          "home_win": 0.029,
-          "draw": 0.165,
-          "away_win": 0.806,
-          "home_to_score_again": 0.278,
-          "away_to_score_again": 0.346,
-          "any_more_goal": 0.528,
-          "half_time_over_0_5": null
-        },
-        "warning": "Deneysel tahmin: veri kümesi küçük ve takım başına maç sayısı sınırlı."
-      }
+      "status": "blocked_stale_or_missing_source_timestamp",
+      "source_age_seconds": 3877.442128
     },
     {
       "game_id": "31585652",
       "home_team": "Werder Bremen Virtual",
       "away_team": "Bayer 04 Leverkusen Virtual",
-      "live_state": {
-        "minute": 70,
-        "score": "1-0"
-      },
       "sport": "football",
-      "display_clock": "25",
-      "period": "second_half",
-      "status": "live_prediction",
-      "prediction": {
-        "match": "Werder Bremen Virtual - Bayer 04 Leverkusen Virtual",
-        "historical_team_stats": {
-          "home": {
-            "played": 21,
-            "goals_for": 22,
-            "goals_against": 23,
-            "avg_scored": 1.05,
-            "avg_conceded": 1.1,
-            "ht_goals_for": 13,
-            "ht_goals_against": 13
-          },
-          "away": {
-            "played": 19,
-            "goals_for": 30,
-            "goals_against": 22,
-            "avg_scored": 1.58,
-            "avg_conceded": 1.16,
-            "ht_goals_for": 18,
-            "ht_goals_against": 14
-          }
-        },
-        "data_matches": 1193,
-        "home_team_matches": 21,
-        "away_team_matches": 19,
-        "live_state": {
-          "minute": 70,
-          "score": "1-0"
-        },
-        "half_time_prediction": null,
-        "half_time_status": "completed_not_reconstructed",
-        "full_time_prediction": "1-0",
-        "alternative_scores": [
-          "1-1",
-          "2-0"
-        ],
-        "probabilities": {
-          "over_2_5": 0.105,
-          "over_3_5": 0.018,
-          "over_4_5": 0.002,
-          "home_win": 0.801,
-          "draw": 0.172,
-          "away_win": 0.027,
-          "home_to_score_again": 0.229,
-          "away_to_score_again": 0.25,
-          "any_more_goal": 0.421,
-          "half_time_over_0_5": null
-        },
-        "warning": "Deneysel tahmin: veri kümesi küçük ve takım başına maç sayısı sınırlı."
-      }
+      "status": "blocked_stale_or_missing_source_timestamp",
+      "source_age_seconds": 3877.442128
     },
     {
       "game_id": "31585697",
       "home_team": "Deportivo de A Coruna Virtual",
       "away_team": "Rayo Vallecano Virtual",
-      "live_state": {
-        "minute": 61,
-        "score": "3-2"
-      },
       "sport": "football",
-      "display_clock": "16",
-      "period": "second_half",
-      "status": "live_prediction",
-      "prediction": {
-        "match": "Deportivo de A Coruna Virtual - Rayo Vallecano Virtual",
-        "historical_team_stats": {
-          "home": {
-            "played": 18,
-            "goals_for": 19,
-            "goals_against": 41,
-            "avg_scored": 1.06,
-            "avg_conceded": 2.28,
-            "ht_goals_for": 6,
-            "ht_goals_against": 20
-          },
-          "away": {
-            "played": 19,
-            "goals_for": 24,
-            "goals_against": 35,
-            "avg_scored": 1.26,
-            "avg_conceded": 1.84,
-            "ht_goals_for": 12,
-            "ht_goals_against": 17
-          }
-        },
-        "data_matches": 1193,
-        "home_team_matches": 18,
-        "away_team_matches": 19,
-        "live_state": {
-          "minute": 61,
-          "score": "3-2"
-        },
-        "half_time_prediction": null,
-        "half_time_status": "completed_not_reconstructed",
-        "full_time_prediction": "3-2",
-        "alternative_scores": [
-          "3-3",
-          "4-2"
-        ],
-        "probabilities": {
-          "over_2_5": 1.0,
-          "over_3_5": 1.0,
-          "over_4_5": 1.0,
-          "home_win": 0.711,
-          "draw": 0.22,
-          "away_win": 0.069,
-          "home_to_score_again": 0.386,
-          "away_to_score_again": 0.418,
-          "any_more_goal": 0.643,
-          "half_time_over_0_5": null
-        },
-        "warning": "Deneysel tahmin: veri kümesi küçük ve takım başına maç sayısı sınırlı."
-      }
+      "status": "blocked_stale_or_missing_source_timestamp",
+      "source_age_seconds": 3877.442128
     },
     {
       "game_id": "31585744",
       "home_team": "Frosinone Calcio Virtual",
       "away_team": "SSC Napoli Virtual",
-      "live_state": {
-        "minute": 30,
-        "score": "2-2"
-      },
       "sport": "football",
-      "display_clock": "10",
-      "period": "first_half",
-      "status": "live_prediction",
-      "prediction": {
-        "match": "Frosinone Calcio Virtual - SSC Napoli Virtual",
-        "historical_team_stats": {
-          "home": {
-            "played": 19,
-            "goals_for": 27,
-            "goals_against": 35,
-            "avg_scored": 1.42,
-            "avg_conceded": 1.84,
-            "ht_goals_for": 16,
-            "ht_goals_against": 19
-          },
-          "away": {
-            "played": 19,
-            "goals_for": 42,
-            "goals_against": 11,
-            "avg_scored": 2.21,
-            "avg_conceded": 0.58,
-            "ht_goals_for": 26,
-            "ht_goals_against": 5
-          }
-        },
-        "data_matches": 1193,
-        "home_team_matches": 19,
-        "away_team_matches": 19,
-        "live_state": {
-          "minute": 30,
-          "score": "2-2"
-        },
-        "half_time_prediction": "2-2",
-        "half_time_status": "forecast",
-        "full_time_prediction": "2-3",
-        "alternative_scores": [
-          "2-2",
-          "3-3"
-        ],
-        "probabilities": {
-          "over_2_5": 1.0,
-          "over_3_5": 1.0,
-          "over_4_5": 0.872,
-          "home_win": 0.226,
-          "draw": 0.29,
-          "away_win": 0.484,
-          "home_to_score_again": 0.539,
-          "away_to_score_again": 0.722,
-          "any_more_goal": 0.872,
-          "half_time_over_0_5": 1.0
-        },
-        "warning": "Deneysel tahmin: veri kümesi küçük ve takım başına maç sayısı sınırlı."
-      }
+      "status": "blocked_stale_or_missing_source_timestamp",
+      "source_age_seconds": 3877.442128
     },
     {
       "game_id": "31585742",
       "home_team": "Venezia Virtual",
       "away_team": "AC Milan Virtual",
-      "live_state": {
-        "minute": 30,
-        "score": "1-0"
-      },
       "sport": "football",
-      "display_clock": "10",
-      "period": "first_half",
-      "status": "live_prediction",
-      "prediction": {
-        "match": "Venezia Virtual - AC Milan Virtual",
-        "historical_team_stats": {
-          "home": {
-            "played": 17,
-            "goals_for": 6,
-            "goals_against": 32,
-            "avg_scored": 0.35,
-            "avg_conceded": 1.88,
-            "ht_goals_for": 3,
-            "ht_goals_against": 10
-          },
-          "away": {
-            "played": 16,
-            "goals_for": 33,
-            "goals_against": 18,
-            "avg_scored": 2.06,
-            "avg_conceded": 1.12,
-            "ht_goals_for": 14,
-            "ht_goals_against": 8
-          }
-        },
-        "data_matches": 1193,
-        "home_team_matches": 17,
-        "away_team_matches": 16,
-        "live_state": {
-          "minute": 30,
-          "score": "1-0"
-        },
-        "half_time_prediction": "1-0",
-        "half_time_status": "forecast",
-        "full_time_prediction": "1-1",
-        "alternative_scores": [
-          "1-0",
-          "2-1"
-        ],
-        "probabilities": {
-          "over_2_5": 0.57,
-          "over_3_5": 0.3,
-          "over_4_5": 0.128,
-          "home_win": 0.5,
-          "draw": 0.271,
-          "away_win": 0.229,
-          "home_to_score_again": 0.49,
-          "away_to_score_again": 0.711,
-          "any_more_goal": 0.853,
-          "half_time_over_0_5": 1.0
-        },
-        "warning": "Deneysel tahmin: veri kümesi küçük ve takım başına maç sayısı sınırlı."
-      }
+      "status": "blocked_stale_or_missing_source_timestamp",
+      "source_age_seconds": 3877.442128
     },
     {
       "game_id": "31585635",
       "home_team": "Everton Virtual",
       "away_team": "Fulham Virtual",
-      "live_state": {
-        "minute": 71,
-        "score": "1-0"
-      },
       "sport": "football",
-      "display_clock": "26",
-      "period": "second_half",
-      "status": "live_prediction",
-      "prediction": {
-        "match": "Everton Virtual - Fulham Virtual",
-        "historical_team_stats": {
-          "home": {
-            "played": 22,
-            "goals_for": 24,
-            "goals_against": 33,
-            "avg_scored": 1.09,
-            "avg_conceded": 1.5,
-            "ht_goals_for": 9,
-            "ht_goals_against": 18
-          },
-          "away": {
-            "played": 23,
-            "goals_for": 28,
-            "goals_against": 30,
-            "avg_scored": 1.22,
-            "avg_conceded": 1.3,
-            "ht_goals_for": 19,
-            "ht_goals_against": 21
-          }
-        },
-        "data_matches": 1193,
-        "home_team_matches": 22,
-        "away_team_matches": 23,
-        "live_state": {
-          "minute": 71,
-          "score": "1-0"
-        },
-        "half_time_prediction": null,
-        "half_time_status": "completed_not_reconstructed",
-        "full_time_prediction": "1-0",
-        "alternative_scores": [
-          "1-1",
-          "2-0"
-        ],
-        "probabilities": {
-          "over_2_5": 0.104,
-          "over_3_5": 0.018,
-          "over_4_5": 0.002,
-          "home_win": 0.802,
-          "draw": 0.171,
-          "away_win": 0.027,
-          "home_to_score_again": 0.229,
-          "away_to_score_again": 0.248,
-          "any_more_goal": 0.421,
-          "half_time_over_0_5": null
-        },
-        "warning": "Deneysel tahmin: veri kümesi küçük ve takım başına maç sayısı sınırlı."
-      }
+      "status": "blocked_stale_or_missing_source_timestamp",
+      "source_age_seconds": 3877.442128
     },
     {
       "game_id": "31585634",
       "home_team": "Arsenal Virtual",
       "away_team": "Crystal Palace Virtual",
-      "live_state": {
-        "minute": 71,
-        "score": "2-1"
-      },
       "sport": "football",
-      "display_clock": "26",
-      "period": "second_half",
-      "status": "live_prediction",
-      "prediction": {
-        "match": "Arsenal Virtual - Crystal Palace Virtual",
-        "historical_team_stats": {
-          "home": {
-            "played": 24,
-            "goals_for": 44,
-            "goals_against": 15,
-            "avg_scored": 1.83,
-            "avg_conceded": 0.62,
-            "ht_goals_for": 21,
-            "ht_goals_against": 4
-          },
-          "away": {
-            "played": 20,
-            "goals_for": 22,
-            "goals_against": 27,
-            "avg_scored": 1.1,
-            "avg_conceded": 1.35,
-            "ht_goals_for": 11,
-            "ht_goals_against": 10
-          }
-        },
-        "data_matches": 1193,
-        "home_team_matches": 24,
-        "away_team_matches": 20,
-        "live_state": {
-          "minute": 71,
-          "score": "2-1"
-        },
-        "half_time_prediction": null,
-        "half_time_status": "completed_not_reconstructed",
-        "full_time_prediction": "2-1",
-        "alternative_scores": [
-          "3-1",
-          "2-2"
-        ],
-        "probabilities": {
-          "over_2_5": 1.0,
-          "over_3_5": 0.413,
-          "over_4_5": 0.1,
-          "home_win": 0.861,
-          "draw": 0.125,
-          "away_win": 0.014,
-          "home_to_score_again": 0.278,
-          "away_to_score_again": 0.187,
-          "any_more_goal": 0.413,
-          "half_time_over_0_5": null
-        },
-        "warning": "Deneysel tahmin: veri kümesi küçük ve takım başına maç sayısı sınırlı."
-      }
+      "status": "blocked_stale_or_missing_source_timestamp",
+      "source_age_seconds": 3877.442128
     },
     {
       "game_id": "31585685",
       "home_team": "ES Troyes Virtual",
       "away_team": "Paris FC Virtual",
-      "live_state": {
-        "minute": 65,
-        "score": "0-1"
-      },
       "sport": "football",
-      "display_clock": "20",
-      "period": "second_half",
-      "status": "live_prediction",
-      "prediction": {
-        "match": "ES Troyes Virtual - Paris FC Virtual",
-        "historical_team_stats": {
-          "home": {
-            "played": 21,
-            "goals_for": 18,
-            "goals_against": 30,
-            "avg_scored": 0.86,
-            "avg_conceded": 1.43,
-            "ht_goals_for": 7,
-            "ht_goals_against": 11
-          },
-          "away": {
-            "played": 21,
-            "goals_for": 29,
-            "goals_against": 31,
-            "avg_scored": 1.38,
-            "avg_conceded": 1.48,
-            "ht_goals_for": 14,
-            "ht_goals_against": 17
-          }
-        },
-        "data_matches": 1193,
-        "home_team_matches": 21,
-        "away_team_matches": 21,
-        "live_state": {
-          "minute": 65,
-          "score": "0-1"
-        },
-        "half_time_prediction": null,
-        "half_time_status": "completed_not_reconstructed",
-        "full_time_prediction": "0-1",
-        "alternative_scores": [
-          "0-2",
-          "1-1"
-        ],
-        "probabilities": {
-          "over_2_5": 0.163,
-          "over_3_5": 0.037,
-          "over_4_5": 0.006,
-          "home_win": 0.034,
-          "draw": 0.178,
-          "away_win": 0.788,
-          "home_to_score_again": 0.291,
-          "away_to_score_again": 0.315,
-          "any_more_goal": 0.514,
-          "half_time_over_0_5": null
-        },
-        "warning": "Deneysel tahmin: veri kümesi küçük ve takım başına maç sayısı sınırlı."
-      }
+      "status": "blocked_stale_or_missing_source_timestamp",
+      "source_age_seconds": 3877.442128
     },
     {
       "game_id": "31585700",
       "home_team": "Espanyol Virtual",
       "away_team": "Elche CF Virtual",
-      "live_state": {
-        "minute": 61,
-        "score": "2-0"
-      },
       "sport": "football",
-      "display_clock": "16",
-      "period": "second_half",
-      "status": "live_prediction",
-      "prediction": {
-        "match": "Espanyol Virtual - Elche CF Virtual",
-        "historical_team_stats": {
-          "home": {
-            "played": 22,
-            "goals_for": 25,
-            "goals_against": 36,
-            "avg_scored": 1.14,
-            "avg_conceded": 1.64,
-            "ht_goals_for": 10,
-            "ht_goals_against": 17
-          },
-          "away": {
-            "played": 17,
-            "goals_for": 19,
-            "goals_against": 42,
-            "avg_scored": 1.12,
-            "avg_conceded": 2.47,
-            "ht_goals_for": 8,
-            "ht_goals_against": 20
-          }
-        },
-        "data_matches": 1193,
-        "home_team_matches": 22,
-        "away_team_matches": 17,
-        "live_state": {
-          "minute": 61,
-          "score": "2-0"
-        },
-        "half_time_prediction": null,
-        "half_time_status": "completed_not_reconstructed",
-        "full_time_prediction": "2-0",
-        "alternative_scores": [
-          "3-0",
-          "2-1"
-        ],
-        "probabilities": {
-          "over_2_5": 0.636,
-          "over_3_5": 0.268,
-          "over_4_5": 0.082,
-          "home_win": 0.954,
-          "draw": 0.04,
-          "away_win": 0.007,
-          "home_to_score_again": 0.43,
-          "away_to_score_again": 0.361,
-          "any_more_goal": 0.636,
-          "half_time_over_0_5": null
-        },
-        "warning": "Deneysel tahmin: veri kümesi küçük ve takım başına maç sayısı sınırlı."
-      }
+      "status": "blocked_stale_or_missing_source_timestamp",
+      "source_age_seconds": 3877.442128
     },
     {
       "game_id": "31585702",
       "home_team": "Deportivo Alaves Virtual",
       "away_team": "Sevilla Virtual",
-      "live_state": {
-        "minute": 61,
-        "score": "0-1"
-      },
       "sport": "football",
-      "display_clock": "16",
-      "period": "second_half",
-      "status": "live_prediction",
-      "prediction": {
-        "match": "Deportivo Alaves Virtual - Sevilla Virtual",
-        "historical_team_stats": {
-          "home": {
-            "played": 21,
-            "goals_for": 34,
-            "goals_against": 42,
-            "avg_scored": 1.62,
-            "avg_conceded": 2.0,
-            "ht_goals_for": 22,
-            "ht_goals_against": 20
-          },
-          "away": {
-            "played": 22,
-            "goals_for": 15,
-            "goals_against": 33,
-            "avg_scored": 0.68,
-            "avg_conceded": 1.5,
-            "ht_goals_for": 5,
-            "ht_goals_against": 16
-          }
-        },
-        "data_matches": 1193,
-        "home_team_matches": 21,
-        "away_team_matches": 22,
-        "live_state": {
-          "minute": 61,
-          "score": "0-1"
-        },
-        "half_time_prediction": null,
-        "half_time_status": "completed_not_reconstructed",
-        "full_time_prediction": "0-1",
-        "alternative_scores": [
-          "1-1",
-          "0-2"
-        ],
-        "probabilities": {
-          "over_2_5": 0.243,
-          "over_3_5": 0.07,
-          "over_4_5": 0.016,
-          "home_win": 0.067,
-          "draw": 0.224,
-          "away_win": 0.709,
-          "home_to_score_again": 0.403,
-          "away_to_score_again": 0.346,
-          "any_more_goal": 0.61,
-          "half_time_over_0_5": null
-        },
-        "warning": "Deneysel tahmin: veri kümesi küçük ve takım başına maç sayısı sınırlı."
-      }
+      "status": "blocked_stale_or_missing_source_timestamp",
+      "source_age_seconds": 3877.442128
     },
     {
       "game_id": "31585740",
       "home_team": "AC Monza Virtual",
       "away_team": "Cagliari Virtual",
-      "live_state": {
-        "minute": 30,
-        "score": "0-2"
-      },
       "sport": "football",
-      "display_clock": "10",
-      "period": "first_half",
-      "status": "live_prediction",
-      "prediction": {
-        "match": "AC Monza Virtual - Cagliari Virtual",
-        "historical_team_stats": {
-          "home": {
-            "played": 18,
-            "goals_for": 16,
-            "goals_against": 40,
-            "avg_scored": 0.89,
-            "avg_conceded": 2.22,
-            "ht_goals_for": 8,
-            "ht_goals_against": 24
-          },
-          "away": {
-            "played": 20,
-            "goals_for": 14,
-            "goals_against": 33,
-            "avg_scored": 0.7,
-            "avg_conceded": 1.65,
-            "ht_goals_for": 8,
-            "ht_goals_against": 21
-          }
-        },
-        "data_matches": 1193,
-        "home_team_matches": 18,
-        "away_team_matches": 20,
-        "live_state": {
-          "minute": 30,
-          "score": "0-2"
-        },
-        "half_time_prediction": "0-2",
-        "half_time_status": "forecast",
-        "full_time_prediction": "0-2",
-        "alternative_scores": [
-          "0-3",
-          "1-2"
-        ],
-        "probabilities": {
-          "over_2_5": 0.836,
-          "over_3_5": 0.539,
-          "over_4_5": 0.271,
-          "home_win": 0.031,
-          "draw": 0.087,
-          "away_win": 0.882,
-          "home_to_score_again": 0.594,
-          "away_to_score_again": 0.596,
-          "any_more_goal": 0.836,
-          "half_time_over_0_5": 1.0
-        },
-        "warning": "Deneysel tahmin: veri kümesi küçük ve takım başına maç sayısı sınırlı."
-      }
+      "status": "blocked_stale_or_missing_source_timestamp",
+      "source_age_seconds": 3877.442128
     },
     {
       "game_id": "31585739",
       "home_team": "Fiorentina Virtual",
       "away_team": "Torino Virtual",
-      "live_state": {
-        "minute": 30,
-        "score": "1-1"
-      },
       "sport": "football",
-      "display_clock": "10",
-      "period": "first_half",
-      "status": "live_prediction",
-      "prediction": {
-        "match": "Fiorentina Virtual - Torino Virtual",
-        "historical_team_stats": {
-          "home": {
-            "played": 18,
-            "goals_for": 27,
-            "goals_against": 22,
-            "avg_scored": 1.5,
-            "avg_conceded": 1.22,
-            "ht_goals_for": 14,
-            "ht_goals_against": 11
-          },
-          "away": {
-            "played": 18,
-            "goals_for": 19,
-            "goals_against": 27,
-            "avg_scored": 1.06,
-            "avg_conceded": 1.5,
-            "ht_goals_for": 7,
-            "ht_goals_against": 13
-          }
-        },
-        "data_matches": 1193,
-        "home_team_matches": 18,
-        "away_team_matches": 18,
-        "live_state": {
-          "minute": 30,
-          "score": "1-1"
-        },
-        "half_time_prediction": "1-1",
-        "half_time_status": "forecast",
-        "full_time_prediction": "2-1",
-        "alternative_scores": [
-          "1-1",
-          "2-2"
-        ],
-        "probabilities": {
-          "over_2_5": 0.836,
-          "over_3_5": 0.54,
-          "over_4_5": 0.272,
-          "home_win": 0.402,
-          "draw": 0.325,
-          "away_win": 0.274,
-          "home_to_score_again": 0.64,
-          "away_to_score_again": 0.545,
-          "any_more_goal": 0.836,
-          "half_time_over_0_5": 1.0
-        },
-        "warning": "Deneysel tahmin: veri kümesi küçük ve takım başına maç sayısı sınırlı."
-      }
+      "status": "blocked_stale_or_missing_source_timestamp",
+      "source_age_seconds": 3877.442128
     },
     {
       "game_id": "31585771",
       "home_team": "Istanbul Basaksehir Virtual",
       "away_team": "Eyupspor Virtual",
-      "live_state": {
-        "minute": 15,
-        "score": "1-0"
-      },
       "sport": "football",
-      "display_clock": "5",
-      "period": "first_half",
-      "status": "live_prediction",
-      "prediction": {
-        "match": "Istanbul Basaksehir Virtual - Eyupspor Virtual",
-        "historical_team_stats": {
-          "home": {
-            "played": 22,
-            "goals_for": 34,
-            "goals_against": 23,
-            "avg_scored": 1.55,
-            "avg_conceded": 1.05,
-            "ht_goals_for": 21,
-            "ht_goals_against": 8
-          },
-          "away": {
-            "played": 20,
-            "goals_for": 20,
-            "goals_against": 42,
-            "avg_scored": 1.0,
-            "avg_conceded": 2.1,
-            "ht_goals_for": 9,
-            "ht_goals_against": 21
-          }
-        },
-        "data_matches": 1193,
-        "home_team_matches": 22,
-        "away_team_matches": 20,
-        "live_state": {
-          "minute": 15,
-          "score": "1-0"
-        },
-        "half_time_prediction": "1-0",
-        "half_time_status": "forecast",
-        "full_time_prediction": "2-0",
-        "alternative_scores": [
-          "2-1",
-          "3-0"
-        ],
-        "probabilities": {
-          "over_2_5": 0.696,
-          "over_3_5": 0.436,
-          "over_4_5": 0.226,
-          "home_win": 0.761,
-          "draw": 0.157,
-          "away_win": 0.082,
-          "home_to_score_again": 0.773,
-          "away_to_score_again": 0.609,
-          "any_more_goal": 0.911,
-          "half_time_over_0_5": 1.0
-        },
-        "warning": "Deneysel tahmin: veri kümesi küçük ve takım başına maç sayısı sınırlı."
-      }
+      "status": "blocked_stale_or_missing_source_timestamp",
+      "source_age_seconds": 3877.442128
     },
     {
       "game_id": "31585678",
       "home_team": "AS Monaco Virtual",
       "away_team": "Angers Virtual",
-      "live_state": {
-        "minute": 65,
-        "score": "1-1"
-      },
       "sport": "football",
-      "display_clock": "20",
-      "period": "second_half",
-      "status": "live_prediction",
-      "prediction": {
-        "match": "AS Monaco Virtual - Angers Virtual",
-        "historical_team_stats": {
-          "home": {
-            "played": 22,
-            "goals_for": 37,
-            "goals_against": 30,
-            "avg_scored": 1.68,
-            "avg_conceded": 1.36,
-            "ht_goals_for": 18,
-            "ht_goals_against": 19
-          },
-          "away": {
-            "played": 19,
-            "goals_for": 22,
-            "goals_against": 28,
-            "avg_scored": 1.16,
-            "avg_conceded": 1.47,
-            "ht_goals_for": 8,
-            "ht_goals_against": 18
-          }
-        },
-        "data_matches": 1193,
-        "home_team_matches": 22,
-        "away_team_matches": 19,
-        "live_state": {
-          "minute": 65,
-          "score": "1-1"
-        },
-        "half_time_prediction": null,
-        "half_time_status": "completed_not_reconstructed",
-        "full_time_prediction": "1-1",
-        "alternative_scores": [
-          "2-1",
-          "1-2"
-        ],
-        "probabilities": {
-          "over_2_5": 0.54,
-          "over_3_5": 0.183,
-          "over_4_5": 0.044,
-          "home_win": 0.267,
-          "draw": 0.531,
-          "away_win": 0.203,
-          "home_to_score_again": 0.352,
-          "away_to_score_again": 0.291,
-          "any_more_goal": 0.54,
-          "half_time_over_0_5": null
-        },
-        "warning": "Deneysel tahmin: veri kümesi küçük ve takım başına maç sayısı sınırlı."
-      }
+      "status": "blocked_stale_or_missing_source_timestamp",
+      "source_age_seconds": 3877.442128
     },
     {
       "game_id": "31585705",
       "home_team": "Osasuna Virtual",
       "away_team": "Atletico Madrid Virtual",
-      "live_state": {
-        "minute": 61,
-        "score": "0-1"
-      },
       "sport": "football",
-      "display_clock": "16",
-      "period": "second_half",
-      "status": "live_prediction",
-      "prediction": {
-        "match": "Osasuna Virtual - Atletico Madrid Virtual",
-        "historical_team_stats": {
-          "home": {
-            "played": 22,
-            "goals_for": 26,
-            "goals_against": 40,
-            "avg_scored": 1.18,
-            "avg_conceded": 1.82,
-            "ht_goals_for": 13,
-            "ht_goals_against": 22
-          },
-          "away": {
-            "played": 21,
-            "goals_for": 60,
-            "goals_against": 16,
-            "avg_scored": 2.86,
-            "avg_conceded": 0.76,
-            "ht_goals_for": 24,
-            "ht_goals_against": 5
-          }
-        },
-        "data_matches": 1193,
-        "home_team_matches": 22,
-        "away_team_matches": 21,
-        "live_state": {
-          "minute": 61,
-          "score": "0-1"
-        },
-        "half_time_prediction": null,
-        "half_time_status": "completed_not_reconstructed",
-        "full_time_prediction": "0-1",
-        "alternative_scores": [
-          "0-2",
-          "1-1"
-        ],
-        "probabilities": {
-          "over_2_5": 0.298,
-          "over_3_5": 0.098,
-          "over_4_5": 0.025,
-          "home_win": 0.03,
-          "draw": 0.146,
-          "away_win": 0.823,
-          "home_to_score_again": 0.317,
-          "away_to_score_again": 0.509,
-          "any_more_goal": 0.665,
-          "half_time_over_0_5": null
-        },
-        "warning": "Deneysel tahmin: veri kümesi küçük ve takım başına maç sayısı sınırlı."
-      }
+      "status": "blocked_stale_or_missing_source_timestamp",
+      "source_age_seconds": 3877.442128
     },
     {
       "game_id": "31585633",
       "home_team": "Brentford Virtual",
       "away_team": "Tottenham Hotspur Virtual",
-      "live_state": {
-        "minute": 70,
-        "score": "2-1"
-      },
       "sport": "football",
-      "display_clock": "25",
-      "period": "second_half",
-      "status": "live_prediction",
-      "prediction": {
-        "match": "Brentford Virtual - Tottenham Hotspur Virtual",
-        "historical_team_stats": {
-          "home": {
-            "played": 21,
-            "goals_for": 36,
-            "goals_against": 41,
-            "avg_scored": 1.71,
-            "avg_conceded": 1.95,
-            "ht_goals_for": 19,
-            "ht_goals_against": 21
-          },
-          "away": {
-            "played": 23,
-            "goals_for": 29,
-            "goals_against": 34,
-            "avg_scored": 1.26,
-            "avg_conceded": 1.48,
-            "ht_goals_for": 16,
-            "ht_goals_against": 20
-          }
-        },
-        "data_matches": 1193,
-        "home_team_matches": 21,
-        "away_team_matches": 23,
-        "live_state": {
-          "minute": 70,
-          "score": "2-1"
-        },
-        "half_time_prediction": null,
-        "half_time_status": "completed_not_reconstructed",
-        "full_time_prediction": "2-1",
-        "alternative_scores": [
-          "3-1",
-          "2-2"
-        ],
-        "probabilities": {
-          "over_2_5": 1.0,
-          "over_3_5": 0.497,
-          "over_4_5": 0.152,
-          "home_win": 0.783,
-          "draw": 0.183,
-          "away_win": 0.035,
-          "home_to_score_again": 0.292,
-          "away_to_score_again": 0.29,
-          "any_more_goal": 0.497,
-          "half_time_over_0_5": null
-        },
-        "warning": "Deneysel tahmin: veri kümesi küçük ve takım başına maç sayısı sınırlı."
-      }
+      "status": "blocked_stale_or_missing_source_timestamp",
+      "source_age_seconds": 3877.442128
     },
     {
       "game_id": "31585641",
       "home_team": "Manchester City Virtual",
       "away_team": "Leeds United Virtual",
-      "live_state": {
-        "minute": 71,
-        "score": "2-1"
-      },
       "sport": "football",
-      "display_clock": "26",
-      "period": "second_half",
-      "status": "live_prediction",
-      "prediction": {
-        "match": "Manchester City Virtual - Leeds United Virtual",
-        "historical_team_stats": {
-          "home": {
-            "played": 23,
-            "goals_for": 50,
-            "goals_against": 25,
-            "avg_scored": 2.17,
-            "avg_conceded": 1.09,
-            "ht_goals_for": 22,
-            "ht_goals_against": 15
-          },
-          "away": {
-            "played": 25,
-            "goals_for": 20,
-            "goals_against": 29,
-            "avg_scored": 0.8,
-            "avg_conceded": 1.16,
-            "ht_goals_for": 8,
-            "ht_goals_against": 16
-          }
-        },
-        "data_matches": 1193,
-        "home_team_matches": 23,
-        "away_team_matches": 25,
-        "live_state": {
-          "minute": 71,
-          "score": "2-1"
-        },
-        "half_time_prediction": null,
-        "half_time_status": "completed_not_reconstructed",
-        "full_time_prediction": "2-1",
-        "alternative_scores": [
-          "3-1",
-          "2-2"
-        ],
-        "probabilities": {
-          "over_2_5": 1.0,
-          "over_3_5": 0.425,
-          "over_4_5": 0.107,
-          "home_win": 0.854,
-          "draw": 0.13,
-          "away_win": 0.015,
-          "home_to_score_again": 0.284,
-          "away_to_score_again": 0.197,
-          "any_more_goal": 0.425,
-          "half_time_over_0_5": null
-        },
-        "warning": "Deneysel tahmin: veri kümesi küçük ve takım başına maç sayısı sınırlı."
-      }
+      "status": "blocked_stale_or_missing_source_timestamp",
+      "source_age_seconds": 3877.442128
     },
     {
       "game_id": "31585746",
       "home_team": "Sassuolo Virtual",
       "away_team": "FC Como Virtual",
-      "live_state": {
-        "minute": 30,
-        "score": "1-3"
-      },
       "sport": "football",
-      "display_clock": "10",
-      "period": "first_half",
-      "status": "live_prediction",
-      "prediction": {
-        "match": "Sassuolo Virtual - FC Como Virtual",
-        "historical_team_stats": {
-          "home": {
-            "played": 17,
-            "goals_for": 30,
-            "goals_against": 27,
-            "avg_scored": 1.76,
-            "avg_conceded": 1.59,
-            "ht_goals_for": 14,
-            "ht_goals_against": 12
-          },
-          "away": {
-            "played": 18,
-            "goals_for": 25,
-            "goals_against": 27,
-            "avg_scored": 1.39,
-            "avg_conceded": 1.5,
-            "ht_goals_for": 15,
-            "ht_goals_against": 17
-          }
-        },
-        "data_matches": 1193,
-        "home_team_matches": 17,
-        "away_team_matches": 18,
-        "live_state": {
-          "minute": 30,
-          "score": "1-3"
-        },
-        "half_time_prediction": "1-3",
-        "half_time_status": "forecast",
-        "full_time_prediction": "2-3",
-        "alternative_scores": [
-          "2-4",
-          "1-3"
-        ],
-        "probabilities": {
-          "over_2_5": 1.0,
-          "over_3_5": 1.0,
-          "over_4_5": 0.872,
-          "home_win": 0.047,
-          "draw": 0.106,
-          "away_win": 0.847,
-          "home_to_score_again": 0.663,
-          "away_to_score_again": 0.62,
-          "any_more_goal": 0.872,
-          "half_time_over_0_5": 1.0
-        },
-        "warning": "Deneysel tahmin: veri kümesi küçük ve takım başına maç sayısı sınırlı."
-      }
+      "status": "blocked_stale_or_missing_source_timestamp",
+      "source_age_seconds": 3877.442128
     },
     {
       "game_id": "31585650",
       "home_team": "Freiburg Virtual",
       "away_team": "Paderborn 07 Virtual",
-      "live_state": {
-        "minute": 70,
-        "score": "1-1"
-      },
       "sport": "football",
-      "display_clock": "25",
-      "period": "second_half",
-      "status": "live_prediction",
-      "prediction": {
-        "match": "Freiburg Virtual - Paderborn 07 Virtual",
-        "historical_team_stats": {
-          "home": {
-            "played": 21,
-            "goals_for": 32,
-            "goals_against": 16,
-            "avg_scored": 1.52,
-            "avg_conceded": 0.76,
-            "ht_goals_for": 18,
-            "ht_goals_against": 10
-          },
-          "away": {
-            "played": 21,
-            "goals_for": 15,
-            "goals_against": 46,
-            "avg_scored": 0.71,
-            "avg_conceded": 2.19,
-            "ht_goals_for": 10,
-            "ht_goals_against": 21
-          }
-        },
-        "data_matches": 1193,
-        "home_team_matches": 21,
-        "away_team_matches": 21,
-        "live_state": {
-          "minute": 70,
-          "score": "1-1"
-        },
-        "half_time_prediction": null,
-        "half_time_status": "completed_not_reconstructed",
-        "full_time_prediction": "1-1",
-        "alternative_scores": [
-          "2-1",
-          "1-2"
-        ],
-        "probabilities": {
-          "over_2_5": 0.441,
-          "over_3_5": 0.116,
-          "over_4_5": 0.021,
-          "home_win": 0.278,
-          "draw": 0.601,
-          "away_win": 0.12,
-          "home_to_score_again": 0.325,
-          "away_to_score_again": 0.172,
-          "any_more_goal": 0.441,
-          "half_time_over_0_5": null
-        },
-        "warning": "Deneysel tahmin: veri kümesi küçük ve takım başına maç sayısı sınırlı."
-      }
+      "status": "blocked_stale_or_missing_source_timestamp",
+      "source_age_seconds": 3877.442128
     },
     {
       "game_id": "31585640",
       "home_team": "Manchester United Virtual",
       "away_team": "Aston Villa Virtual",
-      "live_state": {
-        "minute": 70,
-        "score": "0-1"
-      },
       "sport": "football",
-      "display_clock": "25",
-      "period": "second_half",
-      "status": "live_prediction",
-      "prediction": {
-        "match": "Manchester United Virtual - Aston Villa Virtual",
-        "historical_team_stats": {
-          "home": {
-            "played": 23,
-            "goals_for": 39,
-            "goals_against": 30,
-            "avg_scored": 1.7,
-            "avg_conceded": 1.3,
-            "ht_goals_for": 23,
-            "ht_goals_against": 15
-          },
-          "away": {
-            "played": 25,
-            "goals_for": 33,
-            "goals_against": 26,
-            "avg_scored": 1.32,
-            "avg_conceded": 1.04,
-            "ht_goals_for": 13,
-            "ht_goals_against": 10
-          }
-        },
-        "data_matches": 1193,
-        "home_team_matches": 23,
-        "away_team_matches": 25,
-        "live_state": {
-          "minute": 70,
-          "score": "0-1"
-        },
-        "half_time_prediction": null,
-        "half_time_status": "completed_not_reconstructed",
-        "full_time_prediction": "0-1",
-        "alternative_scores": [
-          "1-1",
-          "0-2"
-        ],
-        "probabilities": {
-          "over_2_5": 0.12,
-          "over_3_5": 0.022,
-          "over_4_5": 0.003,
-          "home_win": 0.029,
-          "draw": 0.174,
-          "away_win": 0.798,
-          "home_to_score_again": 0.26,
-          "away_to_score_again": 0.254,
-          "any_more_goal": 0.448,
-          "half_time_over_0_5": null
-        },
-        "warning": "Deneysel tahmin: veri kümesi küçük ve takım başına maç sayısı sınırlı."
-      }
+      "status": "blocked_stale_or_missing_source_timestamp",
+      "source_age_seconds": 3877.442128
     },
     {
       "game_id": "31585654",
       "home_team": "VfB Stuttgart Virtual",
       "away_team": "TSG 1899 Hoffenheim Virtual",
-      "live_state": {
-        "minute": 70,
-        "score": "3-0"
-      },
       "sport": "football",
-      "display_clock": "25",
-      "period": "second_half",
-      "status": "live_prediction",
-      "prediction": {
-        "match": "VfB Stuttgart Virtual - TSG 1899 Hoffenheim Virtual",
-        "historical_team_stats": {
-          "home": {
-            "played": 22,
-            "goals_for": 36,
-            "goals_against": 18,
-            "avg_scored": 1.64,
-            "avg_conceded": 0.82,
-            "ht_goals_for": 20,
-            "ht_goals_against": 8
-          },
-          "away": {
-            "played": 23,
-            "goals_for": 34,
-            "goals_against": 31,
-            "avg_scored": 1.48,
-            "avg_conceded": 1.35,
-            "ht_goals_for": 17,
-            "ht_goals_against": 11
-          }
-        },
-        "data_matches": 1193,
-        "home_team_matches": 22,
-        "away_team_matches": 23,
-        "live_state": {
-          "minute": 70,
-          "score": "3-0"
-        },
-        "half_time_prediction": null,
-        "half_time_status": "completed_not_reconstructed",
-        "full_time_prediction": "3-0",
-        "alternative_scores": [
-          "4-0",
-          "3-1"
-        ],
-        "probabilities": {
-          "over_2_5": 1.0,
-          "over_3_5": 0.439,
-          "over_4_5": 0.115,
-          "home_win": 0.998,
-          "draw": 0.002,
-          "away_win": 0.0,
-          "home_to_score_again": 0.278,
-          "away_to_score_again": 0.223,
-          "any_more_goal": 0.439,
-          "half_time_over_0_5": null
-        },
-        "warning": "Deneysel tahmin: veri kümesi küçük ve takım başına maç sayısı sınırlı."
-      }
+      "status": "blocked_stale_or_missing_source_timestamp",
+      "source_age_seconds": 3877.442128
     },
     {
       "game_id": "31585637",
       "home_team": "Ipswich Town Virtual",
       "away_team": "Sunderland Virtual",
-      "live_state": {
-        "minute": 71,
-        "score": "0-2"
-      },
       "sport": "football",
-      "display_clock": "26",
-      "period": "second_half",
-      "status": "live_prediction",
-      "prediction": {
-        "match": "Ipswich Town Virtual - Sunderland Virtual",
-        "historical_team_stats": {
-          "home": {
-            "played": 28,
-            "goals_for": 28,
-            "goals_against": 52,
-            "avg_scored": 1.0,
-            "avg_conceded": 1.86,
-            "ht_goals_for": 17,
-            "ht_goals_against": 26
-          },
-          "away": {
-            "played": 21,
-            "goals_for": 30,
-            "goals_against": 30,
-            "avg_scored": 1.43,
-            "avg_conceded": 1.43,
-            "ht_goals_for": 17,
-            "ht_goals_against": 16
-          }
-        },
-        "data_matches": 1193,
-        "home_team_matches": 28,
-        "away_team_matches": 21,
-        "live_state": {
-          "minute": 71,
-          "score": "0-2"
-        },
-        "half_time_prediction": null,
-        "half_time_status": "completed_not_reconstructed",
-        "full_time_prediction": "0-2",
-        "alternative_scores": [
-          "0-3",
-          "1-2"
-        ],
-        "probabilities": {
-          "over_2_5": 0.45,
-          "over_3_5": 0.121,
-          "over_4_5": 0.023,
-          "home_win": 0.002,
-          "draw": 0.019,
-          "away_win": 0.979,
-          "home_to_score_again": 0.23,
-          "away_to_score_again": 0.285,
-          "any_more_goal": 0.45,
-          "half_time_over_0_5": null
-        },
-        "warning": "Deneysel tahmin: veri kümesi küçük ve takım başına maç sayısı sınırlı."
-      }
+      "status": "blocked_stale_or_missing_source_timestamp",
+      "source_age_seconds": 3877.442128
     },
     {
       "game_id": "31585701",
       "home_team": "Celta de Vigo Virtual",
       "away_team": "Villarreal Virtual",
-      "live_state": {
-        "minute": 61,
-        "score": "0-2"
-      },
       "sport": "football",
-      "display_clock": "16",
-      "period": "second_half",
-      "status": "live_prediction",
-      "prediction": {
-        "match": "Celta de Vigo Virtual - Villarreal Virtual",
-        "historical_team_stats": {
-          "home": {
-            "played": 23,
-            "goals_for": 31,
-            "goals_against": 43,
-            "avg_scored": 1.35,
-            "avg_conceded": 1.87,
-            "ht_goals_for": 19,
-            "ht_goals_against": 18
-          },
-          "away": {
-            "played": 20,
-            "goals_for": 41,
-            "goals_against": 27,
-            "avg_scored": 2.05,
-            "avg_conceded": 1.35,
-            "ht_goals_for": 23,
-            "ht_goals_against": 12
-          }
-        },
-        "data_matches": 1193,
-        "home_team_matches": 23,
-        "away_team_matches": 20,
-        "live_state": {
-          "minute": 61,
-          "score": "0-2"
-        },
-        "half_time_prediction": null,
-        "half_time_status": "completed_not_reconstructed",
-        "full_time_prediction": "0-2",
-        "alternative_scores": [
-          "0-3",
-          "1-2"
-        ],
-        "probabilities": {
-          "over_2_5": 0.658,
-          "over_3_5": 0.291,
-          "over_4_5": 0.094,
-          "home_win": 0.007,
-          "draw": 0.041,
-          "away_win": 0.952,
-          "home_to_score_again": 0.373,
-          "away_to_score_again": 0.454,
-          "any_more_goal": 0.658,
-          "half_time_over_0_5": null
-        },
-        "warning": "Deneysel tahmin: veri kümesi küçük ve takım başına maç sayısı sınırlı."
-      }
+      "status": "blocked_stale_or_missing_source_timestamp",
+      "source_age_seconds": 3877.442128
     },
     {
       "game_id": "31585638",
       "home_team": "Hull City Virtual",
       "away_team": "Bournemouth Virtual",
-      "live_state": {
-        "minute": 71,
-        "score": "1-1"
-      },
       "sport": "football",
-      "display_clock": "26",
-      "period": "second_half",
-      "status": "live_prediction",
-      "prediction": {
-        "match": "Hull City Virtual - Bournemouth Virtual",
-        "historical_team_stats": {
-          "home": {
-            "played": 23,
-            "goals_for": 16,
-            "goals_against": 46,
-            "avg_scored": 0.7,
-            "avg_conceded": 2.0,
-            "ht_goals_for": 7,
-            "ht_goals_against": 23
-          },
-          "away": {
-            "played": 22,
-            "goals_for": 30,
-            "goals_against": 25,
-            "avg_scored": 1.36,
-            "avg_conceded": 1.14,
-            "ht_goals_for": 16,
-            "ht_goals_against": 14
-          }
-        },
-        "data_matches": 1193,
-        "home_team_matches": 23,
-        "away_team_matches": 22,
-        "live_state": {
-          "minute": 71,
-          "score": "1-1"
-        },
-        "half_time_prediction": null,
-        "half_time_status": "completed_not_reconstructed",
-        "full_time_prediction": "1-1",
-        "alternative_scores": [
-          "1-2",
-          "2-1"
-        ],
-        "probabilities": {
-          "over_2_5": 0.427,
-          "over_3_5": 0.108,
-          "over_4_5": 0.019,
-          "home_win": 0.144,
-          "draw": 0.616,
-          "away_win": 0.241,
-          "home_to_score_again": 0.195,
-          "away_to_score_again": 0.289,
-          "any_more_goal": 0.427,
-          "half_time_over_0_5": null
-        },
-        "warning": "Deneysel tahmin: veri kümesi küçük ve takım başına maç sayısı sınırlı."
-      }
+      "status": "blocked_stale_or_missing_source_timestamp",
+      "source_age_seconds": 3877.442128
     },
     {
       "game_id": "31585741",
       "home_team": "Genoa Virtual",
       "away_team": "Udinese Virtual",
-      "live_state": {
-        "minute": 30,
-        "score": "1-0"
-      },
       "sport": "football",
-      "display_clock": "10",
-      "period": "first_half",
-      "status": "live_prediction",
-      "prediction": {
-        "match": "Genoa Virtual - Udinese Virtual",
-        "historical_team_stats": {
-          "home": {
-            "played": 19,
-            "goals_for": 34,
-            "goals_against": 33,
-            "avg_scored": 1.79,
-            "avg_conceded": 1.74,
-            "ht_goals_for": 19,
-            "ht_goals_against": 17
-          },
-          "away": {
-            "played": 19,
-            "goals_for": 33,
-            "goals_against": 27,
-            "avg_scored": 1.74,
-            "avg_conceded": 1.42,
-            "ht_goals_for": 17,
-            "ht_goals_against": 11
-          }
-        },
-        "data_matches": 1193,
-        "home_team_matches": 19,
-        "away_team_matches": 19,
-        "live_state": {
-          "minute": 30,
-          "score": "1-0"
-        },
-        "half_time_prediction": "1-0",
-        "half_time_status": "forecast",
-        "full_time_prediction": "2-1",
-        "alternative_scores": [
-          "1-1",
-          "2-0"
-        ],
-        "probabilities": {
-          "over_2_5": 0.641,
-          "over_3_5": 0.372,
-          "over_4_5": 0.177,
-          "home_win": 0.637,
-          "draw": 0.216,
-          "away_win": 0.147,
-          "home_to_score_again": 0.658,
-          "away_to_score_again": 0.67,
-          "any_more_goal": 0.887,
-          "half_time_over_0_5": 1.0
-        },
-        "warning": "Deneysel tahmin: veri kümesi küçük ve takım başına maç sayısı sınırlı."
-      }
+      "status": "blocked_stale_or_missing_source_timestamp",
+      "source_age_seconds": 3877.442128
     },
     {
       "game_id": "31585636",
       "home_team": "Newcastle United Virtual",
       "away_team": "Liverpool Virtual",
-      "live_state": {
-        "minute": 71,
-        "score": "0-1"
-      },
       "sport": "football",
-      "display_clock": "26",
-      "period": "second_half",
-      "status": "live_prediction",
-      "prediction": {
-        "match": "Newcastle United Virtual - Liverpool Virtual",
-        "historical_team_stats": {
-          "home": {
-            "played": 25,
-            "goals_for": 28,
-            "goals_against": 24,
-            "avg_scored": 1.12,
-            "avg_conceded": 0.96,
-            "ht_goals_for": 11,
-            "ht_goals_against": 11
-          },
-          "away": {
-            "played": 24,
-            "goals_for": 36,
-            "goals_against": 31,
-            "avg_scored": 1.5,
-            "avg_conceded": 1.29,
-            "ht_goals_for": 21,
-            "ht_goals_against": 15
-          }
-        },
-        "data_matches": 1193,
-        "home_team_matches": 25,
-        "away_team_matches": 24,
-        "live_state": {
-          "minute": 71,
-          "score": "0-1"
-        },
-        "half_time_prediction": null,
-        "half_time_status": "completed_not_reconstructed",
-        "full_time_prediction": "0-1",
-        "alternative_scores": [
-          "0-2",
-          "1-1"
-        ],
-        "probabilities": {
-          "over_2_5": 0.098,
-          "over_3_5": 0.016,
-          "over_4_5": 0.002,
-          "home_win": 0.023,
-          "draw": 0.16,
-          "away_win": 0.817,
-          "home_to_score_again": 0.23,
-          "away_to_score_again": 0.231,
-          "any_more_goal": 0.408,
-          "half_time_over_0_5": null
-        },
-        "warning": "Deneysel tahmin: veri kümesi küçük ve takım başına maç sayısı sınırlı."
-      }
+      "status": "blocked_stale_or_missing_source_timestamp",
+      "source_age_seconds": 3877.442128
     },
     {
       "game_id": "31585648",
       "home_team": "Borussia Monchengladbach Virtual",
       "away_team": "1. FSV Mainz 05 Virtual",
-      "live_state": {
-        "minute": 70,
-        "score": "0-2"
-      },
       "sport": "football",
-      "display_clock": "25",
-      "period": "second_half",
-      "status": "live_prediction",
-      "prediction": {
-        "match": "Borussia Monchengladbach Virtual - 1. FSV Mainz 05 Virtual",
-        "historical_team_stats": {
-          "home": {
-            "played": 19,
-            "goals_for": 21,
-            "goals_against": 28,
-            "avg_scored": 1.11,
-            "avg_conceded": 1.47,
-            "ht_goals_for": 11,
-            "ht_goals_against": 17
-          },
-          "away": {
-            "played": 18,
-            "goals_for": 17,
-            "goals_against": 31,
-            "avg_scored": 0.94,
-            "avg_conceded": 1.72,
-            "ht_goals_for": 7,
-            "ht_goals_against": 16
-          }
-        },
-        "data_matches": 1193,
-        "home_team_matches": 19,
-        "away_team_matches": 18,
-        "live_state": {
-          "minute": 70,
-          "score": "0-2"
-        },
-        "half_time_prediction": null,
-        "half_time_status": "completed_not_reconstructed",
-        "full_time_prediction": "0-2",
-        "alternative_scores": [
-          "1-2",
-          "0-3"
-        ],
-        "probabilities": {
-          "over_2_5": 0.437,
-          "over_3_5": 0.113,
-          "over_4_5": 0.021,
-          "home_win": 0.003,
-          "draw": 0.028,
-          "away_win": 0.969,
-          "home_to_score_again": 0.266,
-          "away_to_score_again": 0.232,
-          "any_more_goal": 0.437,
-          "half_time_over_0_5": null
-        },
-        "warning": "Deneysel tahmin: veri kümesi küçük ve takım başına maç sayısı sınırlı."
-      }
+      "status": "blocked_stale_or_missing_source_timestamp",
+      "source_age_seconds": 3877.442128
     }
-  ],
-  "waiting_for_live_data": []
+  ]
 }
