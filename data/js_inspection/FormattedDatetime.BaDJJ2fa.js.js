@@ -30,7 +30,7 @@
         
     
         
-            <link rel="stylesheet" type="text/css" href="/custom.css?v=2026-11-24" id="app-custom-css" />
+            <link rel="stylesheet" type="text/css" href="/custom.css?v=2026-11-25" id="app-custom-css" />
         
     
         
@@ -87,7 +87,7 @@
     
 
     <title>Վբեթ✌️| Սպորտային Խաղադրույքներ, Օնլայն Խաղեր, Կազինո և Պոկեր</title>
-  <script type="module" crossorigin src="/assets/js/index.Bxob_jsZ.js"></script>
+  <script type="module" crossorigin src="/assets/js/index.BmrKq5Bp.js"></script>
   <link rel="modulepreload" crossorigin href="/assets/js/rolldown-runtime.C_s2cVnS.js">
   <link rel="modulepreload" crossorigin href="/assets/js/react.BugR2OfL.js">
   <link rel="modulepreload" crossorigin href="/assets/js/react-dom.BRxxYUcS.js">
@@ -126,7 +126,7 @@
   <link rel="modulepreload" crossorigin href="/assets/js/queryKeys.DW9AgVMa.js">
   <link rel="modulepreload" crossorigin href="/assets/js/react-toastify.esm.D0O6p924.js">
   <link rel="modulepreload" crossorigin href="/assets/js/componentSettings.nHp3D6G_.js">
-  <link rel="modulepreload" crossorigin href="/assets/js/usePageBuilder.CvBzG5T7.js">
+  <link rel="modulepreload" crossorigin href="/assets/js/usePageBuilder.BG0mj7qw.js">
   <link rel="modulepreload" crossorigin href="/assets/js/authentication.BG4irkrO.js">
   <link rel="modulepreload" crossorigin href="/assets/js/Swarm.AYPCu8BA.js">
   <link rel="modulepreload" crossorigin href="/assets/js/tracking.Jt3YBP28.js">
@@ -146,54 +146,54 @@
   <link rel="modulepreload" crossorigin href="/assets/js/useBetBuilderGrouping.B-SMt01y.js">
   <link rel="modulepreload" crossorigin href="/assets/js/BetslipBookingBetPrintInfoWidgetLoader.DlIqGRXX.js">
   <link rel="modulepreload" crossorigin href="/assets/js/useQuery.El0nBfw5.js">
-  <link rel="modulepreload" crossorigin href="/assets/js/useUserData.Dh9x_QtX.js">
+  <link rel="modulepreload" crossorigin href="/assets/js/useUserData.BPxx5jHv.js">
   <link rel="modulepreload" crossorigin href="/assets/js/useScrollToTop.CG6_D143.js">
   <link rel="modulepreload" crossorigin href="/assets/js/useIntersectionObserver.p72oI5nK.js">
-  <link rel="modulepreload" crossorigin href="/assets/js/DynamicallyStructuredPageRow.BQQ45Fl8.js">
-  <link rel="modulepreload" crossorigin href="/assets/js/NotFound.Da30Ecbq.js">
+  <link rel="modulepreload" crossorigin href="/assets/js/DynamicallyStructuredPageRow.xsJL2q-V.js">
+  <link rel="modulepreload" crossorigin href="/assets/js/NotFound.CW9VYu2C.js">
   <link rel="modulepreload" crossorigin href="/assets/js/TaxRules.CJBW5YIN.js">
-  <link rel="modulepreload" crossorigin href="/assets/js/useSportsbookData.8t0K2roY.js">
+  <link rel="modulepreload" crossorigin href="/assets/js/useSportsbookData.B0JhGjDe.js">
   <link rel="modulepreload" crossorigin href="/assets/js/betBuilder.Cred0mpe.js">
-  <link rel="modulepreload" crossorigin href="/assets/js/possibleWinHelpers.BFqRTfhY.js">
-  <link rel="modulepreload" crossorigin href="/assets/js/luckyBoost.CafvHfDA.js">
-  <link rel="modulepreload" crossorigin href="/assets/js/betHistory.iHXl2hGG.js">
+  <link rel="modulepreload" crossorigin href="/assets/js/possibleWinHelpers.CJVl-X79.js">
+  <link rel="modulepreload" crossorigin href="/assets/js/luckyBoost.CY5A3YCf.js">
+  <link rel="modulepreload" crossorigin href="/assets/js/betHistory.BFMOkLbp.js">
   <link rel="modulepreload" crossorigin href="/assets/js/cashout.CBA_e6Ox.js">
-  <link rel="modulepreload" crossorigin href="/assets/js/useCashoutValues.DWYGIHyp.js">
-  <link rel="modulepreload" crossorigin href="/assets/js/useBetHistory.DVP9BKkI.js">
-  <link rel="modulepreload" crossorigin href="/assets/js/useUserProfileNotificationsCount.c0BpQr8j.js">
-  <link rel="modulepreload" crossorigin href="/assets/js/useBoostedOddsProvider.-jDVu9bX.js">
+  <link rel="modulepreload" crossorigin href="/assets/js/useCashoutValues.BhmMb8VS.js">
+  <link rel="modulepreload" crossorigin href="/assets/js/useBetHistory.UHBMbdUQ.js">
+  <link rel="modulepreload" crossorigin href="/assets/js/useUserProfileNotificationsCount.CoPT0a9p.js">
+  <link rel="modulepreload" crossorigin href="/assets/js/useBoostedOddsProvider.RyUaoNkK.js">
   <link rel="modulepreload" crossorigin href="/assets/js/LiveChatDispatcher.C2F0iNKu.js">
-  <link rel="modulepreload" crossorigin href="/assets/js/useOddsConverter.CcH1zsk7.js">
-  <link rel="modulepreload" crossorigin href="/assets/js/BetslipMessagingProvider.C_qpgSkY.js">
+  <link rel="modulepreload" crossorigin href="/assets/js/useOddsConverter.BGHjofND.js">
+  <link rel="modulepreload" crossorigin href="/assets/js/BetslipMessagingProvider.BMeLoABG.js">
   <link rel="modulepreload" crossorigin href="/assets/js/countryCodes.pFI-oxFT.js">
   <link rel="modulepreload" crossorigin href="/assets/js/useGetFormConfig.BgzOnS4x.js">
   <link rel="modulepreload" crossorigin href="/assets/js/CMSCasino._cXWB1MQ.js">
-  <link rel="modulepreload" crossorigin href="/assets/js/useLoyaltyProgram.CCDJNXVk.js">
+  <link rel="modulepreload" crossorigin href="/assets/js/useLoyaltyProgram.C3eX0igD.js">
   <link rel="modulepreload" crossorigin href="/assets/js/Button.l1LwrSLU.js">
   <link rel="modulepreload" crossorigin href="/assets/js/uiKit.GivHB5gU.js">
-  <link rel="modulepreload" crossorigin href="/assets/js/useHelpPageContent.C0bNt-ow.js">
-  <link rel="modulepreload" crossorigin href="/assets/js/HelpContent.mNK2gbCa.js">
+  <link rel="modulepreload" crossorigin href="/assets/js/useHelpPageContent.CJrDSo5o.js">
+  <link rel="modulepreload" crossorigin href="/assets/js/HelpContent.BxVLeWaK.js">
   <link rel="modulepreload" crossorigin href="/assets/js/useForm.Dga65vbR.js">
   <link rel="modulepreload" crossorigin href="/assets/js/InputTypeRadio.DF7_ISYk.js">
   <link rel="modulepreload" crossorigin href="/assets/js/walletConnect.DevNxSZM.js">
-  <link rel="modulepreload" crossorigin href="/assets/js/Drawer.T9Ig34Jm.js">
+  <link rel="modulepreload" crossorigin href="/assets/js/Drawer.dnDoTcLW.js">
   <link rel="modulepreload" crossorigin href="/assets/js/actionUnlock.0A9W1ncG.js">
-  <link rel="modulepreload" crossorigin href="/assets/js/useRequireActionUnlock.DOF8TLZi.js">
-  <link rel="modulepreload" crossorigin href="/assets/js/useBetslip.trsVeHRd.js">
-  <link rel="modulepreload" crossorigin href="/assets/js/useProductBalanceFormatted.0EbtEFS6.js">
-  <link rel="modulepreload" crossorigin href="/assets/js/useSocialNavigate.Bcv_UbNW.js">
+  <link rel="modulepreload" crossorigin href="/assets/js/useRequireActionUnlock.Dnaca_hc.js">
+  <link rel="modulepreload" crossorigin href="/assets/js/useBetslip.DHE8eJDh.js">
+  <link rel="modulepreload" crossorigin href="/assets/js/useProductBalanceFormatted.v1nHAh_4.js">
+  <link rel="modulepreload" crossorigin href="/assets/js/useSocialNavigate.Cl6W5ZbV.js">
   <link rel="modulepreload" crossorigin href="/assets/js/sessionStorage.BO9xWtqf.js">
-  <link rel="modulepreload" crossorigin href="/assets/js/SocialNavigationItem.Z0c6G2TO.js">
+  <link rel="modulepreload" crossorigin href="/assets/js/SocialNavigationItem.DIZD1XiQ.js">
   <link rel="modulepreload" crossorigin href="/assets/js/jetApi.B96UrJnd.js">
   <link rel="modulepreload" crossorigin href="/assets/js/tournaments.NMbpeDFI.js">
-  <link rel="modulepreload" crossorigin href="/assets/js/BasePopup.DPjfMWTX.js">
+  <link rel="modulepreload" crossorigin href="/assets/js/BasePopup.DaUCZYBa.js">
   <link rel="modulepreload" crossorigin href="/assets/js/Caption.CvrtVRDP.js">
   <link rel="modulepreload" crossorigin href="/assets/js/Badge.Cjz3Juvk.js">
   <link rel="modulepreload" crossorigin href="/assets/js/popup.C7B9Hyd2.js">
   <link rel="modulepreload" crossorigin href="/assets/js/useIsHovered.2PULNZQ_.js">
   <link rel="modulepreload" crossorigin href="/assets/js/Tooltip.Boxvt0eO.js">
   <link rel="modulepreload" crossorigin href="/assets/js/sendVerificationCode.bxpvsncC.js">
-  <link rel="modulepreload" crossorigin href="/assets/js/useSMSCodeCountdown.DNY21pwT.js">
+  <link rel="modulepreload" crossorigin href="/assets/js/useSMSCodeCountdown.DnhdYrBJ.js">
   <link rel="modulepreload" crossorigin href="/assets/js/warning.YpdIoKou.js">
   <link rel="modulepreload" crossorigin href="/assets/js/react-input-mask.C2Po15j-.js">
   <link rel="modulepreload" crossorigin href="/assets/js/InputTypeText.D0ScQIZV.js">
@@ -203,25 +203,25 @@
   <link rel="modulepreload" crossorigin href="/assets/js/Flag.BYPJ_QRp.js">
   <link rel="modulepreload" crossorigin href="/assets/js/HorizontalNavigationListContainer.Bepqdyod.js">
   <link rel="modulepreload" crossorigin href="/assets/js/ExpandableContent.D0e8mL5p.js">
-  <link rel="modulepreload" crossorigin href="/assets/js/powerBank.gPqkjoGy.js">
-  <link rel="modulepreload" crossorigin href="/assets/js/useBetBuilder.5LQncbXc.js">
+  <link rel="modulepreload" crossorigin href="/assets/js/powerBank.DIkOH9Ao.js">
+  <link rel="modulepreload" crossorigin href="/assets/js/useBetBuilder.wCW1Vc54.js">
   <link rel="modulepreload" crossorigin href="/assets/js/Title.D1sNO3OC.js">
-  <link rel="modulepreload" crossorigin href="/assets/js/useOpenCasinoGame.Sef1PtPV.js">
+  <link rel="modulepreload" crossorigin href="/assets/js/useOpenCasinoGame.DGUVZJdT.js">
   <link rel="modulepreload" crossorigin href="/assets/js/useGamesCount.CrXzT5H5.js">
   <link rel="modulepreload" crossorigin href="/assets/js/useEventViewFilters.DcIjI0L9.js">
   <link rel="modulepreload" crossorigin href="/assets/js/dist.BKcSOVAo.js">
-  <link rel="modulepreload" crossorigin href="/assets/js/CasinoGamesLoader.CXak62mY.js">
+  <link rel="modulepreload" crossorigin href="/assets/js/CasinoGamesLoader.CzQZ2X9_.js">
   <link rel="modulepreload" crossorigin href="/assets/js/badges.VjsGZZJN.js">
   <link rel="modulepreload" crossorigin href="/assets/js/CasinoModernImageGenerator.DkvM6tEf.js">
-  <link rel="modulepreload" crossorigin href="/assets/js/useCasinoGameLiveRtp.BJ8-QooR.js">
-  <link rel="modulepreload" crossorigin href="/assets/js/emptyWinner.BaLsIt-n.js">
+  <link rel="modulepreload" crossorigin href="/assets/js/useCasinoGameLiveRtp.Dtr-tk2y.js">
+  <link rel="modulepreload" crossorigin href="/assets/js/emptyWinner.CcrSm5vd.js">
   <link rel="modulepreload" crossorigin href="/assets/js/CasinoLiveRTPTooltip.CLtzawY8.js">
   <link rel="modulepreload" crossorigin href="/assets/js/CasinoGameDownloadButton.l2Uo4ev4.js">
   <link rel="modulepreload" crossorigin href="/assets/js/socialShare.CRPQh9cr.js">
   <link rel="modulepreload" crossorigin href="/assets/js/useCopyToClipboard.BoejU3E8.js">
-  <link rel="modulepreload" crossorigin href="/assets/js/FavoriteIcon.ZCe4ICsU.js">
+  <link rel="modulepreload" crossorigin href="/assets/js/FavoriteIcon.bVGY2cJT.js">
   <link rel="modulepreload" crossorigin href="/assets/js/RunningLine.aBrn43pE.js">
-  <link rel="modulepreload" crossorigin href="/assets/js/CasinoGame.PjODdIJD.js">
+  <link rel="modulepreload" crossorigin href="/assets/js/CasinoGame.oxgF-oK9.js">
   <link rel="modulepreload" crossorigin href="/assets/js/CasinoEmptyItem.CNwbD0gs.js">
   <link rel="stylesheet" crossorigin href="/assets/css/CMSIconSVG.CAuwmGHf.css">
   <link rel="stylesheet" crossorigin href="/assets/css/Button.27waUT6k.css">
@@ -236,7 +236,7 @@
   <link rel="stylesheet" crossorigin href="/assets/css/HorizontalNavigationListContainerLoader.Dxj3Fyzq.css">
   <link rel="stylesheet" crossorigin href="/assets/css/Button.CBaIJH-n.css">
   <link rel="stylesheet" crossorigin href="/assets/css/BetslipBookingBetPrintInfoWidgetLoader.B51JPqFZ.css">
-  <link rel="stylesheet" crossorigin href="/assets/css/useUserData.BuscLbgK.css">
+  <link rel="stylesheet" crossorigin href="/assets/css/useUserData.yAQkPR2j.css">
   <link rel="stylesheet" crossorigin href="/assets/css/DynamicallyStructuredPageRow.XWNHAhPb.css">
   <link rel="stylesheet" crossorigin href="/assets/css/Button.2vCGX24W.css">
   <link rel="stylesheet" crossorigin href="/assets/css/HelpContent.C0tmtE01.css">
@@ -258,7 +258,7 @@
   <link rel="stylesheet" crossorigin href="/assets/css/RunningLine.Bv3udXL9.css">
   <link rel="stylesheet" crossorigin href="/assets/css/CasinoGame.CDfS183f.css">
   <link rel="stylesheet" crossorigin href="/assets/css/CasinoEmptyItem.BOYb_QLT.css">
-  <link rel="stylesheet" crossorigin href="/assets/css/index.DiSvL-sg.css">
+  <link rel="stylesheet" crossorigin href="/assets/css/index.BgxEJr9v.css">
   <link rel="stylesheet" crossorigin href="/assets/css/Header__platform.CdxCeDR9.css">
 </head>
 <body>
