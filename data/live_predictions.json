@@ -1,15 +1,142 @@
 {
-  "updated_at": "2026-11-26T00:01:39.434798+00:00",
-  "source_fetched_at": "2026-11-25T23:15:12.774450+00:00",
-  "source_age_seconds": 2786.7,
-  "source_fresh": false,
-  "status": "waiting_for_live_data",
+  "updated_at": "2026-11-26T00:02:16.507570+00:00",
+  "source_fetched_at": "2026-11-26T00:02:15.087575+00:00",
+  "source_age_seconds": 1.4,
+  "source_fresh": true,
+  "status": "success",
   "archive_match_count": 1707,
-  "live_catalogue_count": 37,
-  "football_live_count": 0,
-  "live_forecast_count": 0,
+  "live_catalogue_count": 47,
+  "football_live_count": 2,
+  "live_forecast_count": 2,
   "waiting_count": 0,
   "note": "Only verified live score and minute can trigger a live prediction. No pre-match estimate is presented as a live prediction.",
-  "forecasts": [],
+  "forecasts": [
+    {
+      "game_id": "31695968",
+      "home_team": "TSG 1899 Hoffenheim Virtual",
+      "away_team": "RB Leipzig Virtual",
+      "live_state": {
+        "minute": 6,
+        "score": "1-0"
+      },
+      "sport": "football",
+      "display_clock": "2",
+      "period": "first_half",
+      "status": "live_prediction",
+      "prediction": {
+        "match": "TSG 1899 Hoffenheim Virtual - RB Leipzig Virtual",
+        "historical_team_stats": {
+          "home": {
+            "played": 31,
+            "goals_for": 42,
+            "goals_against": 30,
+            "avg_scored": 1.35,
+            "avg_conceded": 0.97,
+            "ht_goals_for": 16,
+            "ht_goals_against": 12
+          },
+          "away": {
+            "played": 31,
+            "goals_for": 50,
+            "goals_against": 34,
+            "avg_scored": 1.61,
+            "avg_conceded": 1.1,
+            "ht_goals_for": 34,
+            "ht_goals_against": 15
+          }
+        },
+        "data_matches": 1707,
+        "home_team_matches": 31,
+        "away_team_matches": 31,
+        "live_state": {
+          "minute": 6,
+          "score": "1-0"
+        },
+        "half_time_prediction": "1-0",
+        "half_time_status": "forecast",
+        "full_time_prediction": "2-1",
+        "alternative_scores": [
+          "2-0",
+          "1-1"
+        ],
+        "probabilities": {
+          "over_2_5": 0.68,
+          "over_3_5": 0.417,
+          "over_4_5": 0.21,
+          "home_win": 0.641,
+          "draw": 0.209,
+          "away_win": 0.15,
+          "home_to_score_again": 0.691,
+          "away_to_score_again": 0.691,
+          "any_more_goal": 0.904,
+          "half_time_over_0_5": 1.0
+        },
+        "warning": "Deneysel tahmin: veri kümesi küçük ve takım başına maç sayısı sınırlı."
+      }
+    },
+    {
+      "game_id": "31695970",
+      "home_team": "Brentford Virtual",
+      "away_team": "Everton Virtual",
+      "live_state": {
+        "minute": 9,
+        "score": "1-0"
+      },
+      "sport": "football",
+      "display_clock": "3",
+      "period": "first_half",
+      "status": "live_prediction",
+      "prediction": {
+        "match": "Brentford Virtual - Everton Virtual",
+        "historical_team_stats": {
+          "home": {
+            "played": 27,
+            "goals_for": 50,
+            "goals_against": 32,
+            "avg_scored": 1.85,
+            "avg_conceded": 1.19,
+            "ht_goals_for": 29,
+            "ht_goals_against": 14
+          },
+          "away": {
+            "played": 32,
+            "goals_for": 39,
+            "goals_against": 45,
+            "avg_scored": 1.22,
+            "avg_conceded": 1.41,
+            "ht_goals_for": 14,
+            "ht_goals_against": 24
+          }
+        },
+        "data_matches": 1707,
+        "home_team_matches": 27,
+        "away_team_matches": 32,
+        "live_state": {
+          "minute": 9,
+          "score": "1-0"
+        },
+        "half_time_prediction": "1-0",
+        "half_time_status": "forecast",
+        "full_time_prediction": "2-1",
+        "alternative_scores": [
+          "2-0",
+          "3-1"
+        ],
+        "probabilities": {
+          "over_2_5": 0.718,
+          "over_3_5": 0.462,
+          "over_4_5": 0.248,
+          "home_win": 0.713,
+          "draw": 0.176,
+          "away_win": 0.111,
+          "home_to_score_again": 0.761,
+          "away_to_score_again": 0.664,
+          "any_more_goal": 0.92,
+          "half_time_over_0_5": 1.0
+        },
+        "warning": "Deneysel tahmin: veri kümesi küçük ve takım başına maç sayısı sınırlı."
+      }
+    }
+  ],
   "waiting_for_live_data": []
 }
