@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-11-26T23:27:10.363923+00:00",
+  "updated_at": "2026-11-27T00:24:19.651872+00:00",
   "status": "complete",
   "tested": [
     {
-      "game_id": "31700208",
-      "home_team": "Strasbourg Virtual",
-      "away_team": "Paris FC Virtual",
+      "game_id": "31700188",
+      "home_team": "Paderborn 07 Virtual",
+      "away_team": "Bayer 04 Leverkusen Virtual",
       "sport_id": null,
       "competition_id": null,
       "competition_name": null,
@@ -31,9 +31,9 @@
       ]
     },
     {
-      "game_id": "31706688",
-      "home_team": "Athletic Bilbao Virtual",
-      "away_team": "Real Betis Virtual",
+      "game_id": "31706820",
+      "home_team": "Eczacibasi Dynavit (Wom) Virtual",
+      "away_team": "Besiktas (Wom) Virtual",
       "sport_id": null,
       "competition_id": null,
       "competition_name": null,
@@ -41,8 +41,10 @@
         {
           "command": "get_results",
           "code": 0,
-          "data_keys": [],
-          "data_sample": "{}"
+          "data_keys": [
+            "lines"
+          ],
+          "data_sample": "{'lines': {'line': [{'events': {'event_name': []}, 'line_name': 'Match Winner'}, {'line_name': 'Total Points Odd/Even', 'events': {'event_name': []}}, {'line_name': '1st Set Winner', 'events': {'event_name': ['W1']}}, {'events': {'event_name': []}, 'line_name': '2nd Set Winner'}, {'line_name': '1st Set Total Points', 'events': {'event_name': ['Over (39.5)']}}, {'line_name': '1st Set Total Points', 'events': {'event_name': ['Over (40.5)']}}, {'line_name': '1st Set Total Points', 'events': {'event_name': ['Over (41.5)']}}, {'line_name': '1st Set Total Points', 'events': {'event_name': ['Over (42.5)']}}, {'line_name': '1st Set Total Points', 'events': {'event_name': ['Over (43.5)']}}, {'line_name': '1st Set Total Points', 'events': {'event_name': ['Under (44.5)']}}, {'line_name': '1st Set Total Points', 'events': {'event_name': ['Under (45.5)']}}, {'line_name': '1st Set Total Points', 'events': {'event_name': ['Under (46.5)']}}, {'events': {'event_name': ['Under (47.5)']}, 'line_name': '1st Set Total Points'}, {'line_name': '1st Set Total Points', 'events': {'event_name': ['Under (48.5)']}}, {'line_name': '1st Set Total Points', 'events': {'event_name': ['Under (49.5)']}}, {'events': {'event_name': []}, 'line_name': '2nd Set Total Points'}, {'line_name': '2nd Set Total Points', 'events': {'event_name': []}}, {'line_name': '2nd Set Total Points', 'events': {'event_name': []}}, {'events': {'event_name': []}, 'line_name': '2nd Set Total Points'}, {'line_name': '2nd Set Total Points', 'events': {'event_name': []}}, {'events': {'event_name': ['Eczacibasi Dynavit (Wom) Virtual (-1.5)']}, 'line_name': '1st Set Points Handicap'}, {'line_name': '1st Set Points Handicap', 'events': {'event_name': ['Eczacibasi Dynavit (Wom) Virtual (-2.5)']}}, {'events': {'event_name': ['Eczacibasi Dynavit (Wom) Virtual (-3.5)']}, 'line_name': '1st Set Points Handicap'}, {'line_name': '1st Set Points Handicap', 'events': {'event_name': ['Eczacibasi Dynavit (Wom) Virtual (-4.5)']}}, {'line_name': '1st Set Points Handicap', 'events': {'event_name': ['Eczacibasi Dynavit (Wom) Virtual (-5.5)']}}, {'line_name': '1st Set Points Handicap', 'events': {'event_name': ['Besiktas (Wom) Virtual (6.5)']}},"
         },
         {
           "command": "get_result_games",
@@ -59,120 +61,8 @@
       ]
     },
     {
-      "game_id": "31706689",
-      "home_team": "Deportivo Alaves Virtual",
-      "away_team": "Getafe Virtual",
-      "sport_id": null,
-      "competition_id": null,
-      "competition_name": null,
-      "probes": [
-        {
-          "command": "get_results",
-          "code": 0,
-          "data_keys": [],
-          "data_sample": "{}"
-        },
-        {
-          "command": "get_result_games",
-          "code": 0,
-          "data_keys": [],
-          "data_sample": "{}"
-        },
-        {
-          "command": "get_game_info",
-          "code": 2,
-          "data_keys": [],
-          "data_sample": "{}"
-        }
-      ]
-    },
-    {
-      "game_id": "31700213",
-      "home_team": "Lille OSC Virtual",
-      "away_team": "AJ Auxerre Virtual",
-      "sport_id": null,
-      "competition_id": null,
-      "competition_name": null,
-      "probes": [
-        {
-          "command": "get_results",
-          "code": 0,
-          "data_keys": [],
-          "data_sample": "{}"
-        },
-        {
-          "command": "get_result_games",
-          "code": 0,
-          "data_keys": [],
-          "data_sample": "{}"
-        },
-        {
-          "command": "get_game_info",
-          "code": 2,
-          "data_keys": [],
-          "data_sample": "{}"
-        }
-      ]
-    },
-    {
-      "game_id": "31706625",
-      "home_team": "Bournemouth Virtual",
-      "away_team": "Crystal Palace Virtual",
-      "sport_id": null,
-      "competition_id": null,
-      "competition_name": null,
-      "probes": [
-        {
-          "command": "get_results",
-          "code": 0,
-          "data_keys": [],
-          "data_sample": "{}"
-        },
-        {
-          "command": "get_result_games",
-          "code": 0,
-          "data_keys": [],
-          "data_sample": "{}"
-        },
-        {
-          "command": "get_game_info",
-          "code": 2,
-          "data_keys": [],
-          "data_sample": "{}"
-        }
-      ]
-    },
-    {
-      "game_id": "31706601",
-      "home_team": "Shanxi Loongs Virtual",
-      "away_team": "Guangdong Southern Tigers Virtual",
-      "sport_id": null,
-      "competition_id": null,
-      "competition_name": null,
-      "probes": [
-        {
-          "command": "get_results",
-          "code": 0,
-          "data_keys": [],
-          "data_sample": "{}"
-        },
-        {
-          "command": "get_result_games",
-          "code": 0,
-          "data_keys": [],
-          "data_sample": "{}"
-        },
-        {
-          "command": "get_game_info",
-          "code": 2,
-          "data_keys": [],
-          "data_sample": "{}"
-        }
-      ]
-    },
-    {
-      "game_id": "31706610",
-      "home_team": "Delhi Capitals Virtual",
+      "game_id": "31706748",
+      "home_team": "Kolkata Knight Riders Virtual",
       "away_team": "Royal Challengers Bengaluru Virtual",
       "sport_id": null,
       "competition_id": null,
@@ -184,7 +74,7 @@
           "data_keys": [
             "lines"
           ],
-          "data_sample": "{'lines': {'line': [{'events': {'event_name': []}, 'line_name': 'Match Result'}, {'line_name': 'Delhi Capitals Virtual Total Sixes', 'events': {'event_name': []}}, {'line_name': 'Delhi Capitals Virtual Total Sixes', 'events': {'event_name': []}}, {'line_name': 'Delhi Capitals Virtual Total Sixes', 'events': {'event_name': []}}, {'line_name': 'Delhi Capitals Virtual Total Sixes', 'events': {'event_name': []}}, {'line_name': 'Royal Challengers Bengaluru Virtual Total Sixes', 'events': {'event_name': []}}, {'line_name': 'Royal Challengers Bengaluru Virtual Total Sixes', 'events': {'event_name': []}}, {'line_name': 'Royal Challengers Bengaluru Virtual Total Sixes', 'events': {'event_name': []}}, {'line_name': 'Royal Challengers Bengaluru Virtual Total Sixes', 'events': {'event_name': []}}, {'line_name': 'Delhi Capitals Virtual Total Fours', 'events': {'event_name': []}}, {'line_name': 'Delhi Capitals Virtual Total Fours', 'events': {'event_name': []}}, {'line_name': 'Delhi Capitals Virtual Total Fours', 'events': {'event_name': []}}, {'line_name': 'Delhi Capitals Virtual Total Fours', 'events': {'event_name': []}}, {'line_name': 'Royal Challengers Bengaluru Virtual Total Fours', 'events': {'event_name': []}}, {'line_name': 'Royal Challengers Bengaluru Virtual Total Fours', 'events': {'event_name': []}}, {'line_name': 'Royal Challengers Bengaluru Virtual Total Fours', 'events': {'event_name': []}}, {'events': {'event_name': []}, 'line_name': 'Delhi Capitals Virtual Total Runs'}, {'events': {'event_name': []}, 'line_name': 'Delhi Capitals Virtual Total Runs'}, {'events': {'event_name': []}, 'line_name': 'Delhi Capitals Virtual Total Runs'}, {'line_name': 'Delhi Capitals Virtual Total Runs', 'events': {'event_name': []}}, {'line_name': 'Delhi Capitals Virtual Total Runs', 'events': {'event_name': []}}, {'line_name': 'Delhi Capitals Virtual Total Runs', 'events': {'event_name': []}}, {'line_name': 'Delhi Capitals Virtual Total Runs', 'events': {'event_name': []}}, {'line_name': 'Delhi Capitals Virtual Total Runs', 'events': {'event_name': []}}, {'events': {'event_name': []}, 'line_name': 'Delhi Capitals Virtual Total Runs'}, {'line_name': 'Royal Challengers Bengaluru Vi"
+          "data_sample": "{'lines': {'line': [{'line_name': 'Match Result', 'events': {'event_name': []}}, {'line_name': 'Kolkata Knight Riders Virtual Total Sixes', 'events': {'event_name': []}}, {'events': {'event_name': []}, 'line_name': 'Kolkata Knight Riders Virtual Total Sixes'}, {'line_name': 'Kolkata Knight Riders Virtual Total Sixes', 'events': {'event_name': []}}, {'line_name': 'Kolkata Knight Riders Virtual Total Sixes', 'events': {'event_name': []}}, {'events': {'event_name': []}, 'line_name': 'Royal Challengers Bengaluru Virtual Total Sixes'}, {'line_name': 'Royal Challengers Bengaluru Virtual Total Sixes', 'events': {'event_name': []}}, {'line_name': 'Royal Challengers Bengaluru Virtual Total Sixes', 'events': {'event_name': []}}, {'line_name': 'Kolkata Knight Riders Virtual Total Fours', 'events': {'event_name': []}}, {'line_name': 'Kolkata Knight Riders Virtual Total Fours', 'events': {'event_name': []}}, {'line_name': 'Kolkata Knight Riders Virtual Total Fours', 'events': {'event_name': []}}, {'line_name': 'Kolkata Knight Riders Virtual Total Fours', 'events': {'event_name': []}}, {'line_name': 'Kolkata Knight Riders Virtual Total Fours', 'events': {'event_name': []}}, {'line_name': 'Kolkata Knight Riders Virtual Total Fours', 'events': {'event_name': []}}, {'events': {'event_name': []}, 'line_name': 'Royal Challengers Bengaluru Virtual Total Fours'}, {'line_name': 'Royal Challengers Bengaluru Virtual Total Fours', 'events': {'event_name': []}}, {'line_name': 'Royal Challengers Bengaluru Virtual Total Fours', 'events': {'event_name': []}}, {'line_name': 'Royal Challengers Bengaluru Virtual Total Fours', 'events': {'event_name': []}}, {'line_name': 'Kolkata Knight Riders Virtual Total Runs', 'events': {'event_name': []}}, {'line_name': 'Kolkata Knight Riders Virtual Total Runs', 'events': {'event_name': []}}, {'line_name': 'Kolkata Knight Riders Virtual Total Runs', 'events': {'event_name': []}}, {'line_name': 'Kolkata Knight Riders Virtual Total Runs', 'events': {'event_name': []}}, {'events': {'event_name': []}, 'line_name': 'Kolkata Knight Riders Virtual Total Runs'}, {'line_name': 'Kolkata Knight Riders Virtual Total Runs', 'events': {'event_name': []}}, {'line_name':"
         },
         {
           "command": "get_result_games",
@@ -201,9 +91,9 @@
       ]
     },
     {
-      "game_id": "31699977",
-      "home_team": "Slovenia Virtual",
-      "away_team": "Bulgaria Virtual",
+      "game_id": "31706814",
+      "home_team": "Rafael Jodar Virtual",
+      "away_team": "Alex Michelsen Virtual",
       "sport_id": null,
       "competition_id": null,
       "competition_name": null,
@@ -229,9 +119,9 @@
       ]
     },
     {
-      "game_id": "31706681",
-      "home_team": "Deportivo de A Coruna Virtual",
-      "away_team": "Sevilla Virtual",
+      "game_id": "31706851",
+      "home_team": "Celta de Vigo Virtual",
+      "away_team": "Elche CF Virtual",
       "sport_id": null,
       "competition_id": null,
       "competition_name": null,
@@ -257,9 +147,39 @@
       ]
     },
     {
-      "game_id": "31706603",
-      "home_team": "Zhejiang Golden Bulls Virtual",
-      "away_team": "Beijing Ducks Virtual",
+      "game_id": "31706798",
+      "home_team": "Alejandro Tabilo Virtual",
+      "away_team": "Jannik Sinner Virtual",
+      "sport_id": null,
+      "competition_id": null,
+      "competition_name": null,
+      "probes": [
+        {
+          "command": "get_results",
+          "code": 0,
+          "data_keys": [
+            "lines"
+          ],
+          "data_sample": "{'lines': {'line': [{'line_name': 'Match Winner', 'events': {'event_name': []}}, {'line_name': '1st Set Winner', 'events': {'event_name': []}}, {'events': {'event_name': ['Over (7.5)']}, 'line_name': '1st Set Total Games'}, {'line_name': '1st Set Total Games', 'events': {'event_name': []}}, {'events': {'event_name': []}, 'line_name': '1st Set Total Games'}, {'events': {'event_name': []}, 'line_name': '1st Set Total Games'}, {'line_name': '1st Set Total Games', 'events': {'event_name': []}}, {'line_name': '1st Set Games Handicap', 'events': {'event_name': []}}, {'line_name': '1st Set Games Handicap', 'events': {'event_name': []}}, {'line_name': '1st Set Games Handicap', 'events': {'event_name': []}}, {'line_name': '1st Set Games Handicap', 'events': {'event_name': []}}, {'line_name': '1st Set 1st Game Winner', 'events': {'event_name': ['Alejandro Tabilo Virtual']}}, {'events': {'event_name': ['Jannik Sinner Virtual']}, 'line_name': '1st Set 2nd Game Winner'}, {'events': {'event_name': ['Jannik Sinner Virtual']}, 'line_name': '1st Set 3rd Game Winner'}, {'events': {'event_name': ['Jannik Sinner Virtual']}, 'line_name': '1st Set 4th Game Winner'}, {'line_name': '1st Set 5th Game Winner', 'events': {'event_name': ['Alejandro Tabilo Virtual']}}, {'line_name': '1st Set 6th Game Winner', 'events': {'event_name': ['Jannik Sinner Virtual']}}, {'line_name': '1st Set 7th Game Winner', 'events': {'event_name': ['Alejandro Tabilo Virtual']}}, {'line_name': '1st Set 8th Game Winner', 'events': {'event_name': ['Jannik Sinner Virtual']}}, {'events': {'event_name': []}, 'line_name': '1st Set 9th Game Winner'}, {'line_name': '1st Set 1st Game To Deuce', 'events': {'event_name': ['No']}}, {'line_name': '1st Set 2nd Game To Deuce', 'events': {'event_name': ['No']}}, {'events': {'event_name': ['No']}, 'line_name': '1st Set 3rd Game To Deuce'}, {'line_name': '1st Set 4th Game To Deuce', 'events': {'event_name': ['No']}}, {'events': {'event_name': ['Yes']}, 'line_name': '1st Set 5th Game To Deuce'}, {'line_name': '1st Set 6th Game To Deuce', 'events': {'event_name': ['No']}}, {'line_name': '1st Set 7th Game To Deuce', 'events': {'event_name': ['No']}}, {'line_name': '1st Set 8th Game "
+        },
+        {
+          "command": "get_result_games",
+          "code": 0,
+          "data_keys": [],
+          "data_sample": "{}"
+        },
+        {
+          "command": "get_game_info",
+          "code": 2,
+          "data_keys": [],
+          "data_sample": "{}"
+        }
+      ]
+    },
+    {
+      "game_id": "31706775",
+      "home_team": "Houston Rockets Virtual",
+      "away_team": "Orlando Magic Virtual",
       "sport_id": null,
       "competition_id": null,
       "competition_name": null,
@@ -285,9 +205,39 @@
       ]
     },
     {
-      "game_id": "31706605",
-      "home_team": "Xinjiang Flying Tigers Virtual",
-      "away_team": "Guangzhou Loong-Lions Virtual",
+      "game_id": "31706803",
+      "home_team": "Nuno Borges Virtual",
+      "away_team": "Ben Shelton Virtual",
+      "sport_id": null,
+      "competition_id": null,
+      "competition_name": null,
+      "probes": [
+        {
+          "command": "get_results",
+          "code": 0,
+          "data_keys": [
+            "lines"
+          ],
+          "data_sample": "{'lines': {'line': [{'events': {'event_name': []}, 'line_name': 'Match Winner'}, {'line_name': '1st Set Winner', 'events': {'event_name': ['W1']}}, {'line_name': '2nd Set Winner', 'events': {'event_name': []}}, {'line_name': '1st Set Total Games', 'events': {'event_name': ['Over (7.5)']}}, {'line_name': '1st Set Total Games', 'events': {'event_name': ['Over (8.5)']}}, {'line_name': '1st Set Total Games', 'events': {'event_name': ['Under (9.5)']}}, {'line_name': '1st Set Total Games', 'events': {'event_name': ['Under (10.5)']}}, {'events': {'event_name': ['Under (12.5)']}, 'line_name': '1st Set Total Games'}, {'line_name': '2nd Set Total Games', 'events': {'event_name': []}}, {'events': {'event_name': []}, 'line_name': '2nd Set Total Games'}, {'line_name': '2nd Set Total Games', 'events': {'event_name': []}}, {'line_name': '1st Set Games Handicap', 'events': {'event_name': ['Nuno Borges Virtual (1.5)']}}, {'line_name': '1st Set Games Handicap', 'events': {'event_name': ['Nuno Borges Virtual (-1.5)']}}, {'line_name': '1st Set Games Handicap', 'events': {'event_name': ['Nuno Borges Virtual (-2.5)']}}, {'line_name': '1st Set Games Handicap', 'events': {'event_name': ['Ben Shelton Virtual (3.5)']}}, {'line_name': '1st Set Games Handicap', 'events': {'event_name': ['Ben Shelton Virtual (4.5)']}}, {'line_name': '2nd Set Games Handicap', 'events': {'event_name': []}}, {'line_name': '2nd Set Games Handicap', 'events': {'event_name': []}}, {'line_name': '2nd Set Games Handicap', 'events': {'event_name': []}}, {'line_name': '2nd Set Games Handicap', 'events': {'event_name': []}}, {'line_name': '1st Set 1st Game Winner', 'events': {'event_name': ['Nuno Borges Virtual']}}, {'line_name': '1st Set 2nd Game Winner', 'events': {'event_name': ['Ben Shelton Virtual']}}, {'line_name': '1st Set 3rd Game Winner', 'events': {'event_name': ['Nuno Borges Virtual']}}, {'events': {'event_name': ['Nuno Borges Virtual']}, 'line_name': '1st Set 4th Game Winner'}, {'line_name': '1st Set 5th Game Winner', 'events': {'event_name': ['Nuno Borges Virtual']}}, {'line_name': '1st Set 6th Game Winner', 'events': {'event_name': ['Ben Shelton Virtual']}}, {'line_name': '1st Set 7th Game Winner', 'even"
+        },
+        {
+          "command": "get_result_games",
+          "code": 0,
+          "data_keys": [],
+          "data_sample": "{}"
+        },
+        {
+          "command": "get_game_info",
+          "code": 2,
+          "data_keys": [],
+          "data_sample": "{}"
+        }
+      ]
+    },
+    {
+      "game_id": "31706809",
+      "home_team": "Joao Fonseca Virtual",
+      "away_team": "Andrey Rublev Virtual",
       "sport_id": null,
       "competition_id": null,
       "competition_name": null,
@@ -313,9 +263,65 @@
       ]
     },
     {
-      "game_id": "31706624",
-      "home_team": "Manchester City Virtual",
-      "away_team": "Aston Villa Virtual",
+      "game_id": "31706811",
+      "home_team": "Felix Auger Aliassime Virtual",
+      "away_team": "Frances Tiafoe Virtual",
+      "sport_id": null,
+      "competition_id": null,
+      "competition_name": null,
+      "probes": [
+        {
+          "command": "get_results",
+          "code": 0,
+          "data_keys": [],
+          "data_sample": "{}"
+        },
+        {
+          "command": "get_result_games",
+          "code": 0,
+          "data_keys": [],
+          "data_sample": "{}"
+        },
+        {
+          "command": "get_game_info",
+          "code": 2,
+          "data_keys": [],
+          "data_sample": "{}"
+        }
+      ]
+    },
+    {
+      "game_id": "31706813",
+      "home_team": "Raphael Collignon Virtual",
+      "away_team": "Valentin Vacherot Virtual",
+      "sport_id": null,
+      "competition_id": null,
+      "competition_name": null,
+      "probes": [
+        {
+          "command": "get_results",
+          "code": 0,
+          "data_keys": [],
+          "data_sample": "{}"
+        },
+        {
+          "command": "get_result_games",
+          "code": 0,
+          "data_keys": [],
+          "data_sample": "{}"
+        },
+        {
+          "command": "get_game_info",
+          "code": 2,
+          "data_keys": [],
+          "data_sample": "{}"
+        }
+      ]
+    },
+    {
+      "game_id": "31706869",
+      "home_team": "SSC Napoli Virtual",
+      "away_team": "FC Como Virtual",
       "sport_id": null,
       "competition_id": null,
       "competition_name": null,
