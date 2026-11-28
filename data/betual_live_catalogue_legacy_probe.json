@@ -1,62 +1,7 @@
 {
-  "updated_at": "2026-11-28T13:58:18.825006+00:00",
-  "count": 6,
+  "updated_at": "2026-11-28T14:42:57.471596+00:00",
+  "count": 1,
   "matches": [
-    {
-      "game_id": "31725183",
-      "home_team": "Croatia (Wom) Virtual",
-      "away_team": "France (Wom) Virtual",
-      "start_ts": 1795873500,
-      "is_live": 1,
-      "competition_id": null,
-      "competition": null,
-      "home_score": 0,
-      "away_score": 1,
-      "minute": null,
-      "period": "second_half",
-      "live_state_verified": false,
-      "score_stats_agree": true,
-      "display_clock": "",
-      "current_game_state": "set2",
-      "raw_score_fields": {
-        "info": {
-          "additional_data": {},
-          "add_info": "",
-          "score1": "0",
-          "score2": "1",
-          "pass_team": "team1",
-          "shirt2_color": "000000",
-          "short1_color": "000000",
-          "current_game_state": "set2",
-          "shirt1_color": "000000",
-          "short2_color": "000000",
-          "field": 0
-        },
-        "stats": {
-          "period": {
-            "team1_value": 1,
-            "team2_value": 2
-          },
-          "passes": {
-            "team1_value": null,
-            "team2_value": null
-          },
-          "score_set1": {
-            "team1_value": 23,
-            "team2_value": 25
-          },
-          "score_set2": {
-            "team1_value": 4,
-            "team2_value": 2
-          },
-          "point": {
-            "team1_value": 27,
-            "team2_value": 27
-          }
-        }
-      },
-      "source": "BetConstruct Swarm live betting catalogue game.info"
-    },
     {
       "game_id": "31700099",
       "home_team": "Natus Vincere Virtual",
@@ -88,9 +33,6 @@
             "timeoutType": null,
             "maps": [
               {
-                "isHomeCounterTerrorist": true,
-                "team1Players": null,
-                "team2Players": null,
                 "scores": [
                   {
                     "team1": 7,
@@ -98,14 +40,14 @@
                     "sequence": 1
                   },
                   {
-                    "team1": 4,
                     "team2": 8,
-                    "sequence": 2
+                    "sequence": 2,
+                    "team1": 4
                   },
                   {
+                    "team2": 13,
                     "sequence": 0,
-                    "team1": 11,
-                    "team2": 13
+                    "team1": 11
                   }
                 ],
                 "mapNumber": 1,
@@ -126,6 +68,21 @@
                     "wonMethod": 0
                   },
                   {
+                    "isTerrorist": true,
+                    "wonMethod": 1,
+                    "wonSide": 1
+                  },
+                  {
+                    "isTerrorist": false,
+                    "wonMethod": 1,
+                    "wonSide": 2
+                  },
+                  {
+                    "wonSide": 1,
+                    "isTerrorist": true,
+                    "wonMethod": 1
+                  },
+                  {
                     "wonSide": 1,
                     "isTerrorist": true,
                     "wonMethod": 1
@@ -136,24 +93,9 @@
                     "wonMethod": 1
                   },
                   {
-                    "isTerrorist": true,
-                    "wonMethod": 1,
-                    "wonSide": 1
-                  },
-                  {
                     "wonSide": 1,
                     "isTerrorist": true,
-                    "wonMethod": 1
-                  },
-                  {
-                    "isTerrorist": false,
-                    "wonMethod": 1,
-                    "wonSide": 2
-                  },
-                  {
-                    "wonMethod": 2,
-                    "wonSide": 1,
-                    "isTerrorist": true
+                    "wonMethod": 2
                   },
                   {
                     "wonSide": 1,
@@ -176,9 +118,9 @@
                     "wonMethod": 1
                   },
                   {
+                    "wonMethod": 1,
                     "wonSide": 2,
-                    "isTerrorist": true,
-                    "wonMethod": 1
+                    "isTerrorist": true
                   },
                   {
                     "wonSide": 1,
@@ -186,9 +128,9 @@
                     "wonMethod": 0
                   },
                   {
+                    "wonSide": 2,
                     "isTerrorist": true,
-                    "wonMethod": 1,
-                    "wonSide": 2
+                    "wonMethod": 1
                   },
                   {
                     "wonSide": 2,
@@ -201,9 +143,9 @@
                     "wonMethod": 1
                   },
                   {
+                    "wonSide": 1,
                     "isTerrorist": false,
-                    "wonMethod": 1,
-                    "wonSide": 1
+                    "wonMethod": 1
                   },
                   {
                     "wonSide": 2,
@@ -216,14 +158,14 @@
                     "wonMethod": 1
                   },
                   {
+                    "wonSide": 2,
                     "isTerrorist": true,
-                    "wonMethod": 1,
-                    "wonSide": 2
+                    "wonMethod": 1
                   },
                   {
-                    "wonMethod": 2,
                     "wonSide": 2,
-                    "isTerrorist": true
+                    "isTerrorist": true,
+                    "wonMethod": 2
                   },
                   {
                     "wonSide": 2,
@@ -231,15 +173,52 @@
                     "wonMethod": 2
                   }
                 ],
-                "mapName": null
+                "mapName": null,
+                "isHomeCounterTerrorist": true,
+                "team1Players": null,
+                "team2Players": null
               },
               {
+                "team1Players": null,
+                "team2Players": null,
+                "scores": [
+                  {
+                    "sequence": 1,
+                    "team1": 6,
+                    "team2": 6
+                  },
+                  {
+                    "team1": 7,
+                    "team2": 4,
+                    "sequence": 2
+                  },
+                  {
+                    "team1": 13,
+                    "team2": 10,
+                    "sequence": 0
+                  }
+                ],
                 "mapNumber": 2,
                 "roundsOutcome": [
+                  {
+                    "wonMethod": 1,
+                    "wonSide": 2,
+                    "isTerrorist": false
+                  },
+                  {
+                    "wonMethod": 1,
+                    "wonSide": 1,
+                    "isTerrorist": true
+                  },
                   {
                     "wonSide": 2,
                     "isTerrorist": false,
                     "wonMethod": 1
+                  },
+                  {
+                    "wonSide": 2,
+                    "isTerrorist": false,
+                    "wonMethod": 3
                   },
                   {
                     "wonSide": 1,
@@ -247,12 +226,7 @@
                     "wonMethod": 1
                   },
                   {
-                    "wonSide": 2,
-                    "isTerrorist": false,
-                    "wonMethod": 1
-                  },
-                  {
-                    "wonMethod": 3,
+                    "wonMethod": 1,
                     "wonSide": 2,
                     "isTerrorist": false
                   },
@@ -262,9 +236,14 @@
                     "wonMethod": 1
                   },
                   {
-                    "wonSide": 2,
                     "isTerrorist": false,
-                    "wonMethod": 1
+                    "wonMethod": 1,
+                    "wonSide": 2
+                  },
+                  {
+                    "wonSide": 1,
+                    "isTerrorist": true,
+                    "wonMethod": 2
                   },
                   {
                     "wonSide": 1,
@@ -274,67 +253,52 @@
                   {
                     "wonSide": 2,
                     "isTerrorist": false,
-                    "wonMethod": 1
+                    "wonMethod": 3
                   },
                   {
-                    "wonMethod": 2,
+                    "wonMethod": 1,
                     "wonSide": 1,
                     "isTerrorist": true
                   },
                   {
                     "wonSide": 1,
+                    "isTerrorist": false,
+                    "wonMethod": 1
+                  },
+                  {
+                    "wonSide": 1,
+                    "isTerrorist": false,
+                    "wonMethod": 3
+                  },
+                  {
+                    "wonSide": 1,
+                    "isTerrorist": false,
+                    "wonMethod": 1
+                  },
+                  {
+                    "wonMethod": 1,
+                    "wonSide": 2,
+                    "isTerrorist": true
+                  },
+                  {
+                    "wonSide": 2,
                     "isTerrorist": true,
                     "wonMethod": 1
                   },
                   {
                     "wonSide": 2,
-                    "isTerrorist": false,
-                    "wonMethod": 3
-                  },
-                  {
-                    "wonSide": 1,
                     "isTerrorist": true,
-                    "wonMethod": 1
+                    "wonMethod": 2
                   },
                   {
                     "wonSide": 1,
                     "isTerrorist": false,
                     "wonMethod": 1
-                  },
-                  {
-                    "wonSide": 1,
-                    "isTerrorist": false,
-                    "wonMethod": 3
                   },
                   {
                     "isTerrorist": false,
                     "wonMethod": 1,
                     "wonSide": 1
-                  },
-                  {
-                    "wonSide": 2,
-                    "isTerrorist": true,
-                    "wonMethod": 1
-                  },
-                  {
-                    "wonSide": 2,
-                    "isTerrorist": true,
-                    "wonMethod": 1
-                  },
-                  {
-                    "wonMethod": 2,
-                    "wonSide": 2,
-                    "isTerrorist": true
-                  },
-                  {
-                    "wonSide": 1,
-                    "isTerrorist": false,
-                    "wonMethod": 1
-                  },
-                  {
-                    "wonMethod": 1,
-                    "wonSide": 1,
-                    "isTerrorist": false
                   },
                   {
                     "wonSide": 2,
@@ -353,29 +317,9 @@
                   }
                 ],
                 "mapName": null,
-                "isHomeCounterTerrorist": true,
-                "team1Players": null,
-                "team2Players": null,
-                "scores": [
-                  {
-                    "team1": 6,
-                    "team2": 6,
-                    "sequence": 1
-                  },
-                  {
-                    "team1": 7,
-                    "team2": 4,
-                    "sequence": 2
-                  },
-                  {
-                    "sequence": 0,
-                    "team1": 13,
-                    "team2": 10
-                  }
-                ]
+                "isHomeCounterTerrorist": true
               },
               {
-                "team1Players": null,
                 "team2Players": null,
                 "scores": [
                   {
@@ -384,9 +328,9 @@
                     "sequence": 1
                   },
                   {
+                    "team1": 5,
                     "team2": 3,
-                    "sequence": 2,
-                    "team1": 5
+                    "sequence": 2
                   },
                   {
                     "team1": 11,
@@ -402,9 +346,9 @@
                     "wonMethod": 0
                   },
                   {
-                    "wonSide": 2,
                     "isTerrorist": false,
-                    "wonMethod": 0
+                    "wonMethod": 0,
+                    "wonSide": 2
                   },
                   {
                     "wonSide": 1,
@@ -415,41 +359,41 @@
                     "wonSide": 1,
                     "isTerrorist": true,
                     "wonMethod": 1
-                  },
-                  {
-                    "wonSide": 1,
-                    "isTerrorist": true,
-                    "wonMethod": 1
-                  },
-                  {
-                    "wonSide": 2,
-                    "isTerrorist": false,
-                    "wonMethod": 1
-                  },
-                  {
-                    "wonSide": 1,
-                    "isTerrorist": true,
-                    "wonMethod": 1
-                  },
-                  {
-                    "wonSide": 1,
-                    "isTerrorist": true,
-                    "wonMethod": 1
-                  },
-                  {
-                    "wonSide": 2,
-                    "isTerrorist": false,
-                    "wonMethod": 1
-                  },
-                  {
-                    "isTerrorist": true,
-                    "wonMethod": 2,
-                    "wonSide": 1
                   },
                   {
                     "wonMethod": 1,
+                    "wonSide": 1,
+                    "isTerrorist": true
+                  },
+                  {
                     "wonSide": 2,
-                    "isTerrorist": false
+                    "isTerrorist": false,
+                    "wonMethod": 1
+                  },
+                  {
+                    "wonSide": 1,
+                    "isTerrorist": true,
+                    "wonMethod": 1
+                  },
+                  {
+                    "wonSide": 1,
+                    "isTerrorist": true,
+                    "wonMethod": 1
+                  },
+                  {
+                    "wonSide": 2,
+                    "isTerrorist": false,
+                    "wonMethod": 1
+                  },
+                  {
+                    "wonSide": 1,
+                    "isTerrorist": true,
+                    "wonMethod": 2
+                  },
+                  {
+                    "wonSide": 2,
+                    "isTerrorist": false,
+                    "wonMethod": 1
                   },
                   {
                     "wonSide": 2,
@@ -492,13 +436,14 @@
                     "wonMethod": 1
                   },
                   {
+                    "wonMethod": 0,
                     "wonSide": 1,
-                    "isTerrorist": false,
-                    "wonMethod": 0
+                    "isTerrorist": false
                   }
                 ],
                 "mapName": null,
-                "isHomeCounterTerrorist": true
+                "isHomeCounterTerrorist": true,
+                "team1Players": null
               }
             ],
             "isMatchEnded": false,
@@ -513,6 +458,10 @@
           "short1_color": "000000"
         },
         "stats": {
+          "point": {
+            "team1_value": 34,
+            "team2_value": 30
+          },
           "passes": {
             "team1_value": null,
             "team2_value": null
@@ -522,236 +471,12 @@
             "team2_value": 13
           },
           "score_set2": {
-            "team1_value": 13,
-            "team2_value": 10
+            "team2_value": 10,
+            "team1_value": 13
           },
           "score_set3": {
             "team1_value": 11,
             "team2_value": 9
-          },
-          "point": {
-            "team1_value": 34,
-            "team2_value": 30
-          }
-        }
-      },
-      "source": "BetConstruct Swarm live betting catalogue game.info"
-    },
-    {
-      "game_id": "31725181",
-      "home_team": "Poland (Wom) Virtual",
-      "away_team": "Azerbaijan (Wom) Virtual",
-      "start_ts": 1795873500,
-      "is_live": 1,
-      "competition_id": null,
-      "competition": null,
-      "home_score": 1,
-      "away_score": 0,
-      "minute": null,
-      "period": "second_half",
-      "live_state_verified": false,
-      "score_stats_agree": true,
-      "display_clock": "",
-      "current_game_state": "set2",
-      "raw_score_fields": {
-        "info": {
-          "add_info": "",
-          "current_game_state": "set2",
-          "score2": "0",
-          "short2_color": "000000",
-          "field": 0,
-          "score1": "1",
-          "pass_team": "team1",
-          "shirt1_color": "000000",
-          "shirt2_color": "000000",
-          "short1_color": "000000",
-          "additional_data": {}
-        },
-        "stats": {
-          "point": {
-            "team2_value": 24,
-            "team1_value": 30
-          },
-          "period": {
-            "team1_value": 2,
-            "team2_value": 1
-          },
-          "passes": {
-            "team2_value": null,
-            "team1_value": null
-          },
-          "score_set1": {
-            "team1_value": 25,
-            "team2_value": 22
-          },
-          "score_set2": {
-            "team2_value": 2,
-            "team1_value": 5
-          }
-        }
-      },
-      "source": "BetConstruct Swarm live betting catalogue game.info"
-    },
-    {
-      "game_id": "31725180",
-      "home_team": "Latvia (Wom) Virtual",
-      "away_team": "Austria (Wom) Virtual",
-      "start_ts": 1795873500,
-      "is_live": 1,
-      "competition_id": null,
-      "competition": null,
-      "home_score": 1,
-      "away_score": 0,
-      "minute": null,
-      "period": "second_half",
-      "live_state_verified": false,
-      "score_stats_agree": true,
-      "display_clock": "",
-      "current_game_state": "set2",
-      "raw_score_fields": {
-        "info": {
-          "shirt2_color": "000000",
-          "short1_color": "000000",
-          "short2_color": "000000",
-          "field": 0,
-          "add_info": "",
-          "score2": "0",
-          "additional_data": {},
-          "current_game_state": "set2",
-          "score1": "1",
-          "pass_team": "team2",
-          "shirt1_color": "000000"
-        },
-        "stats": {
-          "period": {
-            "team1_value": 2,
-            "team2_value": 1
-          },
-          "passes": {
-            "team1_value": null,
-            "team2_value": null
-          },
-          "score_set1": {
-            "team1_value": 25,
-            "team2_value": 16
-          },
-          "score_set2": {
-            "team1_value": 7,
-            "team2_value": 6
-          },
-          "point": {
-            "team1_value": 32,
-            "team2_value": 22
-          }
-        }
-      },
-      "source": "BetConstruct Swarm live betting catalogue game.info"
-    },
-    {
-      "game_id": "31725184",
-      "home_team": "Serbia (Wom)",
-      "away_team": "Italy (Wom) Virtual",
-      "start_ts": 1795873500,
-      "is_live": 1,
-      "competition_id": null,
-      "competition": null,
-      "home_score": 0,
-      "away_score": 1,
-      "minute": null,
-      "period": "second_half",
-      "live_state_verified": false,
-      "score_stats_agree": true,
-      "display_clock": "",
-      "current_game_state": "set2",
-      "raw_score_fields": {
-        "info": {
-          "short2_color": "000000",
-          "field": 0,
-          "current_game_state": "set2",
-          "short1_color": "000000",
-          "additional_data": {},
-          "add_info": "",
-          "score1": "0",
-          "score2": "1",
-          "pass_team": "team1",
-          "shirt1_color": "000000",
-          "shirt2_color": "000000"
-        },
-        "stats": {
-          "score_set2": {
-            "team1_value": 6,
-            "team2_value": 6
-          },
-          "point": {
-            "team1_value": 23,
-            "team2_value": 31
-          },
-          "period": {
-            "team2_value": 2,
-            "team1_value": 1
-          },
-          "passes": {
-            "team1_value": null,
-            "team2_value": null
-          },
-          "score_set1": {
-            "team1_value": 17,
-            "team2_value": 25
-          }
-        }
-      },
-      "source": "BetConstruct Swarm live betting catalogue game.info"
-    },
-    {
-      "game_id": "31725182",
-      "home_team": "Slovenia (Wom) Virtual",
-      "away_team": "Germany (Wom) Virtual",
-      "start_ts": 1795873500,
-      "is_live": 1,
-      "competition_id": null,
-      "competition": null,
-      "home_score": 0,
-      "away_score": 1,
-      "minute": null,
-      "period": "second_half",
-      "live_state_verified": false,
-      "score_stats_agree": true,
-      "display_clock": "",
-      "current_game_state": "set2",
-      "raw_score_fields": {
-        "info": {
-          "short2_color": "000000",
-          "field": 0,
-          "add_info": "",
-          "current_game_state": "set2",
-          "score1": "0",
-          "score2": "1",
-          "pass_team": "team2",
-          "short1_color": "000000",
-          "additional_data": {},
-          "shirt1_color": "000000",
-          "shirt2_color": "000000"
-        },
-        "stats": {
-          "passes": {
-            "team1_value": null,
-            "team2_value": null
-          },
-          "score_set1": {
-            "team1_value": 17,
-            "team2_value": 25
-          },
-          "score_set2": {
-            "team1_value": 7,
-            "team2_value": 5
-          },
-          "point": {
-            "team1_value": 24,
-            "team2_value": 30
-          },
-          "period": {
-            "team1_value": 1,
-            "team2_value": 2
           }
         }
       },
